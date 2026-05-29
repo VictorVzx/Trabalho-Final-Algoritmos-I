@@ -40,7 +40,7 @@ Entregáveis:
 4. Sistema em C;
 5. Pitch de 5 minutos.
 
-## O CRUD está organizado em:
+## Estrutura do trabalho:
 ```
 /hackBee
     /docs ←- Aqui fica a documentação.
