@@ -41,13 +41,12 @@ Entregáveis:
 5. Pitch de 5 minutos.
 
 ## Estrutura do trabalho:
-```
+```text
 /hackBee
-    /docs ←- Aqui fica a documentação.
+    /docs <- Aqui fica a documentação.
         > leiame.txt
-    /functions ←- Aqui estão guardadas as funções em header files.
-        /
-    /interfaces ←- Aqui ficam as interfaces.
-    /structs ←- Aqui ficam guardadas as structs.
-    > main.c ←- Código principal.
+    /functions <- Aqui estão guardadas as funções em header files.
+    /interfaces <- Aqui ficam as interfaces.
+    /structs <- Aqui ficam guardadas as structs.
+    > main.c <- Código principal.
 ```
