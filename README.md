@@ -4,6 +4,7 @@
 
 *Universidade Federal do Piauí* -
 *Campus Senador Helvídio Nunes de Barros*
+> Bacharelado em Sistemas de Informação | Primeiro Período (2026.1)
 
 **Matéria:** Algoritmos e Programação I <br>
 **Professor(a):** Alcilene Dalília de Sousa
