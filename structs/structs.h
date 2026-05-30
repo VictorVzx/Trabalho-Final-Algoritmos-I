@@ -1,5 +1,5 @@
-#ifndef STRUCTABELHAS_H
-#define STRUCTABELHAS_H
+#ifndef STRUCTS_H
+#define STRUCTS_H
 
 #define MAX_ABELHAS 50
 #define MAX_SENSORES 100
