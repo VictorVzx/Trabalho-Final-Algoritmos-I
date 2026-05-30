@@ -1,13 +1,10 @@
 <div style="display: flex; justify-content: center; padding: 10px;">
-    <h1>Trabalho Final - Algoritmos I</h1>
+    <h1>Trabalho: HiveGuardian</h1>
 </div>
 
 *Universidade Federal do Piauí* -
 *Campus Senador Helvídio Nunes de Barros*
 > Bacharelado em Sistemas de Informação | Primeiro Período (2026.1)
-
-**Matéria:** Algoritmos e Programação I <br>
-**Professor(a):** Alcilene Dalília de Sousa
 
 **Integrantes do grupo**:
 1. Davi Reis;
@@ -16,31 +13,27 @@
 4. José Victor;
 5. Ryan Willys.
 
----
-<div style="display: flex; justify-content: center;">
-    <h2>Desafio Startup – Algoritmos I</h2>
-</div>
+**Disciplina:** Algoritmos e Programação I <br>
+**Professor(a):** Alcilene Dalília de Sousa
 
-### Parte 1 — Núcleo obrigatório (60% da nota)
----
-Todas as equipes implementam:
- - CRUD completo (CRUD = Create, Read, Update and Delete, são as opções para ter) ;
- - Menu;
- - Vetores de dados;
- - Funções modularizadas e organizadas;
- - Relatórios básicos;
- - Tratamento de exclusão, evitando perda de dados ou dados mal excluídos;
- - Código organizado e explicado (Comentado).
-### Parte 2 — Desafio da Startup (40% da nota)
----
-Cada equipe será sorteada com um único problema e deverá implementar em um sistema próprio.
-Entregáveis:
-1. Nome da startup;
-2. Problema que resolve;
-3. MVP (produto mínimo viável);
-4. Sistema em C;
-5. Pitch de 5 minutos.
+**Descrição:** Sistema de cadastro e monitoramento de abelhas sem ferrão, sensores ambientais associados e sistema de alertas ambientais.
 
+**Compilação:** 
+```bash
+make run
+```
+ou
+```bash
+gcc -o main main.c
+```
+**Execução:**
+```bash
+./main
+```
+**Bugs conhecidos:** ainda não há persistência em arquivo; os dados se perdem
+ao encerrar o programa.
+
+---
 ## Estrutura do trabalho:
 ```text
 /hackBee
