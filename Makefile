@@ -3,21 +3,17 @@ CFLAGS = -Wall -Wextra -std=c99
 
 TARGET = main
 
-# Correção 1: Adicionado o '=' que faltava
-SRCS = main.c $(shell find functions -name "*.c")
+SRCS := $(shell find . -name '*.c' -not -path './.git/*')
 
-OBJS = $(SRCS:.c=.o)
+.PHONY: all clean run
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $^
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(TARGET): $(SRCS)
+	$(CC) $(CFLAGS) -o $@ $(SRCS)
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(TARGET)
 
 run: all
 	./$(TARGET)
