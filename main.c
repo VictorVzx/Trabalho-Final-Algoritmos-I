@@ -6,11 +6,11 @@
 #define MAX_SENSORES 100
 
 int main(void){
-    int optionMenu, optionSubMenu;
+    int menuOption, abelhasOption, sensoresOption;
     do{
         interfaceMenuPrincipal();
-        scanf("%d", &optionMenu);
-    }while(optionMenu != 4);
+        scanf("%d", &menuOption);
+    }while(menuOption != 4);
 
     return 0;
 }
