@@ -10,7 +10,7 @@ int main(void){
     do{
         interfaceMenuPrincipal();
         scanf("%d", &optionMenu);
-    }while(optionSubMenu != 4);
+    }while(optionMenu != 4);
 
     return 0;
 }
