@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "gerenciarSensoresInterface.h"
 
-void gerenciarSensoresInterface(){
+void showGerenciarSensores(){
     printf("6. Cadastrar sensor\n");
     printf("7. Listar sensores\n");
     printf("8. Buscar por ID da abelha\n");

@@ -19,7 +19,6 @@ int limparTela(int sys){
     else if (sys == 2 || sys == 3){
         printf("Limpando");
         for(int i = 0; i < 3; i++){
-            sleep(1);
             printf(".");
         }
         printf("\n");
