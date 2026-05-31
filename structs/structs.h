@@ -1,9 +1,6 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
-#define MAX_ABELHAS 50
-#define MAX_SENSORES 100
-
 typedef struct{
     int id;
     char nomePopular[40];
