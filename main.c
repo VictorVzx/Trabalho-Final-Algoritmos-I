@@ -7,7 +7,6 @@
 
 //prototipo de funções (modulos)
 #include "functions/limparTela/limparTela.h"
-#include "functions/funcChecarSO/checarSO.h"
 
 //prototipo de structs
 #include "structs/structs.h"
@@ -20,7 +19,12 @@
 int main(void){
     int sistema;
     showChecarSistema();
-    checarSO(sistema);
+    scanf("%d", &sistema);
+
+    if(limparTela(sistema) == 0){
+        printf("Sistema inválido.\n");
+        return 1;
+    }
 
     //variaveis de opção, para checar o do while
     int menuOption, abelhasOption, sensoresOption;
