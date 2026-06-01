@@ -13,6 +13,8 @@
 //prototipo de structs
 #include "structs/structs.h"
 
+//teste
+
 // limite de abelhas e sensores 
 #define MAX_ABELHAS 50
 #define MAX_SENSORES 100
