@@ -10,6 +10,7 @@
 //prototipo de funções (modulos)
 #include "functions/limparTela/limparTela.h"
 #include "functions/limparBuffer/limparBuffer.h"
+#include "functions/gerenciarAbelhas/gerenciarAbelhas.h"
 
 //prototipo de structs
 #include "structs/structs.h"
@@ -47,6 +48,7 @@ int main(void){
         {
         case 1:
             showGerenciarAbelhas();
+            gerenciarAbelhas(&abelhasOption);
             break;
         case 2:
             showGerenciarSensores();
