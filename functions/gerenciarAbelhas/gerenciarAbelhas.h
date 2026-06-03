@@ -3,6 +3,8 @@
 
 #include "../../structs/structs.h"
 
+// prototipo das funções CRUD (abelhas)
+
 void cadastrarAbelha(Abelha a[], int quantidade);
 
 void listarTodas(Abelha a[], int quantidade);

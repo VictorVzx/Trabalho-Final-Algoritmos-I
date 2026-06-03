@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "gerencialAbelhasInterface.h"
 
+// prototipo da função showGerenciarAbelhas
+
 void showGerenciarAbelhas(){
     printf("6. Cadastrar abelha\n");
     printf("7. Listar todas\n");

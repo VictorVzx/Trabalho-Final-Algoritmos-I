@@ -1,6 +1,8 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
+// todas as structs ficam armazenadas aqui.
+
 typedef struct{
     int id;
     char nomePopular[40];

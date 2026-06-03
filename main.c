@@ -10,15 +10,13 @@
 #include "interfaces/gerenciarAbelhas/gerencialAbelhasInterface.h"
 #include "interfaces/gerenciarSensores/gerenciarSensoresInterface.h"
 
-//prototipo de funções (modulos)
+//incluindo as funções (modulos)
 #include "functions/limparTela/limparTela.h"
 #include "functions/limparBuffer/limparBuffer.h"
 #include "functions/gerenciarAbelhas/gerenciarAbelhas.h"
 
-//prototipo de structs
+//prototipo das structs
 #include "structs/structs.h"
-
-//teste
 
 // limite de abelhas e sensores 
 #define MAX_ABELHAS 50
