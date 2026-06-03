@@ -26,6 +26,8 @@
 
 // função main (implementação do codigo principal)
 int main(void){
+    Abelha abelhas[MAX_ABELHAS];
+
     int sistema;
     showChecarSistema();
     scanf("%d", &sistema);
@@ -34,7 +36,7 @@ int main(void){
     if(limparTela(sistema) == 0){
         printf("Sistema inválido.\n");
         return 1;
-    }else if(limparTela(sistema) == 4 /*se a função retornar 4, sair do codigo*/){
+    }else if(limparTela(sistema) == 4){
         printf("Saindo...\n");
         sleep(1);
         return 0;
@@ -59,8 +61,14 @@ int main(void){
             limparBuffer();
             switch(abelhasOption){
                 case 6:
-                    
+                    limparTela(sistema);
+                    //chama a função de cadastrar abelhas passando como parametro o sistema para chamar a função "limparTela()", que recebe como parametro o numero do sistema operacional
+                    cadastrarAbelha(abelhas, sistema);
+                    printf("Aguarde...");
+                    limparTela(sistema);
+                    break;
                 case 11:
+                    limparTela(sistema);
                     printf("Voltando...\n");
                     limparTela(sistema);
                     break;

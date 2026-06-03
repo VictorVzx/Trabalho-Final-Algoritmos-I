@@ -30,8 +30,10 @@ gcc -o main main.c
 ```bash
 ./main
 ```
-**Bugs conhecidos:** ainda não há persistência em arquivo; os dados se perdem
+**Bugs conhecidos:**
+1. Ainda não há persistência em arquivo; os dados se perdem
 ao encerrar o programa.
+2. A validação para adicionar abelhas ainda é inconsistente
 
 ---
 ## Estrutura do trabalho:
