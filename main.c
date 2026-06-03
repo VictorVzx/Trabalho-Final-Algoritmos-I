@@ -1,6 +1,9 @@
 // standard in out, printf, scanf e as demais funções essenciais
 #include <stdio.h>
 
+// para chamar funções do sistema 
+#include <stdlib.h>
+
 //unistd para o comando sleep
 #include <unistd.h>
 
@@ -24,18 +27,21 @@
 
 // função main (implementação do codigo principal)
 int main(void){
+    Abelha abelhas[MAX_ABELHAS];
+
     int sistema;
     showChecarSistema();
     scanf("%d", &sistema);
     limparBuffer();
 
+    if(sistema == 4){
+        sleep(1);
+        return 0;
+    }
+
     if(limparTela(sistema) == 0){
         printf("Sistema inválido.\n");
         return 1;
-    }else if(limparTela(sistema) == 4 /*se a função retornar 4, sair do codigo*/){
-        printf("Saindo...\n");
-        sleep(1);
-        return 0;
     }
 
     //variaveis de opção, para checar no do while
@@ -57,8 +63,14 @@ int main(void){
             limparBuffer();
             switch(abelhasOption){
                 case 6:
-                    
+                    limparTela(sistema);
+                    //chama a função de cadastrar abelhas passando como parametro o sistema para chamar a função "limparTela()", que recebe como parametro o numero do sistema operacional
+                    cadastrarAbelha(abelhas, sistema);
+                    printf("Aguarde...");
+                    limparTela(sistema);
+                    break;
                 case 11:
+                    limparTela(sistema);
                     printf("Voltando...\n");
                     limparTela(sistema);
                     break;
