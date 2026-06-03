@@ -4,6 +4,11 @@
 #include "limparTela.h"
 
 int limparTela(int sys){
+
+    if(sys == 4){
+        return 4;
+    }
+
     // se for windows = cls
     if(sys == 1){
         printf("Limpando");
