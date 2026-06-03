@@ -5,6 +5,7 @@
 
 int limparTela(int sys){
 
+    // se a opção do sistema for 4, retornará 4 para reconhecer como saída no codigo principal
     if(sys == 4){
         return 4;
     }
