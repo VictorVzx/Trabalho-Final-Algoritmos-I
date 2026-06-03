@@ -4,11 +4,12 @@
 #include <stdlib.h>
 #include "gerenciarAbelhas.h"
 
+// incluir a função de limpar buffer
 #include "../limparBuffer/limparBuffer.h"
 #include "../limparTela/limparTela.h"
 
 //incluir a interface de listar todas
-#include "../../interfaces/gerenciarAbelhas/gerencialAbelhasInterface.h"
+#include "../../interfaces/gerenciarAbelhas/gerenciarAbelhasInterface.h"
 
 #include "../../structs/structs.h"
 
@@ -22,6 +23,7 @@ void cadastrarAbelha(Abelha a[], int sys){
     
     for(int i = 0; i < qtd; i++){
         limparTela(sys);
+        showCadastrarAbelhas();
         sleep(1);
         printf("======== %dª ABELHA ========\n", i+1);
 

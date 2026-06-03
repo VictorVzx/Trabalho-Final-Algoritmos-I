@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "gerencialAbelhasInterface.h"
+#include "gerenciarAbelhasInterface.h"
 
 // prototipo da função showGerenciarAbelhas
 
@@ -13,8 +13,32 @@ void showGerenciarAbelhas(){
     printf("-> ");
 }
 
+void showCadastrarAbelhas(){
+    printf("==============================\n");
+    printf("|      CADASTRAR ABELHAS     |\n");
+    printf("==============================\n");
+    printf("\n\n");
+}
+
 void showListarTodas(){
-    printf("================\n");
-    printf("| LISTAR TODAS |\n");
-    printf("================\n");
+    printf("==============================\n");
+    printf("|         LISTAR TODAS       |\n");
+    printf("==============================\n");
+    printf("\n\n");
+}
+
+// prototipo da função interface "editar abelhas"
+void showEditarAbelhas(){
+    printf("==============================\n");
+    printf("|        EDITAR ABELHAS      |\n");
+    printf("==============================\n");
+    printf("\n\n");
+}
+
+// prototipo da função interface "remover abelhas"
+void showRemoverAbelhas(){
+    printf("==============================\n");
+    printf("|       REMOVER ABELHAS      |\n");
+    printf("==============================\n");
+    printf("\n\n");
 }

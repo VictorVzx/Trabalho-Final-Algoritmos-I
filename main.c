@@ -10,7 +10,7 @@
 //prototipo de funções (interfaces)
 #include "interfaces/menuPrincipal/interfaceMenuPrincipal.h"
 #include "interfaces/checarSO/checarSistemaInterface.h"
-#include "interfaces/gerenciarAbelhas/gerencialAbelhasInterface.h"
+#include "interfaces/gerenciarAbelhas/gerenciarAbelhasInterface.h"
 #include "interfaces/gerenciarSensores/gerenciarSensoresInterface.h"
 
 //incluindo as funções (modulos)
