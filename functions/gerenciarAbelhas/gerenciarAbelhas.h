@@ -3,15 +3,13 @@
 
 #include "../../structs/structs.h"
 
-<<<<<<< HEAD
 // prototipo das funções CRUD (abelhas)
 
-void cadastrarAbelha(Abelha a[], int quantidade);
-=======
+//prototipo da função cadastrarAbelha
 void cadastrarAbelha(Abelha a[], int sys);
->>>>>>> main
 
-void listarTodas(Abelha a[]);
+//prototipo da função de listar abelhas
+void listarTodas(Abelha a[], int sys);
 
 
 #endif

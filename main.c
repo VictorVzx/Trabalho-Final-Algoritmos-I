@@ -69,6 +69,12 @@ int main(void){
                     printf("Aguarde...");
                     limparTela(sistema);
                     break;
+                case 7:
+                    limparTela(sistema);
+                    listarTodas(abelhas, sistema);
+                    printf("Aguarde...");
+                    limparTela(sistema);
+                    break;
                 case 11:
                     limparTela(sistema);
                     printf("Voltando...\n");

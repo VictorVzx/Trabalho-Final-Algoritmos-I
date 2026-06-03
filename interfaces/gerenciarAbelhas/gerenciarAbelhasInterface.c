@@ -12,3 +12,9 @@ void showGerenciarAbelhas(){
     printf("11. Voltar\n");
     printf("-> ");
 }
+
+void showListarTodas(){
+    printf("================\n");
+    printf("| LISTAR TODAS |\n");
+    printf("================\n");
+}

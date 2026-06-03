@@ -7,13 +7,15 @@
 #include "../limparBuffer/limparBuffer.h"
 #include "../limparTela/limparTela.h"
 
+//incluir a interface de listar todas
+#include "../../interfaces/gerenciarAbelhas/gerencialAbelhasInterface.h"
+
 #include "../../structs/structs.h"
 
+int qtd;
 
 void cadastrarAbelha(Abelha a[], int sys){
-
     //pergunta a quantidade de abelhas antes de adicionar
-    int qtd;
     printf("Quantas abelhas voce quer cadastrar?: ");
     scanf("%d", &qtd);
     limparBuffer();
@@ -44,4 +46,13 @@ void cadastrarAbelha(Abelha a[], int sys){
         limparBuffer();
     }
     
+}
+
+void listarTodas(Abelha a[], int sys){
+    showListarTodas();
+
+    for(int i = 0; i < qtd; i++){
+        limparTela(sys);
+        printf("Nome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f", a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
+    }
 }
