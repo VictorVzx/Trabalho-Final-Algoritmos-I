@@ -9,6 +9,7 @@
 
 //prototipo de funções (modulos)
 #include "functions/limparTela/limparTela.h"
+#include "functions/limparBuffer/limparBuffer.h"
 
 //prototipo de structs
 #include "structs/structs.h"
@@ -24,6 +25,7 @@ int main(void){
     int sistema;
     showChecarSistema();
     scanf("%d", &sistema);
+    limparBuffer();
 
     if(limparTela(sistema) == 0){
         printf("Sistema inválido.\n");
@@ -37,6 +39,8 @@ int main(void){
         //chamando a função de mostrar o menu
         interfaceMenuPrincipal();
         scanf("%d", &menuOption);
+        limparBuffer();
+        
         limparTela(sistema);
 
         switch (menuOption)
@@ -52,6 +56,7 @@ int main(void){
             break;
         case 4:
             printf("Saindo...\n");
+            break;
         default:
             printf("Opção invalida.\n");
             limparTela(sistema);

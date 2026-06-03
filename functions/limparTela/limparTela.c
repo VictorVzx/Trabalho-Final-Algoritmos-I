@@ -9,10 +9,9 @@ int limparTela(int sys){
         printf("Limpando");
         for(int i = 0; i < 3; i++){
             printf(".");
-            sleep(1);
         }
         printf("\n");
-        sleep(2);
+        sleep(1);
         system("cls");
     }
     // se for linux ou mac = clear
