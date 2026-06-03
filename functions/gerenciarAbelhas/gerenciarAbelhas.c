@@ -16,6 +16,9 @@
 int qtd;
 
 void cadastrarAbelha(Abelha a[], int sys){
+    // mostra interface de cadastrar abelhas
+    showCadastrarAbelhas();
+
     //pergunta a quantidade de abelhas antes de adicionar
     printf("Quantas abelhas voce quer cadastrar?: ");
     scanf("%d", &qtd);
@@ -27,6 +30,8 @@ void cadastrarAbelha(Abelha a[], int sys){
         sleep(1);
         printf("======== %dª ABELHA ========\n", i+1);
 
+        a[i].id = 0;
+        
         // pedir o nome popular
         printf("Digite o nome popular da abelha: ");
         fgets(a[i].nomePopular, sizeof(a[i].nomePopular), stdin);
@@ -36,16 +41,18 @@ void cadastrarAbelha(Abelha a[], int sys){
         printf("Digite o nome cientifico: ");
         fgets(a[i].nomeCientifico, sizeof(a[i].nomeCientifico), stdin);
         a[i].nomeCientifico[strcspn(a[i].nomeCientifico, "\n")] = '\0';
-
+        
         // pedir a regiao
         printf("Digite a região: ");
         fgets(a[i].regiao, sizeof(a[i].regiao), stdin);
         a[i].regiao[strcspn(a[i].regiao, "\n")] = '\0';
-
+        
         // pedir a produção media em kg/mes
         printf("Digite a quantidade média em kg por mês produzida: ");
         scanf("%f", &a[i].producaoMel);
         limparBuffer();
+
+        a[i].id++;
     }
     
 }
@@ -53,8 +60,22 @@ void cadastrarAbelha(Abelha a[], int sys){
 void listarTodas(Abelha a[], int sys){
     showListarTodas();
 
+    char tecla;
+
     for(int i = 0; i < qtd; i++){
+        printf("ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f", a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
+        do{
+            printf("\nPressione ENTER para sair...\n");
+
+            tecla = getchar();
+
+            while(getchar() != '\n');
+
+        }while(tecla != 10);
         limparTela(sys);
-        printf("Nome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f", a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
     }
+}
+
+void editarAbelhas(){
+
 }
