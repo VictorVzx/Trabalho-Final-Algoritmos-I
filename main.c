@@ -48,7 +48,11 @@ int main(void){
         {
         case 1:
             showGerenciarAbelhas();
-            gerenciarAbelhas(&abelhasOption);
+            lerOpcaoAbelhas(&abelhasOption);
+            switch(abelhasOption){
+                case 6:
+
+            }
             break;
         case 2:
             showGerenciarSensores();

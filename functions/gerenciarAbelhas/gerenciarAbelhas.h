@@ -1,6 +1,6 @@
 #ifndef GERENCIARABELHAS_H
 #define GERENCIARABELHAS_H
 
-void gerenciarAbelhas(int option);
+void lerOpcaoAbelhas(int option);
 
 #endif
