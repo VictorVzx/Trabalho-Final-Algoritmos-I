@@ -1,6 +1,9 @@
 // standard in out, printf, scanf e as demais funções essenciais
 #include <stdio.h>
 
+// para chamar funções do sistema 
+#include <stdlib.h>
+
 //unistd para o comando sleep
 #include <unistd.h>
 
@@ -18,8 +21,6 @@
 //prototipo de structs
 #include "structs/structs.h"
 
-//teste
-
 // limite de abelhas e sensores 
 #define MAX_ABELHAS 50
 #define MAX_SENSORES 100
@@ -33,13 +34,14 @@ int main(void){
     scanf("%d", &sistema);
     limparBuffer();
 
+    if(sistema == 4){
+        sleep(1);
+        return 0;
+    }
+
     if(limparTela(sistema) == 0){
         printf("Sistema inválido.\n");
         return 1;
-    }else if(limparTela(sistema) == 4){
-        printf("Saindo...\n");
-        sleep(1);
-        return 0;
     }
 
     //variaveis de opção, para checar no do while
