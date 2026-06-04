@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "gerenciarAbelhasInterface.h"
 
-// prototipo da interface de menu, da seção "gerenciar abelhas"
+// interface de menu, da seção "gerenciar abelhas"
 void showGerenciarAbelhas(){
     printf("6. Cadastrar abelha\n");
     printf("7. Listar todas\n");
@@ -12,7 +12,7 @@ void showGerenciarAbelhas(){
     printf("-> ");
 }
 
-// prototipo da função para cadastrar abelhas
+// interface cadastrar abelhas
 void showCadastrarAbelhas(){
     printf("==============================\n");
     printf("|      CADASTRAR ABELHAS     |\n");
@@ -20,7 +20,7 @@ void showCadastrarAbelhas(){
     printf("\n\n");
 }
 
-// prototipo da função para listar todas as abelhas
+// interface listar todas
 void showListarTodas(){
     printf("==============================\n");
     printf("|         LISTAR TODAS       |\n");
@@ -28,6 +28,7 @@ void showListarTodas(){
     printf("\n\n");
 }
 
+// interface de busca por nome popular
 void showBuscarPorNomePopular(){
     printf("===============================\n");
     printf("|   BUSCAR POR NOME POPULAR   |\n");
@@ -35,7 +36,7 @@ void showBuscarPorNomePopular(){
     printf("\n\n");
 }
 
-// prototipo da função interface "editar abelhas"
+// interface do menu editar abelhas
 void showEditarAbelhas(){
     printf("==============================\n");
     printf("|        EDITAR ABELHAS      |\n");
@@ -43,7 +44,7 @@ void showEditarAbelhas(){
     printf("\n\n");
 }
 
-// prototipo da função interface "remover abelhas"
+// interface do menu remover abelhas
 void showRemoverAbelhas(){
     printf("==============================\n");
     printf("|       REMOVER ABELHAS      |\n");

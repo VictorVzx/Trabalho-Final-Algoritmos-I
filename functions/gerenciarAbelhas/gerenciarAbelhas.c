@@ -75,6 +75,35 @@ void listarTodas(Abelha a[], int sys){
     limparTela(sys);
 }
 
-void editarAbelhas(){
+void buscarPorNomePopular(Abelha a[], int sys, int qtd){
+    showBuscarPorNomePopular();
+    char nomePopular[40], tecla;
 
+    // inicializo a variavel como falsa (método da negação)
+    int achou = 0;
+
+    // pede o nome da abelha para buscar e lê com fgets para reconhecer espaços
+    printf("Digite o nome popular da abelha que você quer buscar: ");
+    fgets(nomePopular, sizeof(nomePopular), stdin);
+    nomePopular[strcspn(nomePopular, "\n")] = '\0';
+
+    for(int i = 0; i < qtd; i++){
+        // compara o nome popular digitado com o nome popular das abelhas disponiveis
+        if(strcmp(nomePopular, a[i].nomePopular) == 0){
+            printf("ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n\n", a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
+            achou = 1;
+        }
+    }
+
+    // retorna que não achou a abelha se a variavel "achou" continuar falsa
+    if(achou == 0){
+        printf("Abelha não encontrada.\n");
+    }
+
+    do{
+        printf("\nPressione ENTER para sair...");
+        while(getchar() != '\n');
+        tecla = '\n';
+    }while(tecla != '\n');
+    limparTela(sys);
 }

@@ -10,6 +10,9 @@ void showCadastrarAbelhas();
 // prototipo da função interface "mostrar todas"
 void showListarTodas();
 
+// prototipo da função de buscar por nome popular
+void showBuscarPorNomePopular();
+
 // prototipo da função interface "editar abelhas"
 void showEditarAbelhas();
 
