@@ -23,14 +23,14 @@ void cadastrarAbelha(Abelha a[], int sys){
     printf("Quantas abelhas voce quer cadastrar?: ");
     scanf("%d", &qtd);
     limparBuffer();
+
+    int id = 0;
     
     for(int i = 0; i < qtd; i++){
         limparTela(sys);
         showCadastrarAbelhas();
         sleep(1);
         printf("======== %dª ABELHA ========\n", i+1);
-
-        a[i].id = 0;
         
         // pedir o nome popular
         printf("Digite o nome popular da abelha: ");
@@ -52,7 +52,9 @@ void cadastrarAbelha(Abelha a[], int sys){
         scanf("%f", &a[i].producaoMel);
         limparBuffer();
 
-        a[i].id++;
+        id++;
+
+        a[i].id = id;
     }
     
 }
@@ -63,17 +65,14 @@ void listarTodas(Abelha a[], int sys){
     char tecla;
 
     for(int i = 0; i < qtd; i++){
-        printf("ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f", a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
-        do{
-            printf("\nPressione ENTER para sair...\n");
-
-            tecla = getchar();
-
-            while(getchar() != '\n');
-
-        }while(tecla != 10);
-        limparTela(sys);
+        printf("ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n\n", a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
     }
+    do{
+        printf("\nPressione ENTER para sair...");
+        while(getchar() != '\n');
+        tecla = '\n';
+    }while(tecla != '\n');
+    limparTela(sys);
 }
 
 void editarAbelhas(){
