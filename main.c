@@ -17,6 +17,7 @@
 #include "functions/limparTela/limparTela.h"
 #include "functions/limparBuffer/limparBuffer.h"
 #include "functions/gerenciarAbelhas/gerenciarAbelhas.h"
+#include "functions/gerenciarAbelhas/switchGerenciarAbelhas.h"
 
 //prototipo das structs
 #include "structs/structs.h"
@@ -45,7 +46,7 @@ int main(void){
     }
 
     //variaveis de opção, para checar no do while
-    int menuOption, abelhasOption, sensoresOption;
+    int menuOption, sensoresOption;
 
     do{
         //chamando a função de mostrar o menu
@@ -55,58 +56,31 @@ int main(void){
         
         limparTela(sistema);
 
+        
         switch (menuOption)
         {
-        case 1:
-            showGerenciarAbelhas();
-            scanf("%d", &abelhasOption);
-            limparBuffer();
-            switch(abelhasOption){
-                case 6:
-                    limparTela(sistema);
-                    //chama a função de cadastrar abelhas passando como parametro o sistema para chamar a função "limparTela()", que recebe como parametro o numero do sistema operacional
-                    cadastrarAbelha(abelhas, sistema);
-                    printf("Aguarde...");
-                    limparTela(sistema);
-                    break;
-                case 7:
-                    limparTela(sistema);
-                    listarTodas(abelhas, sistema);
-                    printf("Aguarde...");
-                    limparTela(sistema);
-                    break;
-                case 8:
-                    limparTela(sistema);
-                    buscarPorNomePopular(abelhas, sistema);
-                    limparTela(sistema);
-                    break;
-                case 11:
-                    limparTela(sistema);
-                    printf("Voltando...\n");
-                    limparTela(sistema);
-                    break;
-                default:
-                    printf("Opção invalida\n");
-                    break;
-            }
-            break;
-        case 2:
-            showGerenciarSensores();
-            scanf("%d", &sensoresOption);
-            limparBuffer();
-            break;
-        case 3:
-            printf("Sensores\n");
-            limparTela(sistema);
-            break;
-        case 4:
-            printf("Saindo...\n");
-            limparTela(sistema);
-            break;
-        default:
-            printf("Opção invalida.\n");
-            limparTela(sistema);
-            break;
+            case 1:
+                
+                
+                switchGerenciarAbelhas(abelhas, sistema);
+                break;
+            case 2:
+                showGerenciarSensores();
+                scanf("%d", &sensoresOption);
+                limparBuffer();
+                break;
+            case 3:
+                printf("Sensores\n");
+                limparTela(sistema);
+                break;
+            case 4:
+                printf("Saindo...\n");
+                limparTela(sistema);
+                break;
+            default:
+                printf("Opção invalida.\n");
+                limparTela(sistema);
+                break;
         }
     }while(menuOption != 4);
 

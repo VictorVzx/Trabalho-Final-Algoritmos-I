@@ -8,45 +8,49 @@
 #include "../limparBuffer/limparBuffer.h"
 #include "../limparTela/limparTela.h"
 
-//incluir a interface de listar todas
+// incluir a interface de listar todas
 #include "../../interfaces/gerenciarAbelhas/gerenciarAbelhasInterface.h"
 
 #include "../../structs/structs.h"
 
 int qtd;
 
-void cadastrarAbelha(Abelha a[], int sys){
+
+
+void cadastrarAbelha(Abelha a[], int sys)
+{
     // mostra interface de cadastrar abelhas
     showCadastrarAbelhas();
 
-    //pergunta a quantidade de abelhas antes de adicionar
+    // pergunta a quantidade de abelhas antes de adicionar
     printf("Quantas abelhas voce quer cadastrar?: ");
     scanf("%d", &qtd);
     limparBuffer();
 
     int id = 0;
-    
-    for(int i = 0; i < qtd; i++){
+
+    for (int i = 0; i < qtd; i++)
+    {
         limparTela(sys);
         showCadastrarAbelhas();
         sleep(1);
-        printf("======== %dª ABELHA ========\n", i+1);
-        
+        printf("======== %dª ABELHA ========\n", i + 1);
+
         // pedir o nome popular
         printf("Digite o nome popular da abelha: ");
         fgets(a[i].nomePopular, sizeof(a[i].nomePopular), stdin);
         a[i].nomePopular[strcspn(a[i].nomePopular, "\n")] = '\0';
-        
+
         // pedir o nome cientifico
         printf("Digite o nome cientifico: ");
         fgets(a[i].nomeCientifico, sizeof(a[i].nomeCientifico), stdin);
         a[i].nomeCientifico[strcspn(a[i].nomeCientifico, "\n")] = '\0';
-        
+
         // pedir a regiao
         printf("Digite a região: ");
         fgets(a[i].regiao, sizeof(a[i].regiao), stdin);
         a[i].regiao[strcspn(a[i].regiao, "\n")] = '\0';
-        
+
         // pedir a produção media em kg/mes
         printf("Digite a quantidade média em kg por mês produzida: ");
         scanf("%f", &a[i].producaoMel);
@@ -56,26 +60,30 @@ void cadastrarAbelha(Abelha a[], int sys){
 
         a[i].id = id;
     }
-    
 }
 
-void listarTodas(Abelha a[], int sys){
+void listarTodas(Abelha a[], int sys)
+{
     showListarTodas();
 
     char tecla;
 
-    for(int i = 0; i < qtd; i++){
+    for (int i = 0; i < qtd; i++)
+    {
         printf("ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n\n", a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
     }
-    do{
+    do
+    {
         printf("\nPressione ENTER para sair...");
-        while(getchar() != '\n');
+        while (getchar() != '\n')
+            ;
         tecla = '\n';
-    }while(tecla != '\n');
+    } while (tecla != '\n');
     limparTela(sys);
 }
 
-void buscarPorNomePopular(Abelha a[], int sys, int qtd){
+void buscarPorNomePopular(Abelha a[], int sys)
+{
     showBuscarPorNomePopular();
     char nomePopular[40], tecla;
 
@@ -87,23 +95,29 @@ void buscarPorNomePopular(Abelha a[], int sys, int qtd){
     fgets(nomePopular, sizeof(nomePopular), stdin);
     nomePopular[strcspn(nomePopular, "\n")] = '\0';
 
-    for(int i = 0; i < qtd; i++){
+    for (int i = 0; i < qtd; i++)
+    {
         // compara o nome popular digitado com o nome popular das abelhas disponiveis
-        if(strcmp(nomePopular, a[i].nomePopular) == 0){
+        if (strcmp(nomePopular, a[i].nomePopular) == 0)
+        {
             printf("ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n\n", a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
             achou = 1;
         }
     }
 
     // retorna que não achou a abelha se a variavel "achou" continuar falsa
-    if(achou == 0){
+    if (achou == 0)
+    {
         printf("Abelha não encontrada.\n");
     }
 
-    do{
+    do
+    {
         printf("\nPressione ENTER para sair...");
-        while(getchar() != '\n');
+        while (getchar() != '\n')
+            ;
         tecla = '\n';
-    }while(tecla != '\n');
+    } while (tecla != '\n');
     limparTela(sys);
 }
+
