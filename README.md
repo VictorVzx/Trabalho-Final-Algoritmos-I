@@ -33,8 +33,6 @@ gcc -o main main.c
 **Bugs conhecidos:**
 1. Ainda não há persistência em arquivo; os dados se perdem
 ao encerrar o programa.
-2. A validação para adicionar abelhas ainda é inconsistente
-3. Vetor de abelhas é completamente excluido ao tentar adicionar novas abelhas
 
 ---
 ## Estrutura do trabalho:
