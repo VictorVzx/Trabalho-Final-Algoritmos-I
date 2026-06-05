@@ -60,8 +60,7 @@ int main(void){
         switch (menuOption)
         {
             case 1:
-                
-                
+                // chamar função de gerenciamento das abelhas
                 switchGerenciarAbelhas(abelhas, sistema);
                 break;
             case 2:
