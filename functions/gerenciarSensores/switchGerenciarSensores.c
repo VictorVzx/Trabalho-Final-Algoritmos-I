@@ -2,45 +2,37 @@
 
 #include "../../interfaces/gerenciarSensores/gerenciarSensoresInterface.h"
 
-
-
 #include "../limparTela/limparTela.h"
 #include "../limparBuffer/limparBuffer.h"
 #include "../../structs/structs.h"
 
 void switchGerenciarSensores(Sensor s[], int sys){
-    int abelhasOption;
+    int sensoresOption;
     do
     {  
         showGerenciarSensores();
-        scanf("%d", &abelhasOption);
+        scanf("%d", &sensoresOption);
         limparBuffer();
         
-        switch (abelhasOption)
+        switch (sensoresOption)
         {
         case 6:
             limparTela(sys);
-            cadastrarAbelha(s, sys);
             printf("\nAguarde...\n");
             limparTela(sys);
             break;
         case 7:
             limparTela(sys);
-            listarTodas(s, sys);
-            printf("\nAguarde...\n");
             limparTela(sys);
             break;
         case 8:
             limparTela(sys);
-            buscarPorNomePopular(s, sys);
             break;
         case 9:
             limparTela(sys);
-            editarAbelha(s, sys);
             break;
         case 10:
             limparTela(sys);
-            removerAbelha(s, sys);
             limparTela(sys);
             break;
         case 11:
@@ -53,6 +45,6 @@ void switchGerenciarSensores(Sensor s[], int sys){
             printf("\nOpção invalida\n");
             break;
         }
-    }while (abelhasOption != 11);
+    }while (sensoresOption != 11);
 }
 

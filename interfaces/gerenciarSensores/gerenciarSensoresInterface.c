@@ -10,3 +10,43 @@ void showGerenciarSensores(){
     printf("11. Voltar\n");
     printf("-> ");
 }
+
+// interface cadastrar sensores
+void showCadastrarSensores(){
+    printf("===============================\n");
+    printf("|      CADASTRAR SENSORES     |\n");
+    printf("===============================\n");
+    printf("\n\n");
+}
+
+// interface listar sensores
+void showListarSensores(){
+    printf("=================================\n");
+    printf("|         LISTAR SENSORES       |\n");
+    printf("=================================\n");
+    printf("\n\n");
+}
+
+// interface de busca por id da abelha
+void showBuscarPorIdDaAbelha(){
+    printf("===============================\n");
+    printf("|   BUSCAR POR ID DA ABELHA   |\n");
+    printf("===============================\n");
+    printf("\n\n");
+}
+
+// interface do menu editar leitura
+void showAlterarLeitura(){
+    printf("==============================\n");
+    printf("|        EDITAR LEITURA      |\n");
+    printf("==============================\n");
+    printf("\n\n");
+}
+
+// interface do menu remover sensores
+void showRemoverSensor(){
+    printf("=============================\n");
+    printf("|       REMOVER SENSOR      |\n");
+    printf("=============================\n");
+    printf("\n\n");
+}
