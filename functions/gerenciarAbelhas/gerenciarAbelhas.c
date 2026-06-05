@@ -20,6 +20,8 @@ void cadastrarAbelha(Abelha a[])
     // mostra interface de cadastrar abelhas
     showCadastrarAbelhas();
 
+    char regioes[][30] = {"Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"};
+
     char tecla;
     novasAbelhas = 0;
 
@@ -62,9 +64,18 @@ void cadastrarAbelha(Abelha a[])
         a[i].nomeCientifico[strcspn(a[i].nomeCientifico, "\n")] = '\0';
 
         // pedir a regiao
-        printf("Digite a região: ");
-        fgets(a[i].regiao, sizeof(a[i].regiao), stdin);
-        a[i].regiao[strcspn(a[i].regiao, "\n")] = '\0';
+
+        int opcaoRegiao, isValid = 1;
+        do{
+            printf("==== Região ====\n1 - Norte\n2 - Nordeste\n3 - Centro-oeste\n4 - Sudeste\n5 - Sul");
+            scanf("%d", &opcaoRegiao);
+            limparBuffer();
+            if(opcaoRegiao < 1 || opcaoRegiao > 5){
+                printf("Região inválida, tente novamente.\n");
+                isValid = 0;
+            }
+
+        }while(isValid == 1);
 
         // pedir a produção media em kg/mes
         printf("Digite a quantidade média em kg por mês produzida: ");
@@ -153,6 +164,8 @@ void editarAbelha(Abelha a[]){
         scanf("%d", &idDaAbelha[i]);
         limparBuffer();
     }
+
+    
 
     limparTela();
 
