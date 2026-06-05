@@ -30,7 +30,7 @@
 // função main (implementação do codigo principal)
 int main(void){
     Abelha abelhas[MAX_ABELHAS];
-    // Sensor sensores[MAX_SENSORES];
+    Sensor sensores[MAX_SENSORES];
 
     //variaveis de opção, para checar no do while
     int menuOption;
@@ -51,7 +51,7 @@ int main(void){
                 switchGerenciarAbelhas(abelhas);
                 break;
             case 2:
-                // switchGerenciarSensores(sensores);
+                switchGerenciarSensores(sensores);
                 break;
             case 3:
                 printf("Relatorios\n");
