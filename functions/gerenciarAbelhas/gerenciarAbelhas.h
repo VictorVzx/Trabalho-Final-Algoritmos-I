@@ -6,18 +6,18 @@
 // prototipo das funções CRUD (abelhas)
 
 //prototipo da função cadastrarAbelha
-void cadastrarAbelha(Abelha a[], int sys);
+void cadastrarAbelha(Abelha a[]);
 
 //prototipo da função de listar abelhas
-void listarTodas(Abelha a[], int sys);
+void listarTodas(Abelha a[]);
 
 // prototipo da função de buscar por nome popular
-void buscarPorNomePopular(Abelha a[], int sys);
+void buscarPorNomePopular(Abelha a[]);
 
 //prototipo da função de editar abelhas
-void editarAbelha(Abelha a[], int sys);
+void editarAbelha(Abelha a[]);
 
 //prototipo da função de remover abelhas
-void removerAbelha(Abelha a[], int sys);
+void removerAbelha(Abelha a[]);
 
 #endif

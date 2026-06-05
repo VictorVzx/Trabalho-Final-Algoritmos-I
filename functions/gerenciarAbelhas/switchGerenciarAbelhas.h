@@ -4,6 +4,6 @@
 #include "../../structs/structs.h"
 
 // prototipo do switch para gerenciar abelhas
-void switchGerenciarAbelhas(Abelha a[], int sys);
+void switchGerenciarAbelhas(Abelha a[]);
 
 #endif

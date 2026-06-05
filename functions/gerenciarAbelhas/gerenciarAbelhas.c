@@ -15,7 +15,7 @@
 
 int qtd, novasAbelhas;
 
-void cadastrarAbelha(Abelha a[], int sys)
+void cadastrarAbelha(Abelha a[])
 {
     // mostra interface de cadastrar abelhas
     showCadastrarAbelhas();
@@ -46,7 +46,7 @@ void cadastrarAbelha(Abelha a[], int sys)
     // loop vai da quantidade atual de abelhas até a nova quantidade que o usuario deseja registrar
     for (int i = qtd; i < qtd + novasAbelhas; i++)
     {
-        limparTela(sys);
+        limparTela();
         showCadastrarAbelhas();
         sleep(1);
         printf("======== %dª ABELHA ========\n", i + 1);
@@ -81,7 +81,7 @@ void cadastrarAbelha(Abelha a[], int sys)
 }
 
 // implementação da função para listar todas as abelhas
-void listarTodas(Abelha a[], int sys)
+void listarTodas(Abelha a[])
 {
     showListarTodas();
 
@@ -97,10 +97,10 @@ void listarTodas(Abelha a[], int sys)
         while (getchar() != '\n');
         tecla = '\n';
     } while (tecla != '\n');
-    limparTela(sys);
+    limparTela();
 }
 
-void buscarPorNomePopular(Abelha a[], int sys)
+void buscarPorNomePopular(Abelha a[])
 {
     showBuscarPorNomePopular();
     char nomePopular[40], tecla;
@@ -135,10 +135,10 @@ void buscarPorNomePopular(Abelha a[], int sys)
         while (getchar() != '\n');
         tecla = '\n';
     } while (tecla != '\n');
-    limparTela(sys);
+    limparTela();
 }
 
-void editarAbelha(Abelha a[], int sys){
+void editarAbelha(Abelha a[]){
     showEditarAbelhas();
     int qtdParaEditar = 0;
 
@@ -154,12 +154,12 @@ void editarAbelha(Abelha a[], int sys){
         limparBuffer();
     }
 
-    limparTela(sys);
+    limparTela();
 
     for(int i = 0; i < qtd; i++){
         printf("Aguarde...\n");
         sleep(1);
-        limparTela(sys);
+        limparTela();
 
         // compara o id digitado com os ids das abelhas
         if(a[i].id == idDaAbelha[i]){
@@ -192,8 +192,8 @@ void editarAbelha(Abelha a[], int sys){
     }
 }
 
-void removerAbelha(Abelha a[], int sys){
-    limparTela(sys);
+void removerAbelha(Abelha a[]){
+    limparTela();
     showRemoverAbelhas();
 
     int qtdDeAbelhasParaDeletar = 0;
@@ -202,7 +202,7 @@ void removerAbelha(Abelha a[], int sys){
     scanf("%d", &qtdDeAbelhasParaDeletar);
     limparBuffer();
 
-    limparTela(sys);
+    limparTela();
 
     int idDaAbelha[qtdDeAbelhasParaDeletar];
     

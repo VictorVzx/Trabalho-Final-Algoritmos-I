@@ -3,6 +3,6 @@
 
 #include "../../structs/structs.h"
 
-void switchGerenciarSensores(Sensor s[], int sys);
+void switchGerenciarSensores(Sensor s[]);
 
 #endif

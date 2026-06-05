@@ -5,7 +5,7 @@
 #include "../limparBuffer/limparBuffer.h"
 #include "../../structs/structs.h"
 
-void switchGerenciarAbelhas(Abelha a[], int sys)
+void switchGerenciarAbelhas(Abelha a[])
 {
     int abelhasOption;
     do
@@ -17,38 +17,38 @@ void switchGerenciarAbelhas(Abelha a[], int sys)
         switch (abelhasOption)
         {
         case 6:
-            limparTela(sys);
+            limparTela();
             // chama a função de cadastrar abelhas passando como parametro o sistema para chamar a função "limparTela()", que recebe como parametro o numero do sistema operacional
-            cadastrarAbelha(a, sys);
+            cadastrarAbelha(a);
             printf("\nAguarde...\n");
-            limparTela(sys);
+            limparTela();
             break;
         case 7:
-            limparTela(sys);
-            listarTodas(a, sys);
+            limparTela();
+            listarTodas(a);
             printf("\nAguarde...\n");
-            limparTela(sys);
+            limparTela();
             break;
         case 8:
-            limparTela(sys);
-            buscarPorNomePopular(a, sys);
+            limparTela();
+            buscarPorNomePopular(a);
             break;
         case 9:
-            limparTela(sys);
-            editarAbelha(a, sys);
+            limparTela();
+            editarAbelha(a);
             break;
         case 10:
-            limparTela(sys);
-            removerAbelha(a, sys);
-            limparTela(sys);
+            limparTela();
+            removerAbelha(a);
+            limparTela();
             break;
         case 11:
-            limparTela(sys);
+            limparTela();
             printf("\nVoltando...\n");
-            limparTela(sys);
+            limparTela();
             break;
         default:
-            limparTela(sys);
+            limparTela();
             printf("\nOpção invalida\n");
             break;
         }

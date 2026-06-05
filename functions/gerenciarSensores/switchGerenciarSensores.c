@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 
 #include "../../interfaces/gerenciarSensores/gerenciarSensoresInterface.h"
 
@@ -6,7 +7,7 @@
 #include "../limparBuffer/limparBuffer.h"
 #include "../../structs/structs.h"
 
-void switchGerenciarSensores(Sensor s[], int sys){
+void switchGerenciarSensores(Sensor s[]){
     int sensoresOption;
     do
     {  
@@ -17,31 +18,31 @@ void switchGerenciarSensores(Sensor s[], int sys){
         switch (sensoresOption)
         {
         case 6:
-            limparTela(sys);
+            limparTela();
             printf("\nAguarde...\n");
-            limparTela(sys);
+            limparTela();
             break;
         case 7:
-            limparTela(sys);
-            limparTela(sys);
+            limparTela();
+            limparTela();
             break;
         case 8:
-            limparTela(sys);
+            limparTela();
             break;
         case 9:
-            limparTela(sys);
+            limparTela();
             break;
         case 10:
-            limparTela(sys);
-            limparTela(sys);
+            limparTela();
+            limparTela();
             break;
         case 11:
-            limparTela(sys);
+            limparTela();
             printf("\nVoltando...\n");
-            limparTela(sys);
+            limparTela();
             break;
         default:
-            limparTela(sys);
+            limparTela();
             printf("\nOpção invalida\n");
             break;
         }

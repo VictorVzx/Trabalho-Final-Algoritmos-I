@@ -1,12 +1,18 @@
 #include <stdio.h>
+#include <unistd.h>
 
 #include "gerenciarSensores.h"
 
 #include "../../interfaces/gerenciarSensores/gerenciarSensoresInterface.h"
+#include "../limparBuffer/limparBuffer.h"
+#include "../limparTela/limparTela.h"
+
+#include "../../structs/structs.h"
+
 
 int qtd, novosSensores;
 
-void cadastrarSensor(Sensor s[], int sys)
+void cadastrarSensor(Sensor s[])
 {
     // mostra interface de cadastrar abelhas
     showCadastrarSensores();
@@ -37,7 +43,7 @@ void cadastrarSensor(Sensor s[], int sys)
     // loop vai da quantidade atual de sensores até a nova quantidade que o usuario deseja registrar
     for (int i = qtd; i < qtd + novosSensores; i++)
     {
-        limparTela(sys);
+        limparTela();
         showGerenciarSensores();
         sleep(1);
         printf("======== %dº SENSOR ========\n", i + 1);
@@ -52,10 +58,10 @@ void cadastrarSensor(Sensor s[], int sys)
     qtd += novosSensores;
 }
 
-void listarSensores(Sensor s[], int sys);
+void listarSensores(Sensor s[]);
 
-void buscarSensorPorIdAbelha(Sensor s[], int sys);
+void buscarSensorPorIdAbelha(Sensor s[]);
 
-void alterarLeitura(Sensor s[], int sys);
+void alterarLeitura(Sensor s[]);
 
-void removerSensor(Sensor s[], int sys);
+void removerSensor(Sensor s[]);

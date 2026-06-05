@@ -19,6 +19,8 @@
 #include "functions/gerenciarAbelhas/gerenciarAbelhas.h"
 #include "functions/gerenciarAbelhas/switchGerenciarAbelhas.h"
 
+#include "functions/gerenciarSensores/switchGerenciarSensores.h"
+
 //prototipo das structs
 #include "structs/structs.h"
 
@@ -31,23 +33,8 @@ int main(void){
     Abelha abelhas[MAX_ABELHAS];
     Sensor sensores[MAX_SENSORES];
 
-    int sistema;
-    showChecarSistema();
-    scanf("%d", &sistema);
-    limparBuffer();
-
-    if(sistema == 4){
-        sleep(1);
-        return 0;
-    }
-
-    if(limparTela(sistema) == 0){
-        printf("Sistema inválido.\n");
-        return 1;
-    }
-
     //variaveis de opção, para checar no do while
-    int menuOption, sensoresOption;
+    int menuOption;
 
     do{
         //chamando a função de mostrar o menu
@@ -55,33 +42,31 @@ int main(void){
         scanf("%d", &menuOption);
         limparBuffer();
         
-        limparTela(sistema);
+        limparTela();
 
         
         switch (menuOption)
         {
             case 1:
                 // chamar função de gerenciamento das abelhas
-                switchGerenciarAbelhas(abelhas, sistema);
+                switchGerenciarAbelhas(abelhas);
                 break;
             case 2:
-                showGerenciarSensores();
-                scanf("%d", &sensoresOption);
-                limparBuffer();
+                switchGerenciarSensores(sensores);
                 break;
             case 3:
-                printf("Sensores\n");
-                limparTela(sistema);
+                printf("Relatorios\n");
+                limparTela();
                 break;
             case 4:
-                limparTela(sistema);
+                limparTela();
                 printf("Saindo...\n");
-                limparTela(sistema);
+                limparTela();
                 break;
             default:
-                limparTela(sistema);
+                limparTela();
                 printf("Opção invalida.\n");
-                limparTela(sistema);
+                limparTela();
                 break;
         }
     }while(menuOption != 4);
