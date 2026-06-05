@@ -138,6 +138,10 @@ void buscarPorNomePopular(Abelha a[], int sys)
     limparTela(sys);
 }
 
+void editarAbelha(Abelha a[], int sys){
+    
+}
+
 void removerAbelha(Abelha a[], int sys){
     limparTela(sys);
     showRemoverAbelhas();
