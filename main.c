@@ -29,6 +29,7 @@
 // função main (implementação do codigo principal)
 int main(void){
     Abelha abelhas[MAX_ABELHAS];
+    Sensor sensores[MAX_SENSORES];
 
     int sistema;
     showChecarSistema();
