@@ -11,7 +11,7 @@
 #include "../../structs/structs.h"
 
 
-int qtd, novosSensores;
+int qtdSensores, novosSensores;
 
 void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
     showCadastrarSensores();
@@ -37,8 +37,8 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
         return;
     }
 
-    int id = qtd;
-    for(int i = qtd; i < qtd + novosSensores; i++){
+    int id = qtdSensores;
+    for(int i = qtdSensores; i < qtdSensores + novosSensores; i++){
         limparTela();
         showGerenciarSensores();
         sleep(1);

@@ -5,6 +5,8 @@
 
 #include "gerenciarSensores.h"
 
+#include "../gerenciarAbelhas/gerenciarAbelhas.h"
+
 #include "../limparTela/limparTela.h"
 #include "../limparBuffer/limparBuffer.h"
 #include "../../structs/structs.h"
@@ -21,7 +23,7 @@ void switchGerenciarSensores(Sensor s[], Abelha a[]){
         {
         case 6:
             limparTela();
-            cadastrarSensor(s, a, contAbelhas());
+            cadastrarSensor(s, a, 5);
             printf("\nAguarde...\n");
             limparTela();
             break;

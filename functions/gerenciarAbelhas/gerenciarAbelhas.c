@@ -13,7 +13,7 @@
 
 #include "../../structs/structs.h"
 
-int qtd, novasAbelhas;
+int qtdAbelhas, novasAbelhas;
 
 void cadastrarAbelha(Abelha a[])
 {
@@ -30,7 +30,7 @@ void cadastrarAbelha(Abelha a[])
     scanf("%d", &novasAbelhas);
     limparBuffer();
 
-    if(qtd > 50){
+    if(qtdAbelhas > 50){
         printf("Não pode ter mais do que 50 abelhas.\n\n");
         do
         {
@@ -43,10 +43,10 @@ void cadastrarAbelha(Abelha a[])
     }
 
     // id é inicializado com a quantidade atual de abelhas (o ID da abelha 50 seria 50)
-    int id = qtd;
+    int id = qtdAbelhas;
 
     // loop vai da quantidade atual de abelhas até a nova quantidade que o usuario deseja registrar
-    for (int i = qtd; i < qtd + novasAbelhas; i++)
+    for (int i = qtdAbelhas; i < qtdAbelhas + novasAbelhas; i++)
     {
         limparTela();
         showCadastrarAbelhas();
@@ -103,11 +103,15 @@ void cadastrarAbelha(Abelha a[])
 
     }
     // quantidade é somado com a quantidade de novas abelhas
-    qtd += novasAbelhas;
+    qtdAbelhas += novasAbelhas;
 }
 
 int contAbelhas(){
-    return qtd;
+    int quantidadeDeAbelhas = 0;
+    for(int i = 0; i < qtdAbelhas; i++){
+        quantidadeDeAbelhas++;
+    }
+    return quantidadeDeAbelhas;
 }
 
 // implementação da função para listar todas as abelhas
@@ -117,8 +121,8 @@ void listarTodas(Abelha a[])
 
     char tecla;
 
-    if(qtd != 0){
-        for (int i = 0; i < qtd; i++)
+    if(qtdAbelhas != 0){
+        for (int i = 0; i < qtdAbelhas; i++)
         {
             printf("ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n\n", a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
         }
@@ -138,7 +142,7 @@ void buscarPorNomePopular(Abelha a[])
 {
     showBuscarPorNomePopular();
 
-    if(qtd == 0){
+    if(qtdAbelhas == 0){
         char op;
         printf("Nenhuma abelha cadastrada\n");
         do
@@ -161,7 +165,7 @@ void buscarPorNomePopular(Abelha a[])
     fgets(nomePopular, sizeof(nomePopular), stdin);
     nomePopular[strcspn(nomePopular, "\n")] = '\0';
 
-    for (int i = 0; i < qtd; i++)
+    for (int i = 0; i < qtdAbelhas; i++)
     {
         // compara o nome popular digitado com o nome popular das abelhas disponiveis
         if (strcmp(nomePopular, a[i].nomePopular) == 0)
@@ -189,7 +193,7 @@ void buscarPorNomePopular(Abelha a[])
 void editarAbelha(Abelha a[]){
     showEditarAbelhas();
 
-    if(qtd == 0){
+    if(qtdAbelhas == 0){
         char op;
         printf("Nenhuma abelha cadastrada\n");
         do
@@ -218,7 +222,7 @@ void editarAbelha(Abelha a[]){
     limparTela();
 
     if(oqEditar == 1){
-        for(int i = 0; i < qtd; i++){
+        for(int i = 0; i < qtdAbelhas; i++){
             printf("Aguarde...\n");
             sleep(1);
             limparTela();
@@ -233,7 +237,7 @@ void editarAbelha(Abelha a[]){
             }
         }
     }else if(oqEditar == 2){
-        for(int i = 0; i < qtd; i++){
+        for(int i = 0; i < qtdAbelhas; i++){
             printf("Aguarde...\n");
             sleep(1);
             limparTela();
@@ -249,7 +253,7 @@ void editarAbelha(Abelha a[]){
         }
     }else if(oqEditar == 3){
         char tecla;
-        for(int i = 0; i < qtd; i++){
+        for(int i = 0; i < qtdAbelhas; i++){
             if(a[i].id == idDaAbelha){
                 int opcaoRegiao, isValid = 0;
                 do{
@@ -282,7 +286,7 @@ void editarAbelha(Abelha a[]){
         }
     }else if(oqEditar == 4){
         // editar a produção media em kg/mes
-        for(int i = 0; i < qtd; i++){
+        for(int i = 0; i < qtdAbelhas; i++){
             if(a[i].id == idDaAbelha){
                 printf("Digite a quantidade média em kg por mês produzida: ");
                 scanf("%f", &a[i].producaoMel);
@@ -302,7 +306,7 @@ void removerAbelha(Abelha a[]){
     limparTela();
     showRemoverAbelhas();
 
-    if(qtd == 0){
+    if(qtdAbelhas == 0){
         char op;
         printf("Nenhuma abelha cadastrada\n");
         do
@@ -335,7 +339,7 @@ void removerAbelha(Abelha a[]){
     
     for(int i = 0; i < qtdDeAbelhasParaDeletar; i++){
         int indice = -1;
-        for(int j = 0; j < qtd; j++){
+        for(int j = 0; j < qtdAbelhas; j++){
             if(a[j].id == idDaAbelha[i]){
                 indice = j;
                 break;
@@ -347,11 +351,11 @@ void removerAbelha(Abelha a[]){
             continue;
         }
 
-        for(int j = indice; j < qtd; j++){
+        for(int j = indice; j < qtdAbelhas; j++){
             a[j] = a[j + 1];
         }
         
-        qtd--;
+        qtdAbelhas--;
     }
 
 }
