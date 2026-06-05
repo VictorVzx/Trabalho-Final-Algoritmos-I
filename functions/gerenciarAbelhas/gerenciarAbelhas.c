@@ -146,10 +146,13 @@ void removerAbelha(Abelha a[], int sys){
     scanf("%d", &qtdDeAbelhasParaDeletar);
     limparBuffer();
 
+    limparTela(sys);
+
     int idDaAbelha[qtdDeAbelhasParaDeletar];
     
     // lê o id da(s) abelha(s) e deleta pelo id
     for(int i = 0; i < qtdDeAbelhasParaDeletar; i++){
+        sleep(1);
         printf("Digite o id da %dª abelha: ", i+1);
         scanf("%d", &idDaAbelha[i]);
         limparBuffer();
