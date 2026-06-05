@@ -8,6 +8,9 @@
 //prototipo da função cadastrarAbelha
 void cadastrarAbelha(Abelha a[]);
 
+// prototipo da função do contador abelhas
+int contAbelhas();
+
 //prototipo da função de listar abelhas
 void listarTodas(Abelha a[]);
 

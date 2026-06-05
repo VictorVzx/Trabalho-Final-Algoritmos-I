@@ -21,7 +21,7 @@ void switchGerenciarSensores(Sensor s[], Abelha a[]){
         {
         case 6:
             limparTela();
-            cadastrarSensor(s, a);
+            cadastrarSensor(s, a, contAbelhas());
             printf("\nAguarde...\n");
             limparTela();
             break;

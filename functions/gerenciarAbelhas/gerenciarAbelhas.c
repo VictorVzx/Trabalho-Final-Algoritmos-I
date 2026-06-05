@@ -106,6 +106,10 @@ void cadastrarAbelha(Abelha a[])
     qtd += novasAbelhas;
 }
 
+int contAbelhas(){
+    return qtd;
+}
+
 // implementação da função para listar todas as abelhas
 void listarTodas(Abelha a[])
 {
