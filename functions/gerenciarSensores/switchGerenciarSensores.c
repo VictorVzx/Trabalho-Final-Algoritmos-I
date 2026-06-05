@@ -20,7 +20,6 @@ void switchGerenciarSensores(Sensor s[], int sys){
         {
         case 6:
             limparTela(sys);
-            // chama a função de cadastrar abelhas passando como parametro o sistema para chamar a função "limparTela()", que recebe como parametro o numero do sistema operacional
             cadastrarAbelha(s, sys);
             printf("\nAguarde...\n");
             limparTela(sys);
