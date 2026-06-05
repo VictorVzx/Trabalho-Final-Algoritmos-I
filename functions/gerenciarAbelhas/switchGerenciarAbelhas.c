@@ -18,7 +18,6 @@ void switchGerenciarAbelhas(Abelha a[], int sys)
         {
         case 6:
             limparTela(sys);
-            // chama a função de cadastrar abelhas passando como parametro o sistema para chamar a função "limparTela()", que recebe como parametro o numero do sistema operacional
             cadastrarAbelha(a, sys);
             printf("\nAguarde...\n");
             limparTela(sys);
