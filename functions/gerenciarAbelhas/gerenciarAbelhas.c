@@ -139,13 +139,65 @@ void buscarPorNomePopular(Abelha a[], int sys)
 }
 
 void editarAbelha(Abelha a[], int sys){
-    
+    showEditarAbelhas();
+    int qtdParaEditar = 0;
+
+    printf("Digite quantas abelhas você quer editar: ");
+    scanf("%d", &qtdParaEditar);
+    limparBuffer();
+
+    int idDaAbelha[qtdParaEditar], isExistent = 0;
+
+    for(int i = 0; i < qtdParaEditar; i++){
+        printf("Digite o id da abelha que deseja editar: ");
+        scanf("%d", &idDaAbelha[i]);
+        limparBuffer();
+    }
+
+    limparTela(sys);
+
+    for(int i = 0; i < qtd; i++){
+        printf("Aguarde...\n");
+        sleep(1);
+        limparTela(sys);
+
+        // compara o id digitado com os ids das abelhas
+        if(a[i].id == idDaAbelha[i]){
+            // editar o nome popular
+            printf("Digite o nome popular da abelha: ");
+            fgets(a[i].nomePopular, sizeof(a[i].nomePopular), stdin);
+            a[i].nomePopular[strcspn(a[i].nomePopular, "\n")] = '\0';
+
+            // editar o nome cientifico
+            printf("Digite o nome cientifico: ");
+            fgets(a[i].nomeCientifico, sizeof(a[i].nomeCientifico), stdin);
+            a[i].nomeCientifico[strcspn(a[i].nomeCientifico, "\n")] = '\0';
+
+            // editar a regiao
+            printf("Digite a região: ");
+            fgets(a[i].regiao, sizeof(a[i].regiao), stdin);
+            a[i].regiao[strcspn(a[i].regiao, "\n")] = '\0';
+
+            // editar a produção media em kg/mes
+            printf("Digite a quantidade média em kg por mês produzida: ");
+            scanf("%f", &a[i].producaoMel);
+            limparBuffer();
+
+            isExistent = 1;
+        }
+    }
+    if(isExistent == 0){
+        printf("\nAbelha não encontrada.\n");
+        return;
+    }
 }
 
 void removerAbelha(Abelha a[], int sys){
     limparTela(sys);
     showRemoverAbelhas();
+
     int qtdDeAbelhasParaDeletar = 0;
+
     printf("Digite a quantidade de abelhas para deletar: ");
     scanf("%d", &qtdDeAbelhasParaDeletar);
     limparBuffer();

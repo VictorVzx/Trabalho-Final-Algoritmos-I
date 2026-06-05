@@ -33,6 +33,10 @@ void switchGerenciarAbelhas(Abelha a[], int sys)
             limparTela(sys);
             buscarPorNomePopular(a, sys);
             break;
+        case 9:
+            limparTela(sys);
+            editarAbelha(a, sys);
+            break;
         case 10:
             limparTela(sys);
             removerAbelha(a, sys);
