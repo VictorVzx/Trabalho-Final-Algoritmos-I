@@ -40,7 +40,7 @@ void cadastrarAbelha(Abelha a[], int sys)
         return;
     }
 
-    int id = 0;
+    int id = qtd;
 
     // loop vai da quantidade atual de abelhas até a nova quantidade que o usuario deseja registrar
     for (int i = qtd; i < qtd + novasAbelhas; i++)
@@ -73,12 +73,12 @@ void cadastrarAbelha(Abelha a[], int sys)
         id++;
 
         a[i].id = id;
-        id = a[i].id;
 
     }
     qtd += novasAbelhas;
 }
 
+// implementação da função para listar todas as abelhas
 void listarTodas(Abelha a[], int sys)
 {
     showListarTodas();
