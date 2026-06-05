@@ -118,7 +118,7 @@ void buscarPorNomePopular(Abelha a[], int sys)
         // compara o nome popular digitado com o nome popular das abelhas disponiveis
         if (strcmp(nomePopular, a[i].nomePopular) == 0)
         {
-            printf("ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n\n", a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
+            printf("\nID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n\n", a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
             achou = 1;
         }
     }
@@ -126,7 +126,7 @@ void buscarPorNomePopular(Abelha a[], int sys)
     // retorna que não achou a abelha se a variavel "achou" continuar falsa
     if (achou == 0)
     {
-        printf("Abelha não encontrada.\n");
+        printf("\nAbelha não encontrada.\n");
     }
 
     do
