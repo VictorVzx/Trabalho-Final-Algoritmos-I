@@ -18,6 +18,6 @@ void buscarPorNomePopular(Abelha a[], int sys);
 void editarAbelha(Abelha a[], int sys);
 
 //prototipo da função de remover abelhas
-void removerAbelha(Abelha a[], int sys, int *qtd, int indice);
+void removerAbelha(Abelha a[], int sys);
 
 #endif

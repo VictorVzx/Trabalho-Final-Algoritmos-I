@@ -40,6 +40,7 @@ void cadastrarAbelha(Abelha a[], int sys)
         return;
     }
 
+    // id é inicializado com a quantidade atual de abelhas (o ID da abelha 50 seria 50)
     int id = qtd;
 
     // loop vai da quantidade atual de abelhas até a nova quantidade que o usuario deseja registrar
@@ -75,6 +76,7 @@ void cadastrarAbelha(Abelha a[], int sys)
         a[i].id = id;
 
     }
+    // quantidade é somado com a quantidade de novas abelhas
     qtd += novasAbelhas;
 }
 
@@ -136,9 +138,42 @@ void buscarPorNomePopular(Abelha a[], int sys)
     limparTela(sys);
 }
 
-void removerAbelha(Abelha a[], int sys, int *qtd, int indice){
+void removerAbelha(Abelha a[], int sys){
     limparTela(sys);
     showRemoverAbelhas();
+    int qtdDeAbelhasParaDeletar = 0;
+    printf("Digite a quantidade de abelhas para deletar: ");
+    scanf("%d", &qtdDeAbelhasParaDeletar);
+    limparBuffer();
+
+    int idDaAbelha[qtdDeAbelhasParaDeletar];
     
+    // lê o id da(s) abelha(s) e deleta pelo id
+    for(int i = 0; i < qtdDeAbelhasParaDeletar; i++){
+        printf("Digite o id da %dª abelha: ", i+1);
+        scanf("%d", &idDaAbelha[i]);
+        limparBuffer();
+    }
+    
+    for(int i = 0; i < qtdDeAbelhasParaDeletar; i++){
+        int indice = -1;
+        for(int j = 0; j < qtd; j++){
+            if(a[i].id == idDaAbelha[i]){
+                indice = j;
+                break;
+            }
+        }
+
+        if(indice == -1){
+            printf("Abelha com id %d não encontrada.\n", idDaAbelha[i]);
+            continue;
+        }
+
+        for(int j = indice; j < qtd; j++){
+            a[j] = a[j + 1];
+        }
+        
+        qtd--;
+    }
 
 }
