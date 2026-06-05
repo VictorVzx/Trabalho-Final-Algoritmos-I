@@ -73,10 +73,12 @@ int main(void){
                 limparTela(sistema);
                 break;
             case 4:
+                limparTela(sistema);
                 printf("Saindo...\n");
                 limparTela(sistema);
                 break;
             default:
+                limparTela(sistema);
                 printf("Opção invalida.\n");
                 limparTela(sistema);
                 break;

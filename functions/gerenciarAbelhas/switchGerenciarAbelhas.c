@@ -45,6 +45,7 @@ void switchGerenciarAbelhas(Abelha a[], int sys)
             limparTela(sys);
             break;
         default:
+            limparTela(sys);
             printf("\nOpção invalida\n");
             break;
         }
