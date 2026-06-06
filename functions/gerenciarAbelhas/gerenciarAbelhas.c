@@ -13,7 +13,7 @@
 
 #include "../../structs/structs.h"
 
-int qtdAbelhas, novasAbelhas;
+int qtdAbelhas = 0, novasAbelhas;
 
 void cadastrarAbelha(Abelha a[])
 {
@@ -23,16 +23,16 @@ void cadastrarAbelha(Abelha a[])
     char regioes[5][30] = {"Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"};
 
     char tecla;
+
+    // novas abelhas é hardcoded pois sempre vai adicionar apenas UMA abelha
     novasAbelhas = 1;
 
     if(qtdAbelhas + novasAbelhas > 50){
         printf("* !!! Não pode ter mais do que 50 abelhas !!! *\n\n");
-        do
-        {
-            printf("\nPressione ENTER para sair...");
-            while (getchar() != '\n');
-            tecla = '\n';
-        } while (tecla != '\n');
+
+        printf("\nPressione ENTER para sair...");
+        while (getchar() != '\n');
+
         novasAbelhas = 0;
         return;
     }
@@ -46,7 +46,7 @@ void cadastrarAbelha(Abelha a[])
         limparTela();
         showCadastrarAbelhas();
         sleep(1);
-        printf("======== %dª ABELHA ========\n", i + 1);
+        printf("======== ADICIONAR ABELHA ========\n");
 
         // pedir o nome popular
         printf("Digite o nome popular da abelha: ");
@@ -107,7 +107,7 @@ void cadastrarAbelha(Abelha a[])
 
     }
     // quantidade é somado com a quantidade de novas abelhas
-    qtdAbelhas += novasAbelhas;
+    qtdAbelhas++;
 }
 
 int contAbelhas(){
@@ -279,6 +279,8 @@ void editarAbelha(Abelha a[]){
                     printf("-> ");
                     scanf("%d", &opcaoRegiao);
                     limparBuffer();
+
+                    limparTela();
 
                     for(int j = 1; j <= 5; j++){
                         if(opcaoRegiao == j){
