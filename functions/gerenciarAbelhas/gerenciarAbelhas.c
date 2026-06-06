@@ -30,7 +30,7 @@ void cadastrarAbelha(Abelha a[])
     scanf("%d", &novasAbelhas);
     limparBuffer();
 
-    if(qtdAbelhas > 50){
+    if(qtdAbelhas + novasAbelhas > 50){
         printf("Não pode ter mais do que 50 abelhas.\n\n");
         do
         {
@@ -107,11 +107,7 @@ void cadastrarAbelha(Abelha a[])
 }
 
 int contAbelhas(){
-    int quantidadeDeAbelhas = 0;
-    for(int i = 0; i < qtdAbelhas; i++){
-        quantidadeDeAbelhas++;
-    }
-    return quantidadeDeAbelhas;
+    return qtdAbelhas;
 }
 
 // implementação da função para listar todas as abelhas
@@ -351,7 +347,7 @@ void removerAbelha(Abelha a[]){
             continue;
         }
 
-        for(int j = indice; j < qtdAbelhas; j++){
+        for(int j = indice; j < qtdAbelhas - 1; j++){
             a[j] = a[j + 1];
         }
         

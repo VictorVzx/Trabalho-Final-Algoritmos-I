@@ -3,6 +3,6 @@
 
 #include "../../structs/structs.h"
 
-void switchGerenciarSensores(Sensor s[]);
+void switchGerenciarSensores(Sensor s[], Abelha a[]);
 
 #endif

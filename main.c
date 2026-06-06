@@ -51,7 +51,7 @@ int main(void){
                 switchGerenciarAbelhas(abelhas);
                 break;
             case 2:
-                switchGerenciarSensores(sensores);
+                switchGerenciarSensores(sensores, abelhas);
                 break;
             case 3:
                 printf("Relatorios\n");
