@@ -26,7 +26,7 @@ void cadastrarAbelha(Abelha a[])
     novasAbelhas = 1;
 
     if(qtdAbelhas + novasAbelhas > 50){
-        printf("Não pode ter mais do que 50 abelhas.\n\n");
+        printf("* !!! Não pode ter mais do que 50 abelhas !!! *\n\n");
         do
         {
             printf("\nPressione ENTER para sair...");
@@ -63,7 +63,16 @@ void cadastrarAbelha(Abelha a[])
         int opcaoRegiao, isValid = 0;
         do{
             limparTela();
-            printf("==== Região ====\n1 - Norte\n2 - Nordeste\n3 - Centro-oeste\n4 - Sudeste\n5 - Sul\n-> ");
+            printf("+---------------------------------+\n");
+            printf("|            SELECIONE            |\n");
+            printf("+---------------------------------+\n");
+            printf("|   1 - Norte                     |\n");
+            printf("|   2 - Nordeste                  |\n");
+            printf("|   3 - Centro-oeste              |\n");
+            printf("|   4 - Sudeste                   |\n");
+            printf("|   5 - Sul                       |\n");
+            printf("+---------------------------------+\n");
+            printf("-> ");
             scanf("%d", &opcaoRegiao);
             limparBuffer();
 
@@ -75,7 +84,7 @@ void cadastrarAbelha(Abelha a[])
             }
 
             if(isValid == 0){
-                printf("Região inválida, tente novamente.\n");
+                printf("* !!! Região inválida, tente novamente !!! *\n");
                 do
                 {
                     printf("\nPressione ENTER para continuar...");
@@ -118,7 +127,7 @@ void listarTodas(Abelha a[])
             printf("ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n\n", a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
         }
     }else{
-        printf("Nenhuma abelha cadastrada\n\n");
+        printf("* !!! Nenhuma abelha cadastrada !!! *\n\n");
     }
     do
     {
@@ -135,7 +144,7 @@ void buscarPorNomePopular(Abelha a[])
 
     if(qtdAbelhas == 0){
         char op;
-        printf("Nenhuma abelha cadastrada\n");
+        printf("* !!! Nenhuma abelha cadastrada !!! *\n");
         do
         {
             printf("\nPressione ENTER para continuar...");
@@ -169,7 +178,7 @@ void buscarPorNomePopular(Abelha a[])
     // retorna que não achou a abelha se a variavel "achou" continuar falsa
     if (achou == 0)
     {
-        printf("\nAbelha não encontrada.\n");
+        printf("\n* !!! Abelha não encontrada !!! *\n");
     }
 
     do
@@ -186,7 +195,7 @@ void editarAbelha(Abelha a[]){
 
     if(qtdAbelhas == 0){
         char op;
-        printf("Nenhuma abelha cadastrada\n");
+        printf("* !!! Nenhuma abelha cadastrada !!! *\n");
         do
         {
             printf("\nPressione ENTER para continuar...");
@@ -207,14 +216,14 @@ void editarAbelha(Abelha a[]){
 
     int oqEditar;
     limparTela();
-    printf("===================================\n");
-    printf("=            SELECIONE            =\n");
-    printf("===================================\n");
-    printf("=   1 - Nome popular              =\n");
-    printf("=   2 - Nome cientifico           =\n");
-    printf("=   3 - Região                    =\n");
-    printf("=   4 - Qtd de mel produzido/mes  =\n");
-    printf("===================================\n");
+    printf("+---------------------------------+\n");
+    printf("|            SELECIONE            |\n");
+    printf("+---------------------------------+\n");
+    printf("|   1 - Nome popular              |\n");
+    printf("|   2 - Nome cientifico           |\n");
+    printf("|   3 - Região                    |\n");
+    printf("|   4 - Qtd de mel produzido/mes  |\n");
+    printf("+---------------------------------+\n");
     printf("-> ");
     scanf("%d", &oqEditar);
     limparBuffer();
@@ -258,7 +267,16 @@ void editarAbelha(Abelha a[]){
                 int opcaoRegiao, isValid = 0;
                 do{
                     limparTela();
-                    printf("==== Região ====\n1 - Norte\n2 - Nordeste\n3 - Centro-oeste\n4 - Sudeste\n5 - Sul\n-> ");
+                    printf("+---------------------------------+\n");
+                    printf("|            SELECIONE            |\n");
+                    printf("+---------------------------------+\n");
+                    printf("|   1 - Norte                     |\n");
+                    printf("|   2 - Nordeste                  |\n");
+                    printf("|   3 - Centro-oeste              |\n");
+                    printf("|   4 - Sudeste                   |\n");
+                    printf("|   5 - Sul                       |\n");
+                    printf("+---------------------------------+\n");
+                    printf("-> ");
                     scanf("%d", &opcaoRegiao);
                     limparBuffer();
 
@@ -270,7 +288,7 @@ void editarAbelha(Abelha a[]){
                     }
 
                     if(isValid == 0){
-                        printf("Região inválida, tente novamente.\n");
+                        printf("* !!! Região inválida, tente novamente !!! *\n");
                         do
                         {
                             printf("\nPressione ENTER para continuar...");
@@ -296,7 +314,7 @@ void editarAbelha(Abelha a[]){
         }
     }
     if(isExistent == 0){
-        printf("\nAbelha não encontrada.\n");
+        printf("\n * !!! Abelha não encontrada !!! *.\n");
         limparTela();
         return;
     }else{
@@ -313,7 +331,7 @@ void removerAbelha(Abelha a[]){
     showRemoverAbelhas();
 
     if(qtdAbelhas == 0){
-        printf("Nenhuma abelha cadastrada\n");
+        printf("* !!! Nenhuma abelha cadastrada !!! *\n");
 
         printf("\nPressione ENTER para continuar...");
         while (getchar() != '\n');
@@ -338,7 +356,7 @@ void removerAbelha(Abelha a[]){
     }
 
     if(indice == -1){
-        printf("Abelha com id %d não encontrada.\n", idDaAbelha);
+        printf("* !!! Abelha com id %d não encontrada !!! *\n", idDaAbelha);
     } else {
         for(int j = indice; j < qtdAbelhas - 1; j++){
             a[j] = a[j + 1];
