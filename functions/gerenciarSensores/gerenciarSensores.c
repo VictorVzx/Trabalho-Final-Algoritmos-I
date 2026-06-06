@@ -22,7 +22,6 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
         novosSensores = 1;
     
         char tipos[3][30] = {"Temperatura", "Umidade", "Luminosidade"};
-        char tecla;
     
         if(qtdSensores + novosSensores > 100){
             printf(" * !!! Não pode ter mais do que 100 sensores !!! *\n");

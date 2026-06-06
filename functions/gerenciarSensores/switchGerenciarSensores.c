@@ -30,7 +30,7 @@ void switchGerenciarSensores(Sensor s[], Abelha a[]){
             break;
         case 7:
             limparTela();
-            listarSensores(s, contAbelhas());
+            listarSensores(s);
             limparTela();
             break;
         case 8:
