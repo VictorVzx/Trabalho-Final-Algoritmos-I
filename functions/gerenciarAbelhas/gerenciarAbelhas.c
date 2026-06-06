@@ -329,7 +329,6 @@ void removerAbelha(Abelha a[]){
     scanf("%d", &idDaAbelha);
     limparBuffer();
     
-    int i = 0;
     int indice = -1;
     for(int j = 0; j < qtdAbelhas; j++){
         if(a[j].id == idDaAbelha){
