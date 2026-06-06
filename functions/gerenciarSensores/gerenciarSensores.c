@@ -43,13 +43,11 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
         for(int i = qtdSensores; i < qtdSensores + novosSensores; i++){
             limparTela();
             showGerenciarSensores();
-            sleep(1);
     
             printf("====== %dº Sensor ======", i+1);
     
             int opcaoTipo, isValid = 0;
             do{
-                limparTela();
                 printf("==== Tipo de Sensor ====\n");
                 printf("1 - Temperatura\n2 - Umidade\n3 - Luminosidade\n");
                 printf("-> ");
