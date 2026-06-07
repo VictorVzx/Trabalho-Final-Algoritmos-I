@@ -102,6 +102,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
 
                     printf("Pressione ENTER para continuar...\n");
                     while(getchar() != '\n');
+                    limparTela();
                 }
             }while(s[i].valor < 0);
     
@@ -112,6 +113,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
             printf("\nDigite o ID da abelha: ");
             scanf("%d", &s[i].idAbelha);
             limparBuffer();
+            limparTela();
     
             for(int j = 0; j < qtdAbelhas; j++){
                 if(a[j].id == s[i].idAbelha){
@@ -121,6 +123,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
 
                     printf("\nPressione ENTER para continuar...");
                     while (getchar() != '\n');
+                    limparTela();
                     isIdValid = 1;
                 }
             }
@@ -130,6 +133,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
 
                 printf("\nPressione ENTER para sair...");
                 while (getchar() != '\n');
+                limparTela();
                 return;
             }
     
@@ -221,16 +225,20 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
     int achou = 0;
 
     limparTela();
+    showAlterarLeitura();
     printf("Digite o id do sensor para editar leitura: ");   
     scanf("%d", &idDoSensor);
     limparBuffer();
+    limparTela();
 
     int editarOption;
 
     for(int i = 0; i < qtdSensores; i++){
         
         if(idDoSensor == s[i].id){
+            achou = 1;
             limparTela();
+            showAlterarLeitura();
             printf("+---------------------------------+\n");
             printf("|            SELECIONE            |\n");
             printf("+---------------------------------+\n");
@@ -241,6 +249,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
             printf("-> ");
             scanf("%d", &editarOption);
             limparBuffer();
+            limparTela();
 
             if(editarOption == 1){
                 char tipos[3][30] = {"Temperatura", "Umidade", "Luminosidade"};
@@ -285,21 +294,26 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
 
                 do{
                     limparTela();
+                    showAlterarLeitura();
                     printf("Digite o novo valor de leitura do sensor: ");
                     scanf("%f", &valorNovo);
                     limparBuffer();
                     if(s[i].valor < 0){
+                        limparTela();
                         printf("* !!! Valor de leitura inválido, tente novamente !!! *\n");
                         
                         printf("\nPressione ENTER para continuar...");
                         while (getchar() != '\n');
+                        limparTela();
                     }else{
                         s[i].valor = valorNovo;
                         limparTela();
+                        showAlterarLeitura();
                         printf("Valor de leitura alterado com sucesso!\n");
 
                         printf("\nPressione ENTER para continuar...");
                         while (getchar() != '\n');
+                        limparTela();
                         return;
                     }
                 }while(s[i].valor < 0);
@@ -311,6 +325,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                 showAlterarLeitura();
                 printf("\nDigite o ID da nova abelha: ");
                 scanf("%d", &novoIdAbelha);
+                limparBuffer();
 
                 for(int j = 0; j < qtdAbelhas; j++){
                     if(a[j].id == novoIdAbelha){
@@ -332,7 +347,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                     showAlterarLeitura();
 
                     printf("* !!! Abelha não encontrada !!! *\n");
-                    
+
                     printf("\nPressione ENTER para sair...");
                     while(getchar() != '\n');
                     limparTela();
@@ -356,7 +371,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
         showAlterarLeitura();
         printf("* !!! Sensor de id %d não encontrado !!! *\n", idDoSensor);
 
-        printf("Pressione ENTER para continuar...\n");
+        printf("\nPressione ENTER para continuar...");
         while(getchar() != '\n');
         limparTela();
         return;
