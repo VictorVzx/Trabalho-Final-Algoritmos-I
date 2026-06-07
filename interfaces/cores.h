@@ -1,6 +1,8 @@
 #ifndef CORES_H
 #define CORES_H
 
+// prototipo para macros de cores com ANSI escape codes
+
 #define RESET   "\033[0m"
 #define BOLD    "\033[1m"
 #define RED     "\033[31m"
