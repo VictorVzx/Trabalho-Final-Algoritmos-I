@@ -233,11 +233,11 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
     limparBuffer();
     limparTela();
 
-    int editarOption;
-
+    
     for(int i = 0; i < qtdSensores; i++){
         
         if(idDoSensor == s[i].id){
+            int editarOption;
             achou = 1;
             limparTela();
             showAlterarLeitura();
@@ -280,17 +280,24 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
         
                     if(isValid == 0){
                         limparTela();
+                        showAlterarLeitura();
                         printf(RED BOLD "* !!! Tipo inválido, tente novamente !!! *\n" RESET);
     
                         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                         while (getchar() != '\n');
     
                         limparTela();
+                    }else{
+                        limparTela();
+                        showAlterarLeitura();
+                        printf(GREEN BOLD "Novo tipo definido com sucesso!\n" RESET);
+
+                        printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+                        while (getchar() != '\n');
                     }
         
                 }while(isValid != 1);
                 limparTela();
-                achou = 1;
             }else if(editarOption == 2){
                 float valorNovo;
 
@@ -341,6 +348,8 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                         limparTela();
 
                         achouAbelha = 1;
+                        
+                        return;
                     }
                 }
 
@@ -365,6 +374,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                 limparTela();
                 return;
             }
+            break;
         }
         
     }
