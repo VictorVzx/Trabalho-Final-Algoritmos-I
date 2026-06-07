@@ -28,6 +28,7 @@ void cadastrarAbelha(Abelha a[])
     novasAbelhas = 1;
 
     if(qtdAbelhas + novasAbelhas > 50){
+        limparTela();
         printf("* !!! Não pode ter mais do que 50 abelhas !!! *\n\n");
 
         printf("\nPressione ENTER para sair...");
@@ -49,11 +50,13 @@ void cadastrarAbelha(Abelha a[])
         printf("======== ADICIONAR ABELHA ========\n");
 
         // pedir o nome popular
+        limparTela();
         printf("Digite o nome popular da abelha: ");
         fgets(a[i].nomePopular, sizeof(a[i].nomePopular), stdin);
         a[i].nomePopular[strcspn(a[i].nomePopular, "\n")] = '\0';
 
         // pedir o nome cientifico
+        limparTela();
         printf("Digite o nome cientifico: ");
         fgets(a[i].nomeCientifico, sizeof(a[i].nomeCientifico), stdin);
         a[i].nomeCientifico[strcspn(a[i].nomeCientifico, "\n")] = '\0';
@@ -84,6 +87,7 @@ void cadastrarAbelha(Abelha a[])
             }
 
             if(isValid == 0){
+                limparTela();
                 printf("* !!! Região inválida, tente novamente !!! *\n");
                 do
                 {
@@ -97,6 +101,7 @@ void cadastrarAbelha(Abelha a[])
         }while(isValid != 1);
 
         // pedir a produção media em kg/mes
+        limparTela();
         printf("Digite a quantidade média em kg por mês produzida: ");
         scanf("%f", &a[i].producaoMel);
         limparBuffer();
@@ -119,39 +124,30 @@ void listarTodas(Abelha a[])
 {
     showListarTodas();
 
-    char tecla;
-
     if(qtdAbelhas != 0){
         for (int i = 0; i < qtdAbelhas; i++)
         {
             printf("ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n\n", a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
         }
     }else{
+        limparTela();
         printf("* !!! Nenhuma abelha cadastrada !!! *\n\n");
     }
-    do
-    {
-        printf("\nPressione ENTER para sair...");
-        while (getchar() != '\n');
-        tecla = '\n';
-    } while (tecla != '\n');
+    printf("\nPressione ENTER para sair...");
+    while (getchar() != '\n');
     limparTela();
 }
 
 void buscarPorNomePopular(Abelha a[])
 {
-    showBuscarPorNomePopular();
-
+    
     if(qtdAbelhas == 0){
-        char op;
-        printf("* !!! Nenhuma abelha cadastrada !!! *\n");
-        do
-        {
-            printf("\nPressione ENTER para continuar...");
-            while (getchar() != '\n');
-            op = '\n';
-        } while (op != '\n');
         limparTela();
+        showBuscarPorNomePopular();
+        printf("* !!! Nenhuma abelha cadastrada !!! *\n");
+
+        printf("\nPressione ENTER para continuar...");
+        while (getchar() != '\n');
         return;
     }
 
@@ -161,6 +157,8 @@ void buscarPorNomePopular(Abelha a[])
     int achou = 0;
 
     // pede o nome da abelha para buscar e lê com fgets para reconhecer espaços
+    limparTela();
+    showBuscarPorNomePopular();
     printf("Digite o nome popular da abelha que você quer buscar: ");
     fgets(nomePopular, sizeof(nomePopular), stdin);
     nomePopular[strcspn(nomePopular, "\n")] = '\0';
