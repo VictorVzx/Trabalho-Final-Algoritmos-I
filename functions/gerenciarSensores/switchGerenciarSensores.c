@@ -35,6 +35,8 @@ void switchGerenciarSensores(Sensor s[], Abelha a[]){
             break;
         case 8:
             limparTela();
+            buscarSensorPorIdAbelha(s);
+            limparTela();
             break;
         case 9:
             limparTela();
