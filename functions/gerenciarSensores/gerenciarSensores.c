@@ -24,6 +24,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
         char tipos[3][30] = {"Temperatura", "Umidade", "Luminosidade"};
     
         if(qtdSensores + novosSensores > 100){
+            limparTela();
             printf(" * !!! Não pode ter mais do que 100 sensores !!! *\n");
             
             printf("\nPressione ENTER para sair...");
@@ -64,6 +65,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                 }
     
                 if(isValid == 0){
+                    limparTela();
                     printf("* !!! Tipo inválido, tente novamente !!! *\n");
 
                     printf("\nPressione ENTER para continuar...");
@@ -83,6 +85,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                 scanf("%f", &valorDoSensor);
                 limparBuffer();
                 if(s[i].valor < 0){
+                    limparTela();
                     printf("* !!! Valor de leitura inválido, tente novamente !!! *\n");
                     
                     printf("\nPressione ENTER para continuar...");
@@ -99,12 +102,14 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
     
             int isIdValid = 0;
             
+            limparTela();
             printf("Digite o ID da abelha: ");
             scanf("%d", &s[i].idAbelha);
             limparBuffer();
     
             for(int j = 0; j < qtdAbelhas; j++){
                 if(a[j].id == s[i].idAbelha){
+                    limparTela();
                     printf("Sensor associado à abelha de id %d\n", a[j].id);
 
                     printf("\nPressione ENTER para continuar...");
@@ -113,6 +118,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                 }
             }
             if(isIdValid == 0){
+                limparTela();
                 printf("* !!! Id não encontrado !!! *\n");
 
                 printf("\nPressione ENTER para sair...");
@@ -143,6 +149,7 @@ void listarSensores(Sensor s[]){
     showListarSensores();
 
     if(qtdSensores == 0){
+        limparTela();
         printf("* !!! Nenhum sensor cadastrado !!! *\n");
 
         printf("Pressione ENTER para sair...");
@@ -203,6 +210,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
     //inicializa variavel "achou" para saber se o sensor existe ou não
     int achou = 0;
 
+    limparTela();
     printf("Digite o id do sensor para editar leitura: ");   
     scanf("%d", &idDoSensor);
     limparBuffer();
@@ -250,6 +258,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                     }
         
                     if(isValid == 0){
+                        limparTela();
                         printf("* !!! Tipo inválido, tente novamente !!! *\n");
     
                         printf("\nPressione ENTER para continuar...");
@@ -275,8 +284,8 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                         printf("\nPressione ENTER para continuar...");
                         while (getchar() != '\n');
                     }else{
-                        limparTela();
                         s[i].valor = valorNovo;
+                        limparTela();
                         printf("Valor de leitura alterado com sucesso!\n");
 
                         printf("\nPressione ENTER para continuar...");
@@ -288,6 +297,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
 
                 int novoIdAbelha, achouAbelha = 0;
 
+                limparTela();
                 printf("Digite o ID da nova abelha: ");
                 scanf("%d", &novoIdAbelha);
 
@@ -312,6 +322,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                     return;
                 }
             }else{
+                limparTela();
                 printf("* !!! Opção inválida !!! *");
 
                 printf("\nPressione ENTER para sair...");
