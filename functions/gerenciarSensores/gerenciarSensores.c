@@ -164,19 +164,18 @@ void buscarSensorPorIdAbelha(Sensor s[]){
 
     for(int i = 0; i < qtdSensores; i++){
         if(s[i].idAbelha == idAssociado){
-            limparTela();
             printf("-------------------------------------------\n");
             printf("ID: %d\nTipo do sensor: %s\nId da Abelha %d\nValor de leitura: %.2f\n", s[i].id, s[i].tipo, s[i].idAbelha, s[i].valor);
             printf("-------------------------------------------\n");
             achou = 1;
-
-            printf("\nPressione ENTER para sair...");
-            while(getchar() != '\n');
-            limparTela();
-            return;
         }
     }
-
+    
+    printf("\nPressione ENTER para sair...");
+    while(getchar() != '\n');
+    limparTela();
+    return;
+    
     if(achou == 0){
         limparTela();
         printf("* !!! Nenhum sensor associado à abelha de id %d !!! *\n", idAssociado);
