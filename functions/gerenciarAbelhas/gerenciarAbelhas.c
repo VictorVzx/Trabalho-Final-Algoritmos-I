@@ -336,6 +336,38 @@ void removerAbelha(Abelha a[]){
     printf("Digite o id da abelha a remover: ");
     scanf("%d", &idDaAbelha);
     limparBuffer();
+
+    int confirmar = 0;
+
+    do{
+        limparTela();
+        showRemoverAbelhas();
+        printf("Deseja realmente remover abelha?\n1 - Sim\n2 - Não\n");
+        printf("-> ");
+        scanf("%d", &confirmar);
+        limparBuffer();
+        limparTela();
+    
+        if(confirmar == 1){
+            continue;
+        }else if(confirmar == 2){
+            limparTela();
+            printf("* !!! Operação cancelada !!! *\n");
+
+            printf("Pressione ENTER para continuar...");
+            while(getchar() != '\n');
+            return;
+        }else{
+            limparTela();
+            printf("* !!! Opção inválida, tente novamente !!! *\n");
+
+            printf("Pressione ENTER para continuar...");
+            while(getchar() != '\n');
+            confirmar = 0;
+        }
+
+    }while(confirmar == 0);
+
     
     int indice = -1;
     for(int j = 0; j < qtdAbelhas; j++){
@@ -355,6 +387,7 @@ void removerAbelha(Abelha a[]){
         
         qtdAbelhas--;
         limparTela();
+        showRemoverAbelhas();
         printf("Abelha removida com sucesso!\n");
     }
 
