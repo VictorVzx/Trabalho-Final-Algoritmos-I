@@ -31,7 +31,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
             limparTela();
             printf(RED BOLD " * !!! Não pode ter mais do que 100 sensores !!! *\n" RESET);
             
-            printf("\nPressione ENTER para sair...");
+            printf(YELLOW "\nPressione ENTER para sair..." RESET);
             while (getchar() != '\n');
             
             novosSensores = 0;
@@ -73,7 +73,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                     limparTela();
                     printf(RED BOLD "* !!! Tipo inválido, tente novamente !!! *\n" RESET);
 
-                    printf("\nPressione ENTER para continuar...");
+                    printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                     while (getchar() != '\n');
 
                     limparTela();
@@ -94,7 +94,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                     limparTela();
                     printf(RED BOLD "* !!! Valor de leitura inválido, tente novamente !!! *\n" RESET);
                     
-                    printf("\nPressione ENTER para continuar...");
+                    printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                     while (getchar() != '\n');
                 }else{
                     limparTela();
@@ -102,7 +102,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                     s[i].valor = valorDoSensor;
                     printf(GREEN BOLD "Valor adicionado com sucesso!\n" RESET);
 
-                    printf("Pressione ENTER para continuar...\n");
+                    printf(YELLOW "Pressione ENTER para continuar...\n" RESET);
                     while(getchar() != '\n');
                     limparTela();
                 }
@@ -123,7 +123,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                     showCadastrarSensores();
                     printf(GREEN BOLD "Sensor associado à abelha de id %d\n" RESET, a[j].id);
 
-                    printf("\nPressione ENTER para continuar...");
+                    printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                     while (getchar() != '\n');
                     limparTela();
                     isIdValid = 1;
@@ -133,7 +133,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                 limparTela();
                 printf(RED BOLD "* !!! Id não encontrado !!! *\n" RESET);
 
-                printf("\nPressione ENTER para sair...");
+                printf(YELLOW "\nPressione ENTER para sair..." RESET);
                 while (getchar() != '\n');
                 limparTela();
                 return;
@@ -148,7 +148,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
         showCadastrarSensores();
         printf(RED BOLD "* !!! Nenhuma abelha cadastrada !!! *\n" RESET);
         
-        printf("\nPressione ENTER para sair...");
+        printf(YELLOW "\nPressione ENTER para sair..." RESET);
         while (getchar() != '\n');
         
         limparTela();
@@ -166,7 +166,7 @@ void listarSensores(Sensor s[]){
         limparTela();
         printf(RED BOLD "* !!! Nenhum sensor cadastrado !!! *\n" RESET);
 
-        printf("Pressione ENTER para sair...");
+        printf(YELLOW "Pressione ENTER para sair..." RESET);
         while(getchar() != '\n');
         limparTela();
         return;
@@ -178,7 +178,7 @@ void listarSensores(Sensor s[]){
         printf("-------------------------------------------\n");
     }
 
-    printf("\nPressione ENTER para sair...");
+    printf(YELLOW "\nPressione ENTER para sair..." RESET);
     while(getchar() != '\n');
     limparTela();
     return;
@@ -202,7 +202,7 @@ void buscarSensorPorIdAbelha(Sensor s[]){
         }
     }
     
-    printf("\nPressione ENTER para sair...");
+    printf(YELLOW "\nPressione ENTER para sair..." RESET);
     while(getchar() != '\n');
     limparTela();
     return;
@@ -212,7 +212,7 @@ void buscarSensorPorIdAbelha(Sensor s[]){
         showBuscarPorIdDaAbelha();
         printf(RED BOLD "* !!! Nenhum sensor associado à abelha de id %d !!! *\n" RESET, idAssociado);
 
-        printf("\n\nPressione ENTER para sair...");
+        printf(YELLOW "\n\nPressione ENTER para sair..." RESET);
         while(getchar() != '\n');
         limparTela();
         return;
