@@ -399,7 +399,39 @@ void removerSensor(Sensor s[]){
     printf("Digite o id do sensor a remover: ");
     scanf("%d", &idRmSensor);
     limparBuffer();
-    
+
+    int confirmarRm = 0;
+
+    do{
+        limparTela();
+        showRemoverSensor();
+        printf("Deseja realmente remover este sensor?\n1 - Sim\n2 - Não\n");
+        printf("-> ");
+        scanf("%d", &confirmarRm);
+        limparBuffer();
+        limparTela();
+
+        if(confirmarRm == 1){
+            continue;
+        }else if(confirmarRm == 2){
+            limparTela();
+            printf("* !!! Operação cancelada !!! *\n");
+
+            printf("Pressione ENTER para sair...\n");
+            while(getchar() != '\n');
+
+            return;
+        }else{
+            limparTela();
+            printf("* !!! Opção inválida, tente novamente! !!! *");
+
+            printf("Pressione ENTER para continuar...");
+            while(getchar() != '\n');
+            confirmarRm = 0;
+        }
+
+    }while(confirmarRm == 0);
+
     int indice = -1;
     for(int j = 0; j < qtdSensores; j++){
         if(s[j].id == qtdSensores){
