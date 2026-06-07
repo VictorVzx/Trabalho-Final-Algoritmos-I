@@ -342,4 +342,50 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
     }
 }
 
-// void removerSensor(Sensor s[]);
+void removerSensor(Sensor s[]){
+    limparTela();
+    showRemoverSensor();
+
+    if(qtdSensores == 0){
+        limparTela();
+        printf("* !!! Nenhum sensor cadastrado !!! *\n");
+
+        printf("\nPressione ENTER para continuar...");
+        while (getchar() != '\n');
+        limparTela();
+        return;
+    }
+    
+    int idRmSensor;
+    
+    limparTela();
+    printf("Digite o id do sensor a remover: ");
+    scanf("%d", &idRmSensor);
+    limparBuffer();
+    
+    int indice = -1;
+    for(int j = 0; j < qtdSensores; j++){
+        if(s[j].id == qtdSensores){
+            indice = j;
+            break;
+        }
+    }
+
+    if(indice == -1){
+        limparTela();
+        printf("* !!! Sensor com id %d não encontrado !!! *\n", idRmSensor);
+    } else {
+        for(int j = indice; j < qtdSensores - 1; j++){
+            s[j] = s[j + 1];
+        }
+        
+        qtdSensores--;
+
+        limparTela();
+        printf("Sensor removido com sucesso!\n");
+    }
+
+    printf("\nPressione ENTER para continuar...");
+    while (getchar() != '\n');
+    limparTela();
+}
