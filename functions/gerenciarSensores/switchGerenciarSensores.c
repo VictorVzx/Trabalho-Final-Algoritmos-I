@@ -40,6 +40,8 @@ void switchGerenciarSensores(Sensor s[], Abelha a[]){
             break;
         case 9:
             limparTela();
+            alterarLeitura(s, a, contAbelhas());
+            limparTela();
             break;
         case 10:
             limparTela();

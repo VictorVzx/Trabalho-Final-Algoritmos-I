@@ -9,7 +9,7 @@ void listarSensores(Sensor s[]);
 
 void buscarSensorPorIdAbelha(Sensor s[]);
 
-void alterarLeitura(Sensor s[]);
+void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas);
 
 void removerSensor(Sensor s[]);
 

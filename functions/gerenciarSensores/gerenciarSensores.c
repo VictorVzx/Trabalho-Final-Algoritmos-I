@@ -74,17 +74,26 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
     
             }while(isValid != 1);
             limparTela();
+
+            float valorDoSensor;
     
             do{
                 limparTela();
                 printf("Digite o valor de leitura do sensor: ");
-                scanf("%f", &s[i].valor);
+                scanf("%f", &valorDoSensor);
                 limparBuffer();
                 if(s[i].valor < 0){
                     printf("* !!! Valor de leitura inválido, tente novamente !!! *\n");
                     
                     printf("\nPressione ENTER para continuar...");
                     while (getchar() != '\n');
+                }else{
+                    limparTela();
+                    s[i].valor = valorDoSensor;
+                    printf("Valor adicionado com sucesso!\n");
+
+                    printf("Pressione ENTER para continuar...\n");
+                    while(getchar() != '\n');
                 }
             }while(s[i].valor < 0);
     
@@ -188,6 +197,138 @@ void buscarSensorPorIdAbelha(Sensor s[]){
 
 }
 
-// void alterarLeitura(Sensor s[]);
+void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
+    int idDoSensor;
+
+    //inicializa variavel "achou" para saber se o sensor existe ou não
+    int achou = 0;
+
+    printf("Digite o id do sensor para editar leitura: ");   
+    scanf("%d", &idDoSensor);
+    limparBuffer();
+
+    int editarOption;
+
+    for(int i = 0; i < qtdSensores; i++){
+        if(s[i].id == idDoSensor){
+
+            limparTela();
+            printf("+---------------------------------+\n");
+            printf("|            SELECIONE            |\n");
+            printf("+---------------------------------+\n");
+            printf("|   1 - Editar Tipo               |\n");
+            printf("|   2 - Valor de leitura          |\n");
+            printf("|   3 - ID da Abelha              |\n");
+            printf("+---------------------------------+\n");
+            printf("-> ");
+            scanf("%d", &editarOption);
+            limparBuffer();
+
+            if(editarOption == 1){
+                char tipos[3][30] = {"Temperatura", "Umidade", "Luminosidade"};
+        
+                int opcaoTipo, isValid = 0;
+                do{
+                    limparTela();
+                    printf("+---------------------------------+\n");
+                    printf("|         TIPO DE SENSOR          |\n");
+                    printf("+---------------------------------+\n");
+                    printf("|   1 - Temperatura               |\n");
+                    printf("|   2 - Umidade                   |\n");
+                    printf("|   3 - Luminosidade              |\n");
+                    printf("+---------------------------------+\n");
+                    printf("-> ");
+                    
+                    scanf("%d", &opcaoTipo);
+                    limparBuffer();
+        
+                    for(int j = 1; j <= 3; j++){
+                        if(opcaoTipo == j){
+                            strcpy(s[i].tipo, tipos[j - 1]);
+                            isValid = 1;
+                        }
+                    }
+        
+                    if(isValid == 0){
+                        printf("* !!! Tipo inválido, tente novamente !!! *\n");
+    
+                        printf("\nPressione ENTER para continuar...");
+                        while (getchar() != '\n');
+    
+                        limparTela();
+                    }
+        
+                }while(isValid != 1);
+                limparTela();
+                achou = 1;
+            }else if(editarOption == 2){
+                float valorNovo;
+
+                do{
+                    limparTela();
+                    printf("Digite o novo valor de leitura do sensor: ");
+                    scanf("%f", &valorNovo);
+                    limparBuffer();
+                    if(s[i].valor < 0){
+                        printf("* !!! Valor de leitura inválido, tente novamente !!! *\n");
+                        
+                        printf("\nPressione ENTER para continuar...");
+                        while (getchar() != '\n');
+                    }else{
+                        limparTela();
+                        s[i].valor = valorNovo;
+                        printf("Valor de leitura alterado com sucesso!\n");
+
+                        printf("\nPressione ENTER para continuar...");
+                        while (getchar() != '\n');
+                        return;
+                    }
+                }while(s[i].valor < 0);
+            }else if(editarOption == 3){
+
+                int novoIdAbelha, achou = 0;
+
+                printf("Digite o ID da nova abelha: ");
+                scanf("%d", novoIdAbelha);
+
+                for(int i = 0; i < qtdAbelhas; i++){
+                    if(a[i].id == novoIdAbelha){
+                        limparTela();
+                        s[i].idAbelha == novoIdAbelha;
+                        printf("Nova abelha associada com sucesso!\n");
+                        
+                        printf("\nPressione ENTER para sair...");
+                        while(getchar() != '\n');
+
+                        achou = 1;
+                    }
+                }
+
+                if(achou = 0){
+                    limparTela();
+                    printf("* !!! Abelha não encontrada !!! *\n");
+                    printf("\nPressione ENTER para sair...");
+                    while(getchar() != '\n');
+                    return;
+                }
+            }else{
+                printf("* !!! Opção inválida !!! *");
+
+                printf("\nPressione ENTER para sair...");
+                while(getchar() != '\n');
+                return;
+            }
+        }
+        
+        if(achou == 0){
+            limparTela();
+            printf("* !!! Sensor de id %d não encontrado !!! *\n", idDoSensor);
+
+            printf("Pressione ENTER para continuar...\n");
+            while(getchar() != '\n');
+            return;
+        }
+    }
+}
 
 // void removerSensor(Sensor s[]);
