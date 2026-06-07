@@ -286,7 +286,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                 }while(s[i].valor < 0);
             }else if(editarOption == 3){
 
-                int novoIdAbelha, achou = 0;
+                int novoIdAbelha, achouAbelha = 0;
 
                 printf("Digite o ID da nova abelha: ");
                 scanf("%d", &novoIdAbelha);
@@ -294,7 +294,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                 for(int i = 0; i < qtdAbelhas; i++){
                     if(a[i].id == novoIdAbelha){
                         limparTela();
-                        s[i].idAbelha == novoIdAbelha;
+                        s[i].idAbelha = novoIdAbelha;
                         printf("Nova abelha associada com sucesso!\n");
                         
                         printf("\nPressione ENTER para sair...");
@@ -304,7 +304,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                     }
                 }
 
-                if(achou = 0){
+                if(achouAbelha == 0){
                     limparTela();
                     printf("* !!! Abelha não encontrada !!! *\n");
                     printf("\nPressione ENTER para sair...");
