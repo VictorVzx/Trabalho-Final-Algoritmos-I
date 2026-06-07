@@ -48,14 +48,14 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
             do{
                 limparTela();
                 showCadastrarSensores();
-                printf("+---------------------------------+\n");
-                printf("|         TIPO DE SENSOR          |\n");
-                printf("+---------------------------------+\n");
-                printf("|   1 - Temperatura               |\n");
-                printf("|   2 - Umidade                   |\n");
-                printf("|   3 - Luminosidade              |\n");
-                printf("+---------------------------------+\n");
-                printf("-> ");
+                printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+                printf(YELLOW BOLD "|         TIPO DE SENSOR          |\n" RESET);
+                printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+                printf(YELLOW BOLD "|   1 - Temperatura               |\n" RESET);
+                printf(YELLOW BOLD "|   2 - Umidade                   |\n" RESET);
+                printf(YELLOW BOLD "|   3 - Luminosidade              |\n" RESET);
+                printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+                printf(YELLOW BOLD "-> ");
                 
                 scanf("%d", &opcaoTipo);
                 limparBuffer();
@@ -173,9 +173,9 @@ void listarSensores(Sensor s[]){
     }
     
     for(int i = 0; i < qtdSensores; i++){
-        printf("-------------------------------------------\n");
-        printf("ID: %d\nTipo do sensor: %s\nId da Abelha %d\nValor de leitura: %.2f\n", s[i].id, s[i].tipo, s[i].idAbelha, s[i].valor);
-        printf("-------------------------------------------\n");
+        printf(BOLD "-------------------------------------------\n" RESET);
+        printf(BOLD "ID: %d\nTipo do sensor: %s\nId da Abelha %d\nValor de leitura: %.2f\n" RESET, s[i].id, s[i].tipo, s[i].idAbelha, s[i].valor);
+        printf(BOLD "-------------------------------------------\n" RESET);
     }
 
     printf(YELLOW "\nPressione ENTER para sair..." RESET);
@@ -195,9 +195,9 @@ void buscarSensorPorIdAbelha(Sensor s[]){
 
     for(int i = 0; i < qtdSensores; i++){
         if(s[i].idAbelha == idAssociado){
-            printf("-------------------------------------------\n");
-            printf("ID: %d\nTipo do sensor: %s\nId da Abelha %d\nValor de leitura: %.2f\n", s[i].id, s[i].tipo, s[i].idAbelha, s[i].valor);
-            printf("-------------------------------------------\n");
+            printf(BOLD "-------------------------------------------\n" RESET);
+            printf(BOLD "ID: %d\nTipo do sensor: %s\nId da Abelha %d\nValor de leitura: %.2f\n" RESET, s[i].id, s[i].tipo, s[i].idAbelha, s[i].valor);
+            printf(BOLD "-------------------------------------------\n" RESET);
             achou = 1;
         }
     }
@@ -259,14 +259,14 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                 int opcaoTipo, isValid = 0;
                 do{
                     limparTela();
-                    printf("+---------------------------------+\n");
-                    printf("|         TIPO DE SENSOR          |\n");
-                    printf("+---------------------------------+\n");
-                    printf("|   1 - Temperatura               |\n");
-                    printf("|   2 - Umidade                   |\n");
-                    printf("|   3 - Luminosidade              |\n");
-                    printf("+---------------------------------+\n");
-                    printf("-> ");
+                    printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+                    printf(YELLOW BOLD "|         TIPO DE SENSOR          |\n" RESET);
+                    printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+                    printf(YELLOW BOLD "|   1 - Temperatura               |\n" RESET);
+                    printf(YELLOW BOLD "|   2 - Umidade                   |\n" RESET);
+                    printf(YELLOW BOLD "|   3 - Luminosidade              |\n" RESET);
+                    printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+                    printf(YELLOW BOLD "-> " RESET);
                     
                     scanf("%d", &opcaoTipo);
                     limparBuffer();
