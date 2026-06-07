@@ -87,7 +87,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
             do{
                 limparTela();
                 showCadastrarSensores();
-                printf("Digite o valor de leitura do sensor: ");
+                printf(YELLOW BOLD "Digite o valor de leitura do sensor: " RESET);
                 scanf("%f", &valorDoSensor);
                 limparBuffer();
                 if(valorDoSensor < 0){
@@ -112,7 +112,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
             
             limparTela();
             showCadastrarSensores();
-            printf("\nDigite o ID da abelha: ");
+            printf(YELLOW BOLD "\nDigite o ID da abelha: " RESET);
             scanf("%d", &s[i].idAbelha);
             limparBuffer();
             limparTela();
@@ -173,9 +173,9 @@ void listarSensores(Sensor s[]){
     }
     
     for(int i = 0; i < qtdSensores; i++){
-        printf(BOLD "-------------------------------------------\n" RESET);
+        printf(YELLOW BOLD "-------------------------------------------\n" RESET);
         printf(BOLD "ID: %d\nTipo do sensor: %s\nId da Abelha %d\nValor de leitura: %.2f\n" RESET, s[i].id, s[i].tipo, s[i].idAbelha, s[i].valor);
-        printf(BOLD "-------------------------------------------\n" RESET);
+        printf(YELLOW BOLD "-------------------------------------------\n" RESET);
     }
 
     printf(YELLOW "\nPressione ENTER para sair..." RESET);
@@ -189,15 +189,15 @@ void buscarSensorPorIdAbelha(Sensor s[]){
     showBuscarPorIdDaAbelha();
 
     int idAssociado, achou = 0;
-    printf("Digite o id da abelha associada: ");
+    printf(YELLOW BOLD "Digite o id da abelha associada: " RESET);
     scanf("%d", &idAssociado);
     limparBuffer();
 
     for(int i = 0; i < qtdSensores; i++){
         if(s[i].idAbelha == idAssociado){
-            printf(BOLD "-------------------------------------------\n" RESET);
+            printf(YELLOW BOLD "-------------------------------------------\n" RESET);
             printf(BOLD "ID: %d\nTipo do sensor: %s\nId da Abelha %d\nValor de leitura: %.2f\n" RESET, s[i].id, s[i].tipo, s[i].idAbelha, s[i].valor);
-            printf(BOLD "-------------------------------------------\n" RESET);
+            printf(YELLOW BOLD "-------------------------------------------\n" RESET);
             achou = 1;
         }
     }
@@ -228,7 +228,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
 
     limparTela();
     showAlterarLeitura();
-    printf("Digite o id do sensor para editar leitura: ");   
+    printf(YELLOW BOLD "Digite o id do sensor para editar leitura: " RESET);   
     scanf("%d", &idDoSensor);
     limparBuffer();
     limparTela();
@@ -241,14 +241,14 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
             achou = 1;
             limparTela();
             showAlterarLeitura();
-            printf("+---------------------------------+\n");
-            printf("|            SELECIONE            |\n");
-            printf("+---------------------------------+\n");
-            printf("|   1 - Editar Tipo               |\n");
-            printf("|   2 - Valor de leitura          |\n");
-            printf("|   3 - ID da Abelha              |\n");
-            printf("+---------------------------------+\n");
-            printf("-> ");
+            printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+            printf(YELLOW BOLD "|            SELECIONE            |\n" RESET);
+            printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+            printf(YELLOW BOLD "|   1 - Editar Tipo               |\n" RESET);
+            printf(YELLOW BOLD "|   2 - Valor de leitura          |\n" RESET);
+            printf(YELLOW BOLD "|   3 - ID da Abelha              |\n" RESET);
+            printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+            printf(YELLOW BOLD "-> " RESET);
             scanf("%d", &editarOption);
             limparBuffer();
             limparTela();
@@ -297,7 +297,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                 do{
                     limparTela();
                     showAlterarLeitura();
-                    printf("Digite o novo valor de leitura do sensor: ");
+                    printf(YELLOW BOLD "Digite o novo valor de leitura do sensor: " RESET);
                     scanf("%f", &valorNovo);
                     limparBuffer();
                     if(valorNovo < 0){
@@ -325,7 +325,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
 
                 limparTela();
                 showAlterarLeitura();
-                printf("\nDigite o ID da nova abelha: ");
+                printf(YELLOW BOLD "\nDigite o ID da nova abelha: " RESET);
                 scanf("%d", &novoIdAbelha);
                 limparBuffer();
 
@@ -398,7 +398,7 @@ void removerSensor(Sensor s[]){
     
     limparTela();
     showRemoverSensor();
-    printf("Digite o id do sensor a remover: ");
+    printf(YELLOW BOLD "Digite o id do sensor a remover: " RESET);
     scanf("%d", &idRmSensor);
     limparBuffer();
 
@@ -407,7 +407,7 @@ void removerSensor(Sensor s[]){
     do{
         limparTela();
         showRemoverSensor();
-        printf(YELLOW BOLD "Deseja realmente remover este sensor?" RED BOLD "\n1 - Sim" RESET GREEN BOLD "\n2 - Não\n" RESET);
+        printf(RED BOLD "Deseja realmente remover este sensor?" RESET RED BOLD "\n1 - Sim" RESET YELLOW BOLD "\n2 - Não\n" RESET);
         printf("-> ");
         scanf("%d", &confirmarRm);
         limparBuffer();
@@ -417,7 +417,8 @@ void removerSensor(Sensor s[]){
             continue;
         }else if(confirmarRm == 2){
             limparTela();
-            printf(GREEN BOLD "Operação cancelada.\n" RESET);
+            showRemoverSensor();
+            printf(GREEN BOLD "* !!! Operação cancelada !!! *\n" RESET);
 
             printf(YELLOW "Pressione ENTER para sair...\n" RESET);
             while(getchar() != '\n');
@@ -425,6 +426,7 @@ void removerSensor(Sensor s[]){
             return;
         }else{
             limparTela();
+            showRemoverSensor();
             printf(RED BOLD "* !!! Opção inválida, tente novamente! !!! *" RESET);
 
             printf(YELLOW "Pressione ENTER para continuar..." RESET);
@@ -454,6 +456,7 @@ void removerSensor(Sensor s[]){
         qtdSensores--;
 
         limparTela();
+        showRemoverSensor();
         printf(GREEN BOLD "Sensor removido com sucesso!\n" RESET);
     }
 
