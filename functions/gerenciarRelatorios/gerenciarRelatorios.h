@@ -1,7 +1,9 @@
 #ifndef GERENCIARRELATORIOS_H
 #define GERENCIARRELATORIOS_H
 
-#include "../gerenciarAbelhas/gerenciarAbelhas.h"
+#include "../../structs/structs.h"
+
+float producaoMediaMel(Abelha a[]);
 
 
 #endif
