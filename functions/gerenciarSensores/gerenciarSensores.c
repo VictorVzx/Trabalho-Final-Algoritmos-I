@@ -289,7 +289,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                 int novoIdAbelha, achou = 0;
 
                 printf("Digite o ID da nova abelha: ");
-                scanf("%d", novoIdAbelha);
+                scanf("%d", &novoIdAbelha);
 
                 for(int i = 0; i < qtdAbelhas; i++){
                     if(a[i].id == novoIdAbelha){
