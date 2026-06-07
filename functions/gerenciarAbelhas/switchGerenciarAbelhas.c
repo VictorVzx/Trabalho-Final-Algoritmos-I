@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <unistd.h>
+
 #include "gerenciarAbelhas.h"
 #include "../../interfaces/gerenciarAbelhas/gerenciarAbelhasInterface.h"
 #include "../limparTela/limparTela.h"
