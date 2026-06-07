@@ -17,12 +17,7 @@ int qtdAbelhas = 0, novasAbelhas;
 
 void cadastrarAbelha(Abelha a[])
 {
-    // mostra interface de cadastrar abelhas
-    showCadastrarAbelhas();
-
     char regioes[5][30] = {"Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"};
-
-    char tecla;
 
     // novas abelhas é hardcoded pois sempre vai adicionar apenas UMA abelha
     novasAbelhas = 1;
@@ -47,16 +42,17 @@ void cadastrarAbelha(Abelha a[])
         limparTela();
         showCadastrarAbelhas();
         sleep(1);
-        printf("======== ADICIONAR ABELHA ========\n");
 
         // pedir o nome popular
         limparTela();
+        showCadastrarAbelhas();
         printf("Digite o nome popular da abelha: ");
         fgets(a[i].nomePopular, sizeof(a[i].nomePopular), stdin);
         a[i].nomePopular[strcspn(a[i].nomePopular, "\n")] = '\0';
 
         // pedir o nome cientifico
         limparTela();
+        showCadastrarAbelhas();
         printf("Digite o nome cientifico: ");
         fgets(a[i].nomeCientifico, sizeof(a[i].nomeCientifico), stdin);
         a[i].nomeCientifico[strcspn(a[i].nomeCientifico, "\n")] = '\0';
@@ -65,6 +61,7 @@ void cadastrarAbelha(Abelha a[])
 
         int opcaoRegiao, isValid = 0;
         do{
+            showCadastrarAbelhas();
             limparTela();
             printf("+---------------------------------+\n");
             printf("|            SELECIONE            |\n");
@@ -89,12 +86,8 @@ void cadastrarAbelha(Abelha a[])
             if(isValid == 0){
                 limparTela();
                 printf("* !!! Região inválida, tente novamente !!! *\n");
-                do
-                {
-                    printf("\nPressione ENTER para continuar...");
-                    while (getchar() != '\n');
-                    tecla = '\n';
-                } while (tecla != '\n');
+                printf("\nPressione ENTER para continuar...");
+                while (getchar() != '\n');
                 limparTela();
             }
 
@@ -140,10 +133,9 @@ void listarTodas(Abelha a[])
 
 void buscarPorNomePopular(Abelha a[])
 {
-    
+    showBuscarPorNomePopular();
     if(qtdAbelhas == 0){
         limparTela();
-        showBuscarPorNomePopular();
         printf("* !!! Nenhuma abelha cadastrada !!! *\n");
 
         printf("\nPressione ENTER para continuar...");
@@ -151,7 +143,7 @@ void buscarPorNomePopular(Abelha a[])
         return;
     }
 
-    char nomePopular[40], tecla;
+    char nomePopular[40];
 
     // inicializo a variavel como falsa (método da negação)
     int achou = 0;
@@ -176,15 +168,14 @@ void buscarPorNomePopular(Abelha a[])
     // retorna que não achou a abelha se a variavel "achou" continuar falsa
     if (achou == 0)
     {
+        limparTela();
         printf("\n* !!! Abelha não encontrada !!! *\n");
-    }
 
-    do
-    {
         printf("\nPressione ENTER para sair...");
         while (getchar() != '\n');
-        tecla = '\n';
-    } while (tecla != '\n');
+    }
+
+
     limparTela();
 }
 
@@ -192,14 +183,9 @@ void editarAbelha(Abelha a[]){
     showEditarAbelhas();
 
     if(qtdAbelhas == 0){
-        char op;
         printf("* !!! Nenhuma abelha cadastrada !!! *\n");
-        do
-        {
-            printf("\nPressione ENTER para continuar...");
-            while (getchar() != '\n');
-            op = '\n';
-        } while (op != '\n');
+        printf("\nPressione ENTER para continuar...");
+        while (getchar() != '\n');
         limparTela();
         return;
     }
@@ -230,13 +216,13 @@ void editarAbelha(Abelha a[]){
 
     if(oqEditar == 1){
         for(int i = 0; i < qtdAbelhas; i++){
-            printf("Aguarde...\n");
-            sleep(1);
             limparTela();
 
             // compara o id digitado com os ids das abelhas
             if(a[i].id == idDaAbelha){
                 // editar o nome popular
+                limparTela();
+                showEditarAbelhas();
                 printf("Digite o nome popular da abelha: ");
                 fgets(a[i].nomePopular, sizeof(a[i].nomePopular), stdin);
                 a[i].nomePopular[strcspn(a[i].nomePopular, "\n")] = '\0';
@@ -252,6 +238,8 @@ void editarAbelha(Abelha a[]){
             // compara o id digitado com os ids das abelhas
             if(a[i].id == idDaAbelha){
                 // editar o nome popular
+                limparTela();
+                showEditarAbelhas();
                 printf("Digite o nome cientifico: ");
                 fgets(a[i].nomeCientifico, sizeof(a[i].nomeCientifico), stdin);
                 a[i].nomeCientifico[strcspn(a[i].nomeCientifico, "\n")] = '\0';
@@ -259,12 +247,12 @@ void editarAbelha(Abelha a[]){
             }
         }
     }else if(oqEditar == 3){
-        char tecla;
         for(int i = 0; i < qtdAbelhas; i++){
             if(a[i].id == idDaAbelha){
                 int opcaoRegiao, isValid = 0;
                 do{
                     limparTela();
+                    showEditarAbelhas();
                     printf("+---------------------------------+\n");
                     printf("|            SELECIONE            |\n");
                     printf("+---------------------------------+\n");
@@ -288,13 +276,10 @@ void editarAbelha(Abelha a[]){
                     }
 
                     if(isValid == 0){
+                        limparTela();
                         printf("* !!! Região inválida, tente novamente !!! *\n");
-                        do
-                        {
-                            printf("\nPressione ENTER para continuar...");
-                            while (getchar() != '\n');
-                            tecla = '\n';
-                        } while (tecla != '\n');
+                        printf("\nPressione ENTER para continuar...");
+                        while (getchar() != '\n');
                         limparTela();
                     }
                     
@@ -331,6 +316,7 @@ void removerAbelha(Abelha a[]){
     showRemoverAbelhas();
 
     if(qtdAbelhas == 0){
+        limparTela();
         printf("* !!! Nenhuma abelha cadastrada !!! *\n");
 
         printf("\nPressione ENTER para continuar...");
@@ -339,10 +325,10 @@ void removerAbelha(Abelha a[]){
         return;
     }
 
-    limparTela();
-
     int idDaAbelha;
-    
+
+    limparTela();
+    showRemoverAbelhas();
     printf("Digite o id da abelha a remover: ");
     scanf("%d", &idDaAbelha);
     limparBuffer();
@@ -356,6 +342,7 @@ void removerAbelha(Abelha a[]){
     }
 
     if(indice == -1){
+        limparTela();
         printf("* !!! Abelha com id %d não encontrada !!! *\n", idDaAbelha);
     } else {
         for(int j = indice; j < qtdAbelhas - 1; j++){
@@ -363,6 +350,7 @@ void removerAbelha(Abelha a[]){
         }
         
         qtdAbelhas--;
+        limparTela();
         printf("Abelha removida com sucesso!\n");
     }
 

@@ -16,8 +16,10 @@ int qtdSensores = 0, novosSensores;
 // implementação da função de cadastrar sensores
 void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
     
+    showCadastrarSensores();
+
     if(qtdAbelhas != 0){
-        showCadastrarSensores();
+        limparTela();
 
         novosSensores = 1;
     
@@ -55,6 +57,8 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                 
                 scanf("%d", &opcaoTipo);
                 limparBuffer();
+
+                limparTela();
     
                 for(int j = 1; j <= 3; j++){
                     if(opcaoTipo == j){
@@ -328,6 +332,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                     showAlterarLeitura();
 
                     printf("* !!! Abelha não encontrada !!! *\n");
+                    
                     printf("\nPressione ENTER para sair...");
                     while(getchar() != '\n');
                     limparTela();
