@@ -1,53 +1,59 @@
 #include <stdio.h>
 #include "gerenciarAbelhasInterface.h"
 
+#include "../cores.h"
+
 // interface de menu, da seção "gerenciar abelhas"
 void showGerenciarAbelhas(){
-    printf("6. Cadastrar abelha\n");
-    printf("7. Listar todas\n");
-    printf("8. Buscar por nome popular\n");
-    printf("9. Alterar dados\n");
-    printf("10. Remover\n");
-    printf("11. Voltar\n");
-    printf("-> ");
+    printf(YELLOW BOLD "+------------------------------+\n" RESET);
+    printf(YELLOW BOLD "|       GERENCIAR ABELHAS      |\n" RESET);
+    printf(YELLOW BOLD "+------------------------------+\n" RESET);
+    printf(YELLOW BOLD "|  6. Cadastrar abelha         |\n" RESET);
+    printf(YELLOW BOLD "|  7. Listar todas             |\n" RESET);
+    printf(YELLOW BOLD "|  8. Buscar por nome popular  |\n" RESET);
+    printf(YELLOW BOLD "|  9. Alterar dados            |\n" RESET);
+    printf(YELLOW BOLD "|  10. Remover                 |\n" RESET);
+    printf(YELLOW BOLD "|  11. Voltar                  |\n" RESET);
+    printf(YELLOW BOLD "+------------------------------+\n" RESET);
+    printf(YELLOW BOLD "-> " RESET);
 }
 
 // interface cadastrar abelhas
 void showCadastrarAbelhas(){
-    printf("==============================\n");
-    printf("|      CADASTRAR ABELHAS     |\n");
-    printf("==============================\n");
+    printf(YELLOW BOLD "==============================\n" RESET);
+    printf(YELLOW BOLD "|      CADASTRAR ABELHAS     |\n" RESET);
+    printf(YELLOW BOLD "==============================\n" RESET);
     printf("\n");
 }
 
 // interface listar todas
 void showListarTodas(){
-    printf("==============================\n");
-    printf("|         LISTAR TODAS       |\n");
-    printf("==============================\n");
+    printf(YELLOW BOLD "==============================\n" RESET);
+    printf(YELLOW BOLD "|         LISTAR TODAS       |\n" RESET);
+    printf(YELLOW BOLD "==============================\n" RESET);
     printf("\n");
 }
 
 // interface de busca por nome popular
 void showBuscarPorNomePopular(){
-    printf("===============================\n");
-    printf("|   BUSCAR POR NOME POPULAR   |\n");
-    printf("===============================\n");
+    printf(YELLOW BOLD "===============================\n" RESET);
+    printf(YELLOW BOLD "|   BUSCAR POR NOME POPULAR   |\n" RESET);
+    printf(YELLOW BOLD "===============================\n" RESET);
     printf("\n");
 }
 
 // interface do menu editar abelhas
 void showEditarAbelhas(){
-    printf("==============================\n");
-    printf("|        EDITAR ABELHAS      |\n");
-    printf("==============================\n");
+    printf(YELLOW BOLD "==============================\n" RESET);
+    printf(YELLOW BOLD "|        EDITAR ABELHAS      |\n" RESET);
+    printf(YELLOW BOLD "==============================\n" RESET);
     printf("\n");
 }
 
 // interface do menu remover abelhas
 void showRemoverAbelhas(){
-    printf("==============================\n");
-    printf("|       REMOVER ABELHAS      |\n");
-    printf("==============================\n");
+    printf(YELLOW BOLD "==============================\n" RESET);
+    printf(YELLOW BOLD "|       REMOVER ABELHAS      |\n" RESET);
+    printf(YELLOW BOLD "==============================\n" RESET);
     printf("\n");
 }
