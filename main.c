@@ -50,22 +50,26 @@ int main(void){
                 // chamar função de gerenciamento das abelhas
                 limparTela();
                 switchGerenciarAbelhas(abelhas);
+                limparTela();
                 break;
             case 2:
                 limparTela();
                 switchGerenciarSensores(sensores, abelhas);
+                limparTela();
                 break;
             case 3:
                 limparTela();
                 printf("Relatorios\n");
+                limparTela();
                 break;
             case 4:
                 limparTela();
-                printf("Saindo...\n");
+                printf("Programa encerrado.\n");
                 break;
             default:
                 limparTela();
                 printf("Opção invalida.\n");
+                limparTela();
                 break;
         }
     }while(menuOption != 4);

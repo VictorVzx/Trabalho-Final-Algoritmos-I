@@ -310,8 +310,9 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                         
                         printf("\nPressione ENTER para sair...");
                         while(getchar() != '\n');
+                        limpartela();
 
-                        achou = 1;
+                        achouAbelha = 1;
                     }
                 }
 
@@ -320,6 +321,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                     printf("* !!! Abelha não encontrada !!! *\n");
                     printf("\nPressione ENTER para sair...");
                     while(getchar() != '\n');
+                    limparTela();
                     return;
                 }
             }else{
