@@ -24,39 +24,32 @@ void switchGerenciarSensores(Sensor s[], Abelha a[]){
         case 6:
             limparTela();
             cadastrarSensor(s, a, contAbelhas());
-            printf("\nAguarde...\n");
-            sleep(1);
-            limparTela();
             break;
         case 7:
             limparTela();
+            printf("Aguarde...\n");
+            sleep(1);
             listarSensores(s);
-            limparTela();
             break;
         case 8:
             limparTela();
             buscarSensorPorIdAbelha(s);
-            limparTela();
             break;
         case 9:
             limparTela();
             alterarLeitura(s, a, contAbelhas());
-            limparTela();
             break;
         case 10:
             limparTela();
             removerSensor(s);
-            limparTela();
             break;
         case 11:
             limparTela();
             printf("\nVoltando...\n");
-            limparTela();
             break;
         default:
             limparTela();
             printf("\nOpção invalida\n");
-            limparTela();
             break;
         }
     }while (sensoresOption != 11);
