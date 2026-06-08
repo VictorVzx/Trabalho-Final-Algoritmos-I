@@ -17,6 +17,7 @@
 #include "functions/limparBuffer/limparBuffer.h"
 #include "functions/gerenciarAbelhas/gerenciarAbelhas.h"
 #include "functions/gerenciarAbelhas/switchGerenciarAbelhas.h"
+#include "functions/gerenciarRelatorios/switchGerenciarRelatorios.h"
 
 #include "functions/gerenciarSensores/switchGerenciarSensores.h"
 
@@ -42,7 +43,6 @@ int main(void){
         limparBuffer();
         
         limparTela();
-
         
         switch (menuOption)
         {
@@ -59,7 +59,7 @@ int main(void){
                 break;
             case 3:
                 limparTela();
-                printf("Relatorios\n");
+                switchGerenciarRelatorios();
                 limparTela();
                 break;
             case 4:
