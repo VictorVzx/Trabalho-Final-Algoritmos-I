@@ -202,10 +202,7 @@ void buscarSensorPorIdAbelha(Sensor s[]){
         }
     }
     
-    printf(YELLOW "\nPressione ENTER para sair..." RESET);
-    while(getchar() != '\n');
     limparTela();
-    return;
     
     if(achou == 0){
         limparTela();
