@@ -226,6 +226,31 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
     limparBuffer();
     limparTela();
 
+    // confirmar edição, loop que só acaba quando uma das opções é valida
+    int confirmarEdicao = 0;
+    do{
+        limparTela();
+        printf("Tem certeza que deseja editar este sensor?\n\n1 - Sim\n2 - Não\n\n-> ");
+        scanf(confirmarEdicao);
+        limparBuffer();
+        if(confirmarEdicao == 2){
+            limparTela();
+            printf(GREEN BOLD "* !!! Operação cancelada !!! *\n" RESET);
+
+            printf("\nPressione ENTER para sair...");
+            while(getchar() != 0);
+            return;
+        }else if(confirmarEdicao == 1){
+            limparTela();
+        }else{
+            limparTela();
+            printf(RED BOLD "* !!! Opção inválida !!! *\n" RESET);
+            printf("\nPressione ENTER para sair...");
+            while(getchar() != 0);
+            confirmarEdicao = 0;
+        }
+    }while(confirmarEdicao == 0);
+
     
     for(int i = 0; i < qtdSensores; i++){
         

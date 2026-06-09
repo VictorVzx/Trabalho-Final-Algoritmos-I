@@ -257,6 +257,31 @@ void editarAbelha(Abelha a[]){
     scanf("%d", &idDaAbelha);
     limparBuffer();
 
+    // loop para editar abelhas, só acaba quando uma das opções é valida
+    int confirmarEdicao = 0;
+    do{
+        limparTela();
+        printf("Tem certeza que deseja editar esta abelha?\n\n1 - Sim\n2 - Não\n\n-> ");
+        scanf(confirmarEdicao);
+        limparBuffer();
+        if(confirmarEdicao == 2){
+            limparTela();
+            printf(GREEN BOLD "* !!! Operação cancelada !!! *\n" RESET);
+
+            printf("\nPressione ENTER para sair...");
+            while(getchar() != 0);
+            return;
+        }else if(confirmarEdicao == 1){
+            limparTela();
+        }else{
+            limparTela();
+            printf(RED BOLD "* !!! Opção inválida !!! *\n" RESET);
+            printf("\nPressione ENTER para sair...");
+            while(getchar() != 0);
+            confirmarEdicao = 0;
+        }
+    }while(confirmarEdicao == 0);
+
     int oqEditar;
     limparTela();
     printf(YELLOW BOLD "+---------------------------------+\n" RESET);
