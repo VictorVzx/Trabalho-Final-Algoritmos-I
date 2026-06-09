@@ -302,6 +302,7 @@ void editarAbelha(Abelha a[]){
 
                         printf(YELLOW "\nPressione ENTER para sair..." RESET);
                         while(getchar() != '\n');
+                        break;
                     }
                     
                 }while(strcmp(novoNomePopular, a[i].nomePopular) == 0);
@@ -335,6 +336,7 @@ void editarAbelha(Abelha a[]){
 
                         printf(YELLOW "Pressione ENTER para continuar..." RESET);
                         while(getchar() != '\n');
+                        break;
                     }
 
                 }while(strcmp(novoNomeCientifico, a[i].nomeCientifico) == 0);
@@ -378,7 +380,6 @@ void editarAbelha(Abelha a[]){
                         printf(RED BOLD "* !!! Já é a região definida, tente novamente !!! *\n" RESET);
                         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                         while (getchar() != '\n');
-                        continue;
                     }
 
                     strcpy(a[i].regiao, regioes[opcaoRegiao - 1]);
@@ -388,6 +389,7 @@ void editarAbelha(Abelha a[]){
                     printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                     while (getchar() != '\n');
                     isValid = 1;
+                    break;
                     
                 }while(isValid == 0);
 
@@ -415,7 +417,13 @@ void editarAbelha(Abelha a[]){
                             printf(YELLOW "\nPressione ENTER para continuar." RESET);
                             while(getchar() != '\n');
                         }else{
-                            continue;
+                            limparTela();
+                            printf(GREEN BOLD "* !!! Produção de mel editada com sucesso !!! *" RESET);
+
+                            printf(YELLOW "\nPressione ENTER para continuar." RESET);
+                            while(getchar() != '\n');
+                            limparTela();
+                            return;
                         }
                     }while(novaQtdMel == a[i].producaoMel);
 
@@ -435,6 +443,7 @@ void editarAbelha(Abelha a[]){
                         
                         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                         while (getchar() != '\n');
+                        return;
                     }
 
                 }while(novaQtdMel < 0);
