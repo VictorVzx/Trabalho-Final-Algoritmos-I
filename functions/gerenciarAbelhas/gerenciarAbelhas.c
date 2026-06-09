@@ -15,6 +15,7 @@
 
 #include "../../interfaces/cores.h"
 
+/* INICIA A QUANTIDADE DE ABELHAS COMO ZERO PARA INCREMENTAR POSTERIORMENTE */
 int qtdAbelhas = 0, novasAbelhas;
 
 void cadastrarAbelha(Abelha a[])
@@ -22,7 +23,7 @@ void cadastrarAbelha(Abelha a[])
     limparTela();
     char regioes[5][30] = {"Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"};
 
-    // novas abelhas é hardcoded pois sempre vai adicionar apenas UMA abelha
+    // novas abelhas é hardcoded pois sempre vai adicionar apenas !!! UMA !!! abelha
     novasAbelhas = 1;
 
     if(qtdAbelhas + novasAbelhas > 50){
@@ -40,20 +41,67 @@ void cadastrarAbelha(Abelha a[])
     // id é inicializado com a quantidade atual de abelhas (o ID da abelha 50 seria 50)
     int id = qtdAbelhas;
 
-    // loop vai da quantidade atual de abelhas até a nova quantidade que o usuario deseja registrar
+    /* TODO ESSE FOR É PARA ADICIONAR OS VALORES
+        NO FINAL INCREMENTA A QUANTIDADE DE ABELHAS, PQ ADICIONOU !!! UMA !!!
+        LOGO O ID É A QUANTIDADE DE ABELHAS
+            -> ISSO ESTÁ ERRADO;
+                QUANDO TEMOS DUAS ABELHAS, UMA COM ID 1 E OUTRA COM ID 3
+                A TERCEIRA ABELHA DEVERIA TER ID 4, MAS O ID DELA PASSA A SER 3 (A QUANTIDADE DE ABELHAS)
+                - ISSO PODE ACONTECER QUANDO ADICIONAMOS TRES ABELHAS E REMOVEMOS A SEGUNDA ABELHA
+                A ABELHA DE ID 2. (VALOR QUE NUNCA MAIS VAI EXISTIR, APENAS QUANDO REINICIAR O CODIGO
+                E PERDER TODOS OS DADOS)
+    */
     for (int i = qtdAbelhas; i < qtdAbelhas + novasAbelhas; i++)
     {
+        /*LIMPA A TELA E MOSTRA O CABEÇALHO (INTERFACE DE ADICIONAR ABELHAS)*/
         limparTela();
         showCadastrarAbelhas();
-        sleep(1);
 
-        // pedir o nome popular
-        limparTela();
-        showCadastrarAbelhas();
-        printf(YELLOW BOLD "Digite o nome popular da abelha: " RESET);
-        fgets(a[i].nomePopular, sizeof(a[i].nomePopular), stdin);
-        a[i].nomePopular[strcspn(a[i].nomePopular, "\n")] = '\0';
+        char nomePopular[40];
 
+        /*VERIFICA SE O USUARIO NÃO DEU APENAS UM ENTER E DEIXOU O NOME POPULAR EM BRANCO
+        E LANÇANDO PARA TENTAR NOVAMENTE COM A AJUDA DO LOOP (DO WHILE)*/
+        do{
+            // USUARIO DIGITA O NOME POPULAR DA ABELHA, LÊ COM FGETS PARA RECONHECER ESPAÇOS
+            limparTela();
+            showCadastrarAbelhas();
+            printf(YELLOW BOLD "Digite o nome popular da abelha: " RESET);
+            fgets(nomePopular, sizeof(nomePopular), stdin);
+            /*
+                ISTO PERCORRE A STRING DA DIREITA PRA ESQUERDA E DA ESQUERDA PRA DIREITA PROCURANDO
+                O VALOR DIGITADO NO SEGUNDO PARÂMETRO, E SUBSITUINDO POR '\0' (FIM DA STRING)
+                FEITO PARA REMOVER QUEBRAS DE LINHA INDESEJADAS
+            */
+            nomePopular[strcspn(nomePopular, "\n")] = '\0';
+
+            /* 
+                ESTRUTURAS DE CONDIÇÃO PARA VERIFICAR O ESTADO DA STRING, CASO ESTEJA EM BRANCO
+                GRITA COM O USUARIO E DÁ A OPÇÃO DE TENTAR NOVAMENTE, ATÉ QUE A STRING TENHA
+                ALGUM VALOR DIFERENTE DE '\0' (NADA OU FIM DA STRING)
+            */
+            if(nomePopular[0] == '\0'){
+                printf(RED BOLD "* !!! Não pode ficar em branco, tente novamente !!! *\n" RESET);
+
+                printf(YELLOW "Pressione ENTER para continuar..." RESET);
+                while(getchar() != '\n');
+            }else{
+                /*
+                    PEGA O VALOR DA VARIAVEL LIDA E ARMAZENA NO VALOR DA STRUCT COM STRCPY
+                    -> PARAMETROS (strcpy) = (DESTINO, ORIGEM)
+                */
+                strcpy(a[i].nomePopular, nomePopular);
+                break;
+            }
+
+        /*
+            LOOP SÓ ACABA SE A STRING FOR DIFERENTE DE '\0' (NÃO ESTEJA EM BRANCO)
+        */
+        }while(nomePopular[0] == '\0');
+
+        /*
+            CASO TENHA PASSADO NA CONDIÇÃO, LIMPA O TERMINAL E MOSTRA MENSAGEM DE 
+            SUCESSO
+        */
         limparTela();
         showCadastrarAbelhas();
         printf(GREEN BOLD "Nome popular adicionado com sucesso!\n" RESET);
@@ -64,9 +112,27 @@ void cadastrarAbelha(Abelha a[])
         // pedir o nome cientifico
         limparTela();
         showCadastrarAbelhas();
-        printf(YELLOW BOLD "Digite o nome cientifico: " RESET);
-        fgets(a[i].nomeCientifico, sizeof(a[i].nomeCientifico), stdin);
-        a[i].nomeCientifico[strcspn(a[i].nomeCientifico, "\n")] = '\0';
+
+        char nomeCientifico[50];
+
+        // verifica se o nome não foi deixado em branco, repetindo para o usuario tentar novamente
+        do
+        {
+            printf(YELLOW BOLD "Digite o nome cientifico: " RESET);
+            fgets(nomeCientifico, sizeof(nomeCientifico), stdin);
+            // remove quebras de linha da string, evitando bugs indesejados com string
+            nomeCientifico[strcspn(nomeCientifico, "\n")] = '\0';
+            if(nomeCientifico[0] == '\0'){
+                printf(RED BOLD "* !!! Não pode ficar em branco, tente novamente !!! *\n" RESET);
+
+                printf(YELLOW "Pressione ENTER para continuar..." RESET);
+                while(getchar() != '\n');
+            }else{
+                strcpy(a[i].nomeCientifico, nomeCientifico);
+                break;
+            }
+        } while (nomeCientifico[0] == '\0');
+        
 
         limparTela();
         showCadastrarAbelhas();

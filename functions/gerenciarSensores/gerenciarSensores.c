@@ -357,7 +357,6 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
 
                     }while(isValueEqual == 1);
 
-                    // adicionar excessao a temperatura
                     if(strcmp(s[i].tipo, tipos[0]) != 0 && valorNovo < 0){
                         limparTela();
                         printf(RED BOLD "* !!! Valor de leitura inválido, tente novamente !!! *\n" RESET);
@@ -376,7 +375,6 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                         limparTela();
                         return;
                     }
-                // lembrar daqui (adicionar uma excessao a temperatura)
                 }while(strcmp(s[i].tipo, tipos[0]) != 0 && valorNovo < 0);
             }else if(editarOption == 3){
 
