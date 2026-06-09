@@ -86,7 +86,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                 printf(YELLOW BOLD "Digite o valor de leitura do sensor: " RESET);
                 scanf("%f", &valorDoSensor);
                 limparBuffer();
-                if(valorDoSensor < 0){
+                if(strcmp(s[i].tipo, tipos[0]) != 0 && valorDoSensor < 0){
                     limparTela();
                     printf(RED BOLD "* !!! Valor de leitura inválido, tente novamente !!! *\n" RESET);
                     
@@ -102,7 +102,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                     while(getchar() != '\n');
                     limparTela();
                 }
-            }while(valorDoSensor < 0);
+            }while(strcmp(s[i].tipo, tipos[0]) != 0 && valorDoSensor < 0);
     
             int isIdValid = 0;
             
@@ -189,7 +189,6 @@ void buscarSensorPorIdAbelha(Sensor s[]){
     scanf("%d", &idAssociado);
     limparBuffer();
 
-    // aqui
     for(int i = 0; i < qtdSensores; i++){
         if(s[i].idAbelha == idAssociado){
             printf(YELLOW BOLD "-------------------------------------------\n" RESET);
@@ -219,6 +218,7 @@ void buscarSensorPorIdAbelha(Sensor s[]){
 
 void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
     int idDoSensor;
+    char tipos[3][30] = {"Temperatura", "Umidade", "Luminosidade"};
 
     //inicializa variavel "achou" para saber se o sensor existe ou não
     int achou = 0;
@@ -276,7 +276,6 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
             limparTela();
 
             if(editarOption == 1){
-                char tipos[3][30] = {"Temperatura", "Umidade", "Luminosidade"};
         
                 int opcaoTipo, isValid = 0;
                 do{
@@ -359,7 +358,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                     }while(isValueEqual == 1);
 
                     // adicionar excessao a temperatura
-                    if(valorNovo < 0){
+                    if(strcmp(s[i].tipo, tipos[0]) != 0 && valorNovo < 0){
                         limparTela();
                         printf(RED BOLD "* !!! Valor de leitura inválido, tente novamente !!! *\n" RESET);
                         
@@ -378,7 +377,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                         return;
                     }
                 // lembrar daqui (adicionar uma excessao a temperatura)
-                }while(valorNovo < 0);
+                }while(strcmp(s[i].tipo, tipos[0]) != 0 && valorNovo < 0);
             }else if(editarOption == 3){
 
                 int novoIdAbelha, achouAbelha = 0;
