@@ -492,7 +492,7 @@ void removerAbelha(Abelha a[]){
     do{
         limparTela();
         showRemoverAbelhas();
-        printf(RED BOLD "Deseja realmente remover abelha?" RESET RED BOLD "\n1 - Sim" RESET YELLOW BOLD "\n2 - Não\n" RESET);
+        printf(RED BOLD "Deseja realmente remover abelha?" RESET RED BOLD "\n\n1 - Sim" RESET YELLOW BOLD "\n2 - Não\n\n" RESET);
         printf(YELLOW BOLD "-> " RESET);
         scanf("%d", &confirmar);
         limparBuffer();
@@ -503,7 +503,7 @@ void removerAbelha(Abelha a[]){
             continue;
         }else if(confirmar == 2){
             limparTela();
-            printf(YELLOW BOLD "* !!! Operação cancelada !!! *\n" RESET);
+            printf(GREEN BOLD "* !!! Operação cancelada !!! *\n" RESET);
 
             printf(YELLOW "Pressione ENTER para continuar..." RESET);
             while(getchar() != '\n');

@@ -410,7 +410,7 @@ void removerSensor(Sensor s[]){
     do{
         limparTela();
         showRemoverSensor();
-        printf(RED BOLD "Deseja realmente remover este sensor?" RESET RED BOLD "\n1 - Sim" RESET YELLOW BOLD "\n2 - Não\n" RESET);
+        printf(RED BOLD "Deseja realmente remover este sensor?" RESET RED BOLD "\n\n1 - Sim" RESET YELLOW BOLD "\n2 - Não\n\n" RESET);
         printf("-> ");
         scanf("%d", &confirmarRm);
         limparBuffer();
