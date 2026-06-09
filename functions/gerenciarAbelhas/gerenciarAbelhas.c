@@ -262,7 +262,7 @@ void editarAbelha(Abelha a[]){
     do{
         limparTela();
         printf(YELLOW BOLD "Tem certeza que deseja editar esta abelha?" RESET YELLOW BOLD "\n\n1 - Sim\n"RESET GREEN BOLD "2 - Não\n" RESET YELLOW BOLD "\n-> " RESET);
-        scanf(confirmarEdicao);
+        scanf("%d", &confirmarEdicao);
         limparBuffer();
         if(confirmarEdicao == 2){
             limparTela();

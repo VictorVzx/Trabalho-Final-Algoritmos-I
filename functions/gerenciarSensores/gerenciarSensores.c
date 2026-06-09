@@ -231,7 +231,7 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
     do{
         limparTela();
         printf(YELLOW BOLD "Tem certeza que deseja editar este sensor?\n"RESET YELLOW BOLD "\n1 - Sim\n" RESET GREEN BOLD "2 - Não\n\n-> " RESET);
-        scanf(confirmarEdicao);
+        scanf("%d", &confirmarEdicao);
         limparBuffer();
         if(confirmarEdicao == 2){
             limparTela();
