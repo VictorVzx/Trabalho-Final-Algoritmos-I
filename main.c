@@ -43,7 +43,7 @@ int main(void){
         limparBuffer();
         
         limparTela();
-        
+
         switch (menuOption)
         {
             case 1:

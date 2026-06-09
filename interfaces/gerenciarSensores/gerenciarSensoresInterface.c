@@ -22,6 +22,7 @@ void showGerenciarSensores(){
 
 // interface cadastrar sensores
 void showCadastrarSensores(){
+    limparTela();
     printf(YELLOW BOLD "===============================\n" RESET);
     printf(YELLOW BOLD "|      CADASTRAR SENSORES     |\n" RESET);
     printf(YELLOW BOLD "===============================\n" RESET);

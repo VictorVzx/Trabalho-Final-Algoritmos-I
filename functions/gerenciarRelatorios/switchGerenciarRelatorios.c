@@ -11,12 +11,12 @@ void switchGerenciarRelatorios(){
 
     int relatoriosOption;
 
-    showGerenciarRelatorios();
-    scanf("%d", &relatoriosOption);
-    limparBuffer();
-
-    limparTela();
     do{
+        showGerenciarRelatorios();
+        scanf("%d", &relatoriosOption);
+        limparBuffer();
+        limparTela();
+
         switch (relatoriosOption)
         {
         case 4:
@@ -36,6 +36,7 @@ void switchGerenciarRelatorios(){
             break;
         case 7:
             limparTela();
+            printf("Voltando...\n");
             sleep(1);
             limparTela();
             break;

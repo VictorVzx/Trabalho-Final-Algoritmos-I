@@ -5,8 +5,9 @@
 
 #include "../cores.h"
 
+//lembrar de colocar o limpar tela aqui
+
 void interfaceMenuPrincipal(){
-    limparTela();
     printf(YELLOW BOLD "+---------------------------+\n" RESET);
     printf(YELLOW BOLD "|    SISTEMA BEE MONITOR    |\n" RESET);
     printf(YELLOW BOLD "+---------------------------+\n" RESET);

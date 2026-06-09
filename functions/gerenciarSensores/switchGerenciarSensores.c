@@ -18,6 +18,8 @@ void switchGerenciarSensores(Sensor s[], Abelha a[]){
         showGerenciarSensores();
         scanf("%d", &sensoresOption);
         limparBuffer();
+
+        limparTela();
         
         switch (sensoresOption)
         {

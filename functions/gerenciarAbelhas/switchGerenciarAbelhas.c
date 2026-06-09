@@ -16,6 +16,8 @@ void switchGerenciarAbelhas(Abelha a[])
         showGerenciarAbelhas();
         scanf("%d", &abelhasOption);
         limparBuffer();
+
+        limparTela();
         
         switch (abelhasOption)
         {

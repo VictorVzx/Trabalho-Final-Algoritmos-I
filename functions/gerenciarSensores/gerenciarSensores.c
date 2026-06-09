@@ -17,11 +17,11 @@ int qtdSensores = 0, novosSensores;
 
 // implementação da função de cadastrar sensores
 void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
+    limparTela();
     
     showCadastrarSensores();
 
     if(qtdAbelhas != 0){
-        limparTela();
 
         novosSensores = 1;
     
@@ -40,14 +40,10 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
     
         int id = qtdSensores;
         for(int i = qtdSensores; i < qtdSensores + novosSensores; i++){
-            
-            limparTela();
-            showGerenciarSensores();
     
             int opcaoTipo, isValid = 0;
             do{
                 limparTela();
-                showCadastrarSensores();
                 printf(YELLOW BOLD "+---------------------------------+\n" RESET);
                 printf(YELLOW BOLD "|         TIPO DE SENSOR          |\n" RESET);
                 printf(YELLOW BOLD "+---------------------------------+\n" RESET);
@@ -55,7 +51,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                 printf(YELLOW BOLD "|   2 - Umidade                   |\n" RESET);
                 printf(YELLOW BOLD "|   3 - Luminosidade              |\n" RESET);
                 printf(YELLOW BOLD "+---------------------------------+\n" RESET);
-                printf(YELLOW BOLD "-> ");
+                printf(YELLOW BOLD "");
                 
                 scanf("%d", &opcaoTipo);
                 limparBuffer();
@@ -445,7 +441,7 @@ void removerSensor(Sensor s[]){
 
     int indice = -1;
     for(int j = 0; j < qtdSensores; j++){
-        if(s[j].id == qtdSensores){
+        if(s[j].id == idRmSensor){
             indice = j;
             break;
         }
