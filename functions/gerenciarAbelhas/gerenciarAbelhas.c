@@ -644,9 +644,9 @@ void removerAbelha(Abelha a[]){
     int confirmar = 0;
 
     if(isIdValid != 1){
-        printf(RED BOLD "* !!! ID inválido !!! *" RESET);
+        printf(RED BOLD "* !!! ID inválido !!! *\n" RESET);
 
-        printf(YELLOW "Pressione ENTER para continuar..." RESET);
+        printf(YELLOW "\nPressione ENTER para continuar..." RESET);
         while(getchar() != '\n');
         limparTela();
         return;

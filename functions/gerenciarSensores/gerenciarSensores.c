@@ -597,16 +597,16 @@ void removerSensor(Sensor s[]){
             showRemoverSensor();
             printf(GREEN BOLD "* !!! Operação cancelada !!! *\n" RESET);
 
-            printf(YELLOW "Pressione ENTER para sair...\n" RESET);
+            printf(YELLOW "\nPressione ENTER para sair..." RESET);
             while(getchar() != '\n');
 
             return;
         }else{
             limparTela();
             showRemoverSensor();
-            printf(RED BOLD "* !!! Opção inválida, tente novamente! !!! *" RESET);
+            printf(RED BOLD "* !!! Opção inválida, tente novamente! !!! *\n" RESET);
 
-            printf(YELLOW "Pressione ENTER para continuar..." RESET);
+            printf(YELLOW "\nPressione ENTER para continuar..." RESET);
             while(getchar() != '\n');
             confirmarRm = 0;
         }
