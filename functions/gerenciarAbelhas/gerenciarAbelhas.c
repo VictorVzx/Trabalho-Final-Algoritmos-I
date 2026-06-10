@@ -208,6 +208,8 @@ void cadastrarAbelha(Abelha a[])
                 
                 printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                 while (getchar() != '\n');
+                
+                mediaEmKgMes = -1;
             }
 
             if(mediaEmKgMes < 0){
@@ -555,8 +557,8 @@ void editarAbelha(Abelha a[]){
             
                         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                         while (getchar() != '\n');
-                        limparTela();     
-                        break;               
+                        limparTela();
+                        break;
                     }
 
                     do{
