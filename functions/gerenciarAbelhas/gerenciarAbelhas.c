@@ -244,8 +244,10 @@ void listarTodas(Abelha a[])
     if(qtdAbelhas != 0){
         for (int i = 0; i < qtdAbelhas; i++)
         {
-            printf("");
+            printf(YELLOW BOLD "----------------------------------\n" RESET);
             printf(BOLD "ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n" RESET, a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
+            printf(YELLOW BOLD "----------------------------------\n" RESET);
+
         }
     }else{
         limparTela();
@@ -282,22 +284,24 @@ void buscarPorNomePopular(Abelha a[])
         printf(YELLOW BOLD "Digite o nome popular da abelha que você quer buscar: " RESET);
         fgets(nomePopular, sizeof(nomePopular), stdin);
         nomePopular[strcspn(nomePopular, "\n")] = '\0';
-    
+        
         if(nomePopular[0] == '\0'){
             printf(RED BOLD "* !!! Não pode estar em branco, tente novamente !!! *\n" RESET);
-
+            
             printf(YELLOW "\nPressione ENTER para continuar..." RESET);
             while(getchar() != '\n');
         }
     }while(nomePopular[0] == '\0');
-
+    
     for (int i = 0; i < qtdAbelhas; i++)
     {
         // compara o nome popular digitado com o nome popular das abelhas disponiveis
         if (strcmp(nomePopular, a[i].nomePopular) == 0)
         {
+            printf(YELLOW BOLD "----------------------------------\n" RESET);
             printf(BOLD "\nID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n" RESET, a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
-
+            printf(YELLOW BOLD "----------------------------------\n" RESET);
+            
             printf(YELLOW "\nPressione ENTER para sair..." RESET);
             while(getchar() != '\n');
             achou = 1;
