@@ -141,9 +141,9 @@ void cadastrarAbelha(Abelha a[])
         printf(YELLOW "Pressione ENTER para continuar..." RESET);
         while(getchar() != '\n');
 
-        // pedir a regiao
+        /* VERIFICA SE O VALOR DIGITADO EM OPCAO É VALIDO, SE NÃO É UMA STRING*/
 
-        int opcaoRegiao, isValid = 0;
+        int opcaoRegiao, isValid = 0, isOpcaoValid;
         do{
             limparTela();
             showCadastrarAbelhas();
@@ -157,7 +157,7 @@ void cadastrarAbelha(Abelha a[])
             printf(YELLOW BOLD "|   5 - Sul                       |\n" RESET);
             printf(YELLOW BOLD "+---------------------------------+\n" RESET);
             printf(YELLOW BOLD "-> " RESET);
-            scanf("%d", &opcaoRegiao);
+            isOpcaoValid = scanf("%d", &opcaoRegiao);
             limparBuffer();
 
             for(int j = 1; j <= 5; j++){
@@ -167,7 +167,11 @@ void cadastrarAbelha(Abelha a[])
                 }
             }
 
-            if(isValid == 0){
+            /*
+                CONDIÇÃO PARA VER SE O VALOR DIGITADO É VALIDO OU NÃO, SE FOR UMA STRING
+                JÁ RETORNA ERRO
+            */
+            if(isValid == 0 || isOpcaoValid != 1){
                 limparTela();
                 showCadastrarAbelhas();
                 printf(RED BOLD "* !!! Região inválida, tente novamente !!! *\n" RESET);
@@ -184,9 +188,10 @@ void cadastrarAbelha(Abelha a[])
                 while(getchar() != '\n');
             }
 
-        }while(isValid == 0);
+        }while(isValid == 0 || isOpcaoValid != 1);
 
         float mediaEmKgMes;
+        int isQtdValid;
 
         // pedir a produção media em kg/mes
         do
@@ -194,8 +199,16 @@ void cadastrarAbelha(Abelha a[])
             limparTela();
             showCadastrarAbelhas();
             printf(YELLOW BOLD "Digite a quantidade média em kg por mês produzida: " RESET);
-            scanf("%f", &mediaEmKgMes);
+            isQtdValid = scanf("%f", &mediaEmKgMes);
             limparBuffer();
+
+            if (isQtdValid != 1) {
+                limparTela();
+                printf(RED BOLD "* !!! Entrada inválida! Digite apenas números (letras não são permitidas) !!! *\n" RESET);
+                
+                printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+                while (getchar() != '\n');
+            }
 
             if(mediaEmKgMes < 0){
                 limparTela();
@@ -214,7 +227,7 @@ void cadastrarAbelha(Abelha a[])
                 while(getchar() != '\n');
             }
 
-        } while (mediaEmKgMes < 0);
+        } while (mediaEmKgMes < 0 || isQtdValid != 1);
         
 
         id++;
@@ -239,6 +252,7 @@ void listarTodas(Abelha a[])
     if(qtdAbelhas != 0){
         for (int i = 0; i < qtdAbelhas; i++)
         {
+            printf("");
             printf(BOLD "ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n" RESET, a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
         }
     }else{
@@ -348,20 +362,31 @@ void editarAbelha(Abelha a[]){
         }
     }while(confirmarEdicao == 0);
 
-    int oqEditar;
-    limparTela();
-    printf(YELLOW BOLD "+---------------------------------+\n" RESET);
-    printf(YELLOW BOLD "|            SELECIONE            |\n" RESET);
-    printf(YELLOW BOLD "+---------------------------------+\n" RESET);
-    printf(YELLOW BOLD "|   1 - Nome popular              |\n" RESET);
-    printf(YELLOW BOLD "|   2 - Nome cientifico           |\n" RESET);
-    printf(YELLOW BOLD "|   3 - Região                    |\n" RESET);
-    printf(YELLOW BOLD "|   4 - Qtd de mel produzido/mes  |\n" RESET);
-    printf(YELLOW BOLD "+---------------------------------+\n" RESET);
-    printf(YELLOW BOLD "-> " RESET);
-    scanf("%d", &oqEditar);
-    limparBuffer();
+    int oqEditar, isOqEditarValid;
+    do{
+        limparTela();
+        printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+        printf(YELLOW BOLD "|            SELECIONE            |\n" RESET);
+        printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+        printf(YELLOW BOLD "|   1 - Nome popular              |\n" RESET);
+        printf(YELLOW BOLD "|   2 - Nome cientifico           |\n" RESET);
+        printf(YELLOW BOLD "|   3 - Região                    |\n" RESET);
+        printf(YELLOW BOLD "|   4 - Qtd de mel produzido/mes  |\n" RESET);
+        printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+        printf(YELLOW BOLD "-> " RESET);
+        isOqEditarValid = scanf("%d", &oqEditar);
+        limparBuffer();
 
+        if (isOqEditarValid != 1) {
+            printf(RED BOLD "* !!! Entrada inválida! Digite apenas números (letras não são permitidas) !!! *\n" RESET);
+            
+            printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+            while (getchar() != '\n');
+            limparTela();
+        }  
+
+    }while (isOqEditarValid != 1);
+    
     limparTela();
 
     if(oqEditar == 1){
@@ -380,6 +405,14 @@ void editarAbelha(Abelha a[]){
                     fgets(novoNomePopular, sizeof(novoNomePopular), stdin);
                     novoNomePopular[strcspn(novoNomePopular, "\n")] = '\0';
 
+                    if(novoNomePopular[0] == '\0'){
+                        printf(RED BOLD "* !!! Não pode estar vazio, tente novamente !!! *\n" RESET);
+
+                        printf(YELLOW "\nPressione ENTER para sair..." RESET);
+                        while(getchar() != '\n');
+                        break;
+                    }
+
                     if(strcmp(novoNomePopular, a[i].nomePopular) == 0){
                         limparTela();
                         showEditarAbelhas();
@@ -396,7 +429,7 @@ void editarAbelha(Abelha a[]){
                         break;
                     }
                     
-                }while(strcmp(novoNomePopular, a[i].nomePopular) == 0);
+                }while(strcmp(novoNomePopular, a[i].nomePopular) == 0 || novoNomePopular[0] == '\0');
                 isExistent = 1;
             }
         }
@@ -416,6 +449,14 @@ void editarAbelha(Abelha a[]){
                     fgets(novoNomeCientifico, sizeof(novoNomeCientifico), stdin);
                     novoNomeCientifico[strcspn(novoNomeCientifico, "\n")] = '\0';
 
+                    if(novoNomeCientifico[0] == '\0'){
+                        printf(RED BOLD "* !!! Não pode estar vazio, tente novamente !!! *\n" RESET);
+
+                        printf(YELLOW "\nPressione ENTER para sair..." RESET);
+                        while(getchar() != '\n');
+                        break;
+                    }
+
                     if(strcmp(novoNomeCientifico, a[i].nomeCientifico) == 0){
                         printf(RED BOLD "* !!! Já é o nome cientifico da abelha, tente novamente !!! *\n" RESET);
                         
@@ -430,7 +471,7 @@ void editarAbelha(Abelha a[]){
                         break;
                     }
 
-                }while(strcmp(novoNomeCientifico, a[i].nomeCientifico) == 0);
+                }while(strcmp(novoNomeCientifico, a[i].nomeCientifico) == 0 || novoNomeCientifico[0] == '\0');
                 isExistent = 1;
             }
         }
@@ -438,7 +479,7 @@ void editarAbelha(Abelha a[]){
 
         for(int i = 0; i < qtdAbelhas; i++){
             if(a[i].id == idDaAbelha){
-                int opcaoRegiao, isValid = 0;
+                int opcaoRegiao, isValid = 0, isEditarRegiaoValid;
                 do{
                     limparTela();
                     showEditarAbelhas();
@@ -452,8 +493,17 @@ void editarAbelha(Abelha a[]){
                     printf(YELLOW BOLD "|   5 - Sul                       |\n" RESET);
                     printf(YELLOW BOLD "+---------------------------------+\n" RESET);
                     printf(YELLOW BOLD "-> ");
-                    scanf("%d", &opcaoRegiao);
+                    isEditarRegiaoValid = scanf("%d", &opcaoRegiao);
                     limparBuffer();
+
+                    if(isEditarRegiaoValid != 1){
+                        printf(RED BOLD "* !!! Entrada inválida! Digite apenas números (letras não são permitidas) !!! *\n" RESET);
+            
+                        printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+                        while (getchar() != '\n');
+                        limparTela();     
+                        break;               
+                    }
 
                     if(opcaoRegiao < 1 || opcaoRegiao > 5){
                         limparTela();
@@ -491,13 +541,23 @@ void editarAbelha(Abelha a[]){
         // editar a produção media em kg/mes
         for(int i = 0; i < qtdAbelhas; i++){
             float novaQtdMel;
+            int isNovaQtdMelValid;
             if(a[i].id == idDaAbelha){
                 do{
                     limparTela();
                     showEditarAbelhas();
                     printf(YELLOW BOLD "Digite a quantidade média em kg por mês produzida: " RESET);
-                    scanf("%f", &novaQtdMel);
+                    isNovaQtdMelValid = scanf("%f", &novaQtdMel);
                     limparBuffer();
+
+                    if(isNovaQtdMelValid != 1){
+                        printf(RED BOLD "* !!! Entrada inválida! Digite apenas números (letras não são permitidas) !!! *\n" RESET);
+            
+                        printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+                        while (getchar() != '\n');
+                        limparTela();     
+                        break;               
+                    }
 
                     do{
                         if(novaQtdMel == a[i].producaoMel){
@@ -516,7 +576,7 @@ void editarAbelha(Abelha a[]){
                             limparTela();
                             return;
                         }
-                    }while(novaQtdMel == a[i].producaoMel);
+                    }while(novaQtdMel == a[i].producaoMel );
 
 
                     if(novaQtdMel < 0){
@@ -537,7 +597,7 @@ void editarAbelha(Abelha a[]){
                         return;
                     }
 
-                }while(novaQtdMel < 0);
+                }while(novaQtdMel < 0 || isNovaQtdMelValid != 1);
                 isExistent = 1;
             }
         }
