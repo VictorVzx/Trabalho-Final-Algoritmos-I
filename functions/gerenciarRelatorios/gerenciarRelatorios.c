@@ -115,11 +115,11 @@ void qtdAbelhasPorRegiao(Abelha a[]){
     limparTela();
     quantidadeAbelhasPorRegiao();
     printf(YELLOW BOLD "-----------------------------\n" RESET);
-    printf(BOLD "   Norte: %d\n"        RESET, qtdNorte);
-    printf(BOLD "   Nordeste: %d\n"     RESET, qtdNordeste);
-    printf(BOLD "   Centro-oeste: %d\n" RESET, qtdCentroOeste);
-    printf(BOLD "   Sudeste: %d\n"      RESET, qtdSudeste);
-    printf(BOLD "   Sul: %d\n"          RESET, qtdSul);
+    printf(BOLD "   Norte:        %d abelha(s)\n"        RESET, qtdNorte);
+    printf(BOLD "   Nordeste:     %d abelha(s)\n"     RESET, qtdNordeste);
+    printf(BOLD "   Centro-oeste: %d abelha(s)\n" RESET, qtdCentroOeste);
+    printf(BOLD "   Sudeste:      %d abelha(s)\n"      RESET, qtdSudeste);
+    printf(BOLD "   Sul:          %d abelha(s)\n"          RESET, qtdSul);
     printf(YELLOW BOLD "-----------------------------\n" RESET);
 
     printf(YELLOW "\nPressione ENTER para sair..." RESET);
