@@ -59,7 +59,7 @@ int main(void){
                 break;
             case 3:
                 limparTela();
-                switchGerenciarRelatorios();
+                switchGerenciarRelatorios(abelhas, sensores);
                 limparTela();
                 break;
             case 4:

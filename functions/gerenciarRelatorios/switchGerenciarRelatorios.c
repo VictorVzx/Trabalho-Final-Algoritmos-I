@@ -6,8 +6,14 @@
 #include "../limparTela/limparTela.h"
 
 #include "../../interfaces/relatoriosInterface/relatoriosInterface.h"
+#include "../../structs/structs.h"
 
-void switchGerenciarRelatorios(){
+#include "gerenciarRelatorios.h"
+
+#define MAX_SENSORES 100
+#define MAX_ABELHAS 50
+
+void switchGerenciarRelatorios(Abelha a[], Sensor s[]){
 
     int relatoriosOption;
 
@@ -21,17 +27,17 @@ void switchGerenciarRelatorios(){
         {
         case 4:
             limparTela();
-            interfaceProducaoGeral();
+            producaoMediaMel(a);
             limparTela();
             break;
         case 5:
             limparTela();
-            interfaceTemperaturaSensores();
+            mediaTemperaturaSensores(s);
             limparTela();
             break;
         case 6:
             limparTela();
-            quantidadeAbelhasPorRegiao();
+            qtdAbelhasPorRegiao(a);
             limparTela();
             break;
         case 7:
