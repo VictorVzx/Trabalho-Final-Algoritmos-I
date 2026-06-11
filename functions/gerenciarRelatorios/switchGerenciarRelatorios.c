@@ -62,7 +62,7 @@ void switchGerenciarRelatorios(Abelha a[], Sensor s[]){
         // CASO O USUARIO DIGITE 7, MOSTRA OS ALERTAS AMBIENTAIS
         case 7:
             limparTela();
-            alertasAmbientais(a, s);
+            alertasAmbientais(s);
             limparTela();
             break;
         // CASO O USUARIO DIGITE 8, AVISA QUE ESTÁ SAINDO DO LOOP

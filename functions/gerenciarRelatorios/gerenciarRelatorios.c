@@ -176,7 +176,7 @@ void qtdAbelhasPorRegiao(Abelha a[]){
 }
 
 // IMPLEMENTAÇÃO DA FUNÇÃO DE ALERTAS AMBIENTAIS, FUNÇÃO ATRIBUIDA À NOSSA EQUIPE, HIVEGUARDIAN
-void alertasAmbientais(Abelha a[], Sensor s[]){
+void alertasAmbientais(Sensor s[]){
 
     // ATRIBUI O VALOR RETORNADO PELA FUNÇÃO CONTADORA DE ABELHAS À VARIAVEL QTDABELHAS
     int qtdAbelhas = contAbelhas();

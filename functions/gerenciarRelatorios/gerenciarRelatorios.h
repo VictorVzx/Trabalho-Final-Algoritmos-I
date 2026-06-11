@@ -16,6 +16,6 @@ void mediaTemperaturaSensores(Sensor s[]);
 void qtdAbelhasPorRegiao(Abelha a[]);
 
 // CABEÇALHO DA FUNÇÃO DE ALERTAS AMBIENTAIS
-void alertasAmbientais(Abelha a[], Sensor s[]);
+void alertasAmbientais(Sensor s[]);
 
 #endif
