@@ -5,6 +5,8 @@
 
 void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas);
 
+int qtdSensoresTemperatura(Sensor s[]);
+
 void listarSensores(Sensor s[]);
 
 void buscarSensorPorIdAbelha(Sensor s[]);
