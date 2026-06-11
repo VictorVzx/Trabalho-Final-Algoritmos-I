@@ -256,11 +256,9 @@ void listarTodas(Abelha a[])
     if(qtdAbelhas != 0){
         for (int i = 0; i < qtdAbelhas; i++)
         {
-            limparTela();
             printf(YELLOW BOLD "----------------------------------\n" RESET);
             printf(BOLD "ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n" RESET, a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
             printf(YELLOW BOLD "----------------------------------\n" RESET);
-
         }
     }else{
         limparTela();
@@ -319,7 +317,7 @@ void buscarPorNomePopular(Abelha a[])
         if (strcmp(nomePopular, a[i].nomePopular) == 0)
         {
             printf(YELLOW BOLD "----------------------------------\n" RESET);
-            printf(BOLD "\nID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n" RESET, a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
+            printf(BOLD "ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n" RESET, a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
             printf(YELLOW BOLD "----------------------------------\n" RESET);
             
             printf(YELLOW "\nPressione ENTER para sair..." RESET);
@@ -328,7 +326,7 @@ void buscarPorNomePopular(Abelha a[])
         }
     }
 
-    // retorna que não achou a abelha se a variavel "achou" continuar falsa
+    // JOGA UM ERRO SE NÃO ACHAR A ABELHA, (VARIAVEL ACHOU CONTINUAR FALSA (0))
     if (achou == 0)
     {
         limparTela();
@@ -362,38 +360,44 @@ void editarAbelha(Abelha a[]){
     // VARIAVEIS PARA VALIDAÇÃO
     int idDaAbelha, isExistent = 0;
 
-    
+    // PEDE O ID DA NOVA ABELHA PARA CADASTRAR, E ARMAZENA NA VARIAVEL IdDaAbelha
     printf(YELLOW BOLD "Digite o id da abelha que deseja editar: " RESET);
     scanf("%d", &idDaAbelha);
     limparBuffer();
 
-    // loop para editar abelhas, só acaba quando uma das opções é valida
+    // LOOP PARA CONFIRMAR EDIÇÃO DE ABELHAS, SE SIM, CONTINUA, SENÃO SAI DA FUNÇÃO
     int confirmarEdicao = 0;
     do{
         limparTela();
         printf(YELLOW BOLD "Tem certeza que deseja editar esta abelha?" RESET YELLOW BOLD "\n\n1 - Sim\n"RESET GREEN BOLD "2 - Não\n" RESET YELLOW BOLD "\n-> " RESET);
         scanf("%d", &confirmarEdicao);
         limparBuffer();
+        // SE A OPÇÃO FOR 2, IMPRIME QUE CANCELOU A OPERAÇÃO E SAI DA FUNÇÃO
         if(confirmarEdicao == 2){
             limparTela();
             printf(GREEN BOLD "* !!! Operação cancelada !!! *\n" RESET);
 
             printf(YELLOW "\nPressione ENTER para sair..." RESET);
-            while(getchar() != 0);
+            while(getchar() != '\n');
             return;
+        // SE FOR 1, CONTINUA PARA EDITAR ABELHA
         }else if(confirmarEdicao == 1){
             limparTela();
+        // SE FOR QUALQUER OUTRA OPÇÃO FORA 1 E 2, RETORNA OPÇÃO INVALIDA E TENTA NOVAMENTE
         }else{
             limparTela();
-            printf(RED BOLD "* !!! Opção inválida !!! *\n" RESET);
-            printf(YELLOW "\nPressione ENTER para sair..." RESET);
-            while(getchar() != 0);
+            printf(RED BOLD "* !!! Opção inválida, tente novamente !!! *\n" RESET);
+            printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+            while(getchar() != '\n');
             confirmarEdicao = 0;
         }
+    // CONDIÇÃO FINAL, LOOP SÓ TERMINA SE CONFIRMAR EDIÇÃO FOR VÁLIDO, CASO CONTRÁRIO, TENTA NOVAMENTE
     }while(confirmarEdicao == 0);
 
+    // VARIÁVEIS DO MENU DE EDITAR, E SABER SE A OPÇÃO LIDA NÃO É UM CHAR
     int oqEditar, isOqEditarValid;
     do{
+        // INTERFACE DE MENU PARA EDITAR ABELHAS
         limparTela();
         printf(YELLOW BOLD "+---------------------------------+\n" RESET);
         printf(YELLOW BOLD "|            SELECIONE            |\n" RESET);
@@ -404,9 +408,12 @@ void editarAbelha(Abelha a[]){
         printf(YELLOW BOLD "|   4 - Qtd de mel produzido/mes  |\n" RESET);
         printf(YELLOW BOLD "+---------------------------------+\n" RESET);
         printf(YELLOW BOLD "-> " RESET);
+
+        // AQUI DEFINE SE FOI DIGITADO UM CHAR OU UM NUMERO
         isOqEditarValid = scanf("%d", &oqEditar);
         limparBuffer();
 
+        // JOGA O ERRO CASO SEJA UM CHAR/STRING, ENTRANDO NA CONDIÇÃO DO DO WHILE E TENTANDO NOVAMENTE
         if (isOqEditarValid != 1) {
             printf(RED BOLD "* !!! Entrada inválida! Digite apenas números (letras não são permitidas) !!! *\n" RESET);
             
@@ -414,27 +421,35 @@ void editarAbelha(Abelha a[]){
             while (getchar() != '\n');
             limparTela();
         }  
-
+    // CONDIÇÃO FINAL, LOOP SÓ ACABA SE O VALOR INSERIOD NÃO FOR UM CHAR/STRING
     }while (isOqEditarValid != 1);
     
     limparTela();
 
+    // AQUI FICA A LÓGICA DAS OPÇÕES DE EDITAR
+
+    // ENTRA NAS CONDIÇÕES COM BASE NOS NUMEROS DO MENU E NA OPÇÃO LIDA
     if(oqEditar == 1){
         for(int i = 0; i < qtdAbelhas; i++){
             limparTela();
 
+            // VARIAVEL PARA ARMAZENAR O NOVO NOME POPULAR, USADA PARA ATRIBUIR O VALOR AO
+            // NOME POPULAR DA ABELHA
             char novoNomePopular[40];
 
-            // compara o id digitado com os ids das abelhas
+            // VERIFICA SE O ID DIGITADO EXISTE, COMPARANDO COM OS IDS DAS ABELHAS
             if(a[i].id == idDaAbelha){
-                // editar o nome popular
+                // SE EXISTE, CONTINUA PARA EDITAR A RESPECTIVA OPÇÃO (NOME POPULAR)
                 do{
                     limparTela();
                     showEditarAbelhas();
                     printf(YELLOW BOLD "Digite o novo nome popular: " RESET);
                     fgets(novoNomePopular, sizeof(novoNomePopular), stdin);
+
+                    // ANULA A POSSIBILIDADE DE DIGITAR UMA QUEBRA DE LINHA E ENCERRAR A LEITURA DA STRING
                     novoNomePopular[strcspn(novoNomePopular, "\n")] = '\0';
 
+                    // JOGA UM ERRO SE O USUARIO DEIXAR O CAMPO EM BRANCO E TENTA NOVAMENTE
                     if(novoNomePopular[0] == '\0'){
                         printf(RED BOLD "* !!! Não pode estar vazio, tente novamente !!! *\n" RESET);
 
@@ -443,6 +458,8 @@ void editarAbelha(Abelha a[]){
                         break;
                     }
 
+                    // VERIFICA SE O NOME POPULAR INSERIDO JÁ É O NOME DEFINIDO, CASO SEJA
+                    // JOGA UM ERRO E TENTA NOVAMENTE
                     if(strcmp(novoNomePopular, a[i].nomePopular) == 0){
                         limparTela();
                         showEditarAbelhas();
@@ -467,18 +484,21 @@ void editarAbelha(Abelha a[]){
         for(int i = 0; i < qtdAbelhas; i++){
             limparTela();
 
-            // compara o id digitado com os ids das abelhas
+            // VERIFICA SE A ABELHA DO ID DIGITADO EXISTE
             if(a[i].id == idDaAbelha){
+
+                // VARIAVEL QUE ARMAZENA O NOVO NOME CIENTIFICO, PARA SER ATRIBUIDA DEPOIS
                 char novoNomeCientifico[50];
 
-                // editar o nome popular
+                // LOOP PARA EDITAR O NOME POPULAR, VERIFICANDO SE ESTÁ VAZIO
                 do{
                     limparTela();
                     showEditarAbelhas();
                     printf(YELLOW BOLD "Digite o novo nome cientifico: " RESET);
                     fgets(novoNomeCientifico, sizeof(novoNomeCientifico), stdin);
                     novoNomeCientifico[strcspn(novoNomeCientifico, "\n")] = '\0';
-
+                    
+                    // SE ESTIVER VAZIO, JOGA UM ERRO E TENTA NOVAMENTE
                     if(novoNomeCientifico[0] == '\0'){
                         printf(RED BOLD "* !!! Não pode estar vazio, tente novamente !!! *\n" RESET);
 
@@ -487,6 +507,8 @@ void editarAbelha(Abelha a[]){
                         break;
                     }
 
+                    // VERIFICA SE O NOME CIENTIFICO DIGITADO JÁ É O NOME CIENTIFICO DA ABELHA
+                    // CASO SEJA, JOGA UM ERRO E TENTA NOVAMENTE
                     if(strcmp(novoNomeCientifico, a[i].nomeCientifico) == 0){
                         printf(RED BOLD "* !!! Já é o nome cientifico da abelha, tente novamente !!! *\n" RESET);
                         
@@ -500,47 +522,63 @@ void editarAbelha(Abelha a[]){
                         while(getchar() != '\n');
                         break;
                     }
-
+                
+                // CONDIÇÃO FINAL, SAI DO LOOP QUANDO O NOME CIENTIFICO FOR DIFERENTE
+                // E O NOME DIGITADO NÃO FOR VAZIO
                 }while(strcmp(novoNomeCientifico, a[i].nomeCientifico) == 0 || novoNomeCientifico[0] == '\0');
+                // DIZ QUE A ABELHA EXISTE
                 isExistent = 1;
             }
         }
     }else if(oqEditar == 3){
 
+        // PERCORRE TODAS AS ABELHAS
         for(int i = 0; i < qtdAbelhas; i++){
+
+            // VERIFICA SE O ID DA ABELHA DIGITADA EXISTE
             if(a[i].id == idDaAbelha){
+
+                // VARIAVEIS DE NAVEGAÇÃO E VALIDAÇÃO
                 int opcaoRegiao, isValid = 0, isEditarRegiaoValid;
                 do{
-                    limparTela();
-                    showEditarAbelhas();
-                    printf(YELLOW BOLD "+---------------------------------+\n" RESET);
-                    printf(YELLOW BOLD "|            SELECIONE            |\n" RESET);
-                    printf(YELLOW BOLD "+---------------------------------+\n" RESET);
-                    printf(YELLOW BOLD "|   1 - Norte                     |\n" RESET);
-                    printf(YELLOW BOLD "|   2 - Nordeste                  |\n" RESET);
-                    printf(YELLOW BOLD "|   3 - Centro-oeste              |\n" RESET);
-                    printf(YELLOW BOLD "|   4 - Sudeste                   |\n" RESET);
-                    printf(YELLOW BOLD "|   5 - Sul                       |\n" RESET);
-                    printf(YELLOW BOLD "+---------------------------------+\n" RESET);
-                    printf(YELLOW BOLD "-> ");
-                    isEditarRegiaoValid = scanf("%d", &opcaoRegiao);
-                    limparBuffer();
 
-                    if(isEditarRegiaoValid != 1){
-                        printf(RED BOLD "* !!! Entrada inválida! Digite apenas números (letras não são permitidas) !!! *\n" RESET);
-            
-                        printf(YELLOW "\nPressione ENTER para continuar..." RESET);
-                        while (getchar() != '\n');
-                        limparTela();     
-                    }
+                    // INTERFACE DO MENU DE NAVEGAÇÃO PARA SELECIONAR REGIÕES
+                    do{
+                        limparTela();
+                        showEditarAbelhas();
+                        printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+                        printf(YELLOW BOLD "|            SELECIONE            |\n" RESET);
+                        printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+                        printf(YELLOW BOLD "|   1 - Norte                     |\n" RESET);
+                        printf(YELLOW BOLD "|   2 - Nordeste                  |\n" RESET);
+                        printf(YELLOW BOLD "|   3 - Centro-oeste              |\n" RESET);
+                        printf(YELLOW BOLD "|   4 - Sudeste                   |\n" RESET);
+                        printf(YELLOW BOLD "|   5 - Sul                       |\n" RESET);
+                        printf(YELLOW BOLD "+---------------------------------+\n" RESET);
+                        printf(YELLOW BOLD "-> ");
+    
+                        // VALIDAÇÃO DA LEITURA, VERIFICA SE NÃO É UM CHAR/STRING
+                        isEditarRegiaoValid = scanf("%d", &opcaoRegiao);
+                        limparBuffer();
+                        
+                        if(isEditarRegiaoValid != 1){
+                            printf(RED BOLD "* !!! Entrada inválida! Digite apenas números (letras não são permitidas) !!! *\n" RESET);
+                
+                            printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+                            while (getchar() != '\n');
+                            limparTela();     
+                        }
+                    // CONDIÇÃO FINAL, SAI DO LOOP SE O VALOR DIGITADO NÃO FOR UM CHAR/STRING
+                    } while(isEditarRegiaoValid != 1);
 
+                    // VALIDAÇÃO DAS OPÇÕES, SE FOR MENOR QUE 1 OU MAIOR QUE 5 RETORNA ERRO
                     if(opcaoRegiao < 1 || opcaoRegiao > 5){
                         limparTela();
                         showEditarAbelhas();
                         printf(RED BOLD "*!!! Opção inválida, tente novamente !!!*\n" RESET);
                         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                         while (getchar() != '\n');
-                        continue;
+                        isValid = 0;
                     }
 
 
@@ -550,6 +588,7 @@ void editarAbelha(Abelha a[]){
                         printf(RED BOLD "* !!! Já é a região definida, tente novamente !!! *\n" RESET);
                         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                         while (getchar() != '\n');
+                        isValid = 0;
                     }
 
                     strcpy(a[i].regiao, regioes[opcaoRegiao - 1]);
@@ -567,27 +606,38 @@ void editarAbelha(Abelha a[]){
             }
         }
     }else if(oqEditar == 4){
-        // editar a produção media em kg/mes
+        // PERCORRE TODAS AS ABELHAS
         for(int i = 0; i < qtdAbelhas; i++){
+            // VARIAVEL PARA ATRIBUIR A NOVA QUANTIDADE DE MEL
             float novaQtdMel;
+
+            // VARIAVEL PARA VERIFICAR SE FOI DIGITADO UMA STRING OU CHAR
             int isNovaQtdMelValid;
+
+            // VERIFICA SE A ABELHA EXISTE COM BASE NO ID
             if(a[i].id == idDaAbelha){
                 do{
-                    limparTela();
-                    showEditarAbelhas();
-                    printf(YELLOW BOLD "Digite a quantidade média em kg por mês produzida: " RESET);
-                    isNovaQtdMelValid = scanf("%f", &novaQtdMel);
-                    limparBuffer();
-
-                    if(isNovaQtdMelValid != 1){
-                        printf(RED BOLD "* !!! Entrada inválida! Digite apenas números (letras não são permitidas) !!! *\n" RESET);
-            
-                        printf(YELLOW "\nPressione ENTER para continuar..." RESET);
-                        while (getchar() != '\n');
-                        limparTela();
-                    }
-
+                    // VERIFICA SE FOI DIGITADO UMA STRING OU CHAR
                     do{
+                        limparTela();
+                        showEditarAbelhas();
+                        printf(YELLOW BOLD "Digite a quantidade média em kg por mês produzida: " RESET);
+                        isNovaQtdMelValid = scanf("%f", &novaQtdMel);
+                        limparBuffer();
+
+                        if(isNovaQtdMelValid != 1){
+                            printf(RED BOLD "* !!! Entrada inválida! Digite apenas números (letras não são permitidas) !!! *\n" RESET);
+                
+                            printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+                            while (getchar() != '\n');
+                            limparTela();
+                        }
+                    // CONDIÇÃO FINAL, SAI DO LOOP SE NÃO FOR UMA STRING OU CHAR
+                    }while(isNovaQtdMelValid != 1);
+
+                    // VERIFICA SE JÁ É A PRODUÇÃO DE MEL ATUAL
+                    do{
+                        // SE FOR, JOGA UM ERRO E TENTA NOVAMENTE
                         if(novaQtdMel == a[i].producaoMel){
                             limparTela();
                             showEditarAbelhas();
@@ -604,12 +654,14 @@ void editarAbelha(Abelha a[]){
                             limparTela();
                             return;
                         }
+                    // CONDIÇÃO FINAL, SAI DO LOOP QUANDO A NOVA QTD DE MEL FOR DIFERENTE
                     }while(novaQtdMel == a[i].producaoMel );
 
-
+                    // VERIFICA SE A QUANTIDADE DE MEL DIGITADA É MENOR DO QUE ZERO
                     if(novaQtdMel < 0){
                         limparTela();
                         showEditarAbelhas();
+                        // SE FOR, RETORNA UM ERRO E TENTA NOVAMENTE
                         printf(RED BOLD "*!!! Não pode ser menor do que zero, tente novamente !!!*\n" RESET);
 
                         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
@@ -625,11 +677,12 @@ void editarAbelha(Abelha a[]){
                         return;
                     }
 
-                }while(novaQtdMel < 0 || isNovaQtdMelValid != 1);
+                }while(novaQtdMel < 0);
                 isExistent = 1;
             }
         }
     }
+    // SE NÃO EXISTIREM ABELHAS (BOOLEANO isExistent CONTINUAR COMO 0 (FALSE), JOGA UM ERRO E SAI DA FUNÇÃO)
     if(isExistent == 0){
         limparTela();
         showEditarAbelhas();
@@ -642,9 +695,11 @@ void editarAbelha(Abelha a[]){
     }
 }
 
+// IMPLEMENTAÇÃO DA FUNÇÃO DE REMOVER ABELHAS
 void removerAbelha(Abelha a[]){
     limparTela();
 
+    // SE NÃO HOUVER NENHUMA ABELHA, JOGA UM ERRO E SAI DA FUNÇÃO
     if(qtdAbelhas == 0){
         limparTela();
         showRemoverAbelhas();
@@ -656,27 +711,32 @@ void removerAbelha(Abelha a[]){
         return;
     }
 
+    // VARIÁVEIS DE ID DA ABELHA A REMOVER E VERIFICAR SE O ID É UMA STRING OU UM CHAR
     int idDaAbelha, isIdValid;
 
-    limparTela();
-    showRemoverAbelhas();
-    printf(YELLOW BOLD "Digite o id da abelha a remover: " RESET);
-    isIdValid = scanf("%d", &idDaAbelha);
-    limparBuffer();
-
-    limparTela();
-
-    int confirmar = 0;
-
-    if(isIdValid != 1){
-        printf(RED BOLD "* !!! ID inválido !!! *\n" RESET);
-
-        printf(YELLOW "\nPressione ENTER para continuar..." RESET);
-        while(getchar() != '\n');
+    do{
         limparTela();
-        return;
-    }
+        showRemoverAbelhas();
+        printf(YELLOW BOLD "Digite o id da abelha a remover: " RESET);
+        // AQUI VERIFICA SE É UMA STRING OU CHAR
+        isIdValid = scanf("%d", &idDaAbelha);
+        limparBuffer();
+        // SE FOR STRING OU CHAR, RETORNA ID INVALIDO E TENTA NOVAMENTE    
+        if(isIdValid != 1){
+            printf(RED BOLD "* !!! ID inválido, tente novamente !!! *\n" RESET);
+        
+            printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+            while(getchar() != '\n');
+            limparTela();
+        }
+    }while(isIdValid != 1);
 
+    limparTela();
+
+    // INICIALIZAÇÃO DA VARIAVEL DE CONFIRMAR PARA REMOVER
+    int confirmar = 0;
+    
+    // LOOP DE CONFIRMAR PARA REMOVER
     do{
         limparTela();
         showRemoverAbelhas();
@@ -686,9 +746,11 @@ void removerAbelha(Abelha a[]){
         limparBuffer();
 
         limparTela();
-    
+        
+        // SE A OPÇÃO FOR 1 CONTINUA PARA REMOVER
         if(confirmar == 1){
             continue;
+        // SE FOR 2, CANCELA
         }else if(confirmar == 2){
             limparTela();
             printf(GREEN BOLD "* !!! Operação cancelada !!! *\n" RESET);
@@ -696,6 +758,7 @@ void removerAbelha(Abelha a[]){
             printf(YELLOW "Pressione ENTER para continuar..." RESET);
             while(getchar() != '\n');
             return;
+        // SE FOR OUTRO VALOR, ATRIBUI 0 E ENTRA NA CONDIÇÃO DO WHILE, TENTA NOVAMENTE
         }else{
             limparTela();
             printf(RED BOLD "* !!! Opção inválida, tente novamente !!! *\n" RESET);
@@ -704,23 +767,28 @@ void removerAbelha(Abelha a[]){
             while(getchar() != '\n');
             confirmar = 0;
         }
-
+    // CONDIÇÃO FINAL: SAI DO LOOP APENAS SE A OPÇÃO DE CONFIRMAR FOR 1 OU 2
     }while(confirmar == 0);
 
-    
+    // INICIALIZA O INDICE COMO -1 (INEXISTENTE)
     int indice = -1;
     for(int j = 0; j < qtdAbelhas; j++){
-        if(a[j].id == idDaAbelha){
+
+        // VERIFICA SE A ABELHA EXISTE, SE EXISTIR, INDICE PASSA A SER EXISTENTE
+        if(a[j].id == idDaAbelha){ 
             indice = j;
             break;
         }
     }
 
+    // SE O INDICE FOR INEXISTENTE, JOGA UM ERRO E SAI DA FUNÇÃO
     if(indice == -1){
         limparTela();
         showRemoverAbelhas();
         printf(RED BOLD "* !!! Abelha com id %d não encontrada !!! *\n" RESET, idDaAbelha);
+    // SENÃO, REMOVE ABELHA
     } else {
+        // MOVE OS VALORES À FRENTE E DECREMENTA A QUANTIDADE DE ABELHAS
         for(int j = indice; j < qtdAbelhas - 1; j++){
             a[j] = a[j + 1];
         }
