@@ -29,7 +29,7 @@ void cadastrarAbelha(Abelha a[])
     if(qtdAbelhas + novasAbelhas > 50){
         limparTela();
         showCadastrarAbelhas();
-        printf(RED BOLD "* !!! Não pode ter mais do que 50 abelhas !!! *\n\n" RESET);
+        printf(RED BOLD "* !!! Não pode ter mais do que 50 abelhas !!! *\n" RESET);
 
         printf(YELLOW "\nPressione ENTER para sair..." RESET);
         while (getchar() != '\n');
@@ -118,6 +118,8 @@ void cadastrarAbelha(Abelha a[])
         // verifica se o nome não foi deixado em branco, repetindo para o usuario tentar novamente
         do
         {
+            limparTela();
+            showCadastrarAbelhas();
             printf(YELLOW BOLD "Digite o nome cientifico: " RESET);
             fgets(nomeCientifico, sizeof(nomeCientifico), stdin);
             // remove quebras de linha da string, evitando bugs indesejados com string
@@ -202,17 +204,7 @@ void cadastrarAbelha(Abelha a[])
             isQtdValid = scanf("%f", &mediaEmKgMes);
             limparBuffer();
 
-            if (isQtdValid != 1) {
-                limparTela();
-                printf(RED BOLD "* !!! Entrada inválida! Digite apenas números (letras não são permitidas) !!! *\n" RESET);
-                
-                printf(YELLOW "\nPressione ENTER para continuar..." RESET);
-                while (getchar() != '\n');
-                
-                mediaEmKgMes = -1;
-            }
-
-            if(mediaEmKgMes < 0){
+            if(mediaEmKgMes < 0 || isQtdValid != 1){
                 limparTela();
                 showCadastrarAbelhas();
                 printf(RED BOLD "* !!! Não pode ser menor do que zero !!! *\n" RESET);
@@ -254,8 +246,10 @@ void listarTodas(Abelha a[])
     if(qtdAbelhas != 0){
         for (int i = 0; i < qtdAbelhas; i++)
         {
-            printf("");
+            printf(YELLOW BOLD "----------------------------------\n" RESET);
             printf(BOLD "ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n" RESET, a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
+            printf(YELLOW BOLD "----------------------------------\n" RESET);
+
         }
     }else{
         limparTela();
@@ -286,19 +280,30 @@ void buscarPorNomePopular(Abelha a[])
     int achou = 0;
 
     // pede o nome da abelha para buscar e lê com fgets para reconhecer espaços
-    limparTela();
-    showBuscarPorNomePopular();
-    printf(YELLOW BOLD "Digite o nome popular da abelha que você quer buscar: " RESET);
-    fgets(nomePopular, sizeof(nomePopular), stdin);
-    nomePopular[strcspn(nomePopular, "\n")] = '\0';
-
+    do{
+        limparTela();
+        showBuscarPorNomePopular();
+        printf(YELLOW BOLD "Digite o nome popular da abelha que você quer buscar: " RESET);
+        fgets(nomePopular, sizeof(nomePopular), stdin);
+        nomePopular[strcspn(nomePopular, "\n")] = '\0';
+        
+        if(nomePopular[0] == '\0'){
+            printf(RED BOLD "* !!! Não pode estar em branco, tente novamente !!! *\n" RESET);
+            
+            printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+            while(getchar() != '\n');
+        }
+    }while(nomePopular[0] == '\0');
+    
     for (int i = 0; i < qtdAbelhas; i++)
     {
         // compara o nome popular digitado com o nome popular das abelhas disponiveis
         if (strcmp(nomePopular, a[i].nomePopular) == 0)
         {
+            printf(YELLOW BOLD "----------------------------------\n" RESET);
             printf(BOLD "\nID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n" RESET, a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
-
+            printf(YELLOW BOLD "----------------------------------\n" RESET);
+            
             printf(YELLOW "\nPressione ENTER para sair..." RESET);
             while(getchar() != '\n');
             achou = 1;
@@ -504,7 +509,6 @@ void editarAbelha(Abelha a[]){
                         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                         while (getchar() != '\n');
                         limparTela();     
-                        break;               
                     }
 
                     if(opcaoRegiao < 1 || opcaoRegiao > 5){
@@ -558,7 +562,6 @@ void editarAbelha(Abelha a[]){
                         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                         while (getchar() != '\n');
                         limparTela();
-                        break;
                     }
 
                     do{
@@ -624,23 +627,32 @@ void removerAbelha(Abelha a[]){
         showRemoverAbelhas();
         printf(RED BOLD "* !!! Nenhuma abelha cadastrada !!! *\n" RESET);
 
-        printf("\nPressione ENTER para continuar...");
+        printf(YELLOW "\nPressione ENTER para continuar..." RESET);
         while (getchar() != '\n');
         limparTela();
         return;
     }
 
-    int idDaAbelha;
+    int idDaAbelha, isIdValid;
 
     limparTela();
     showRemoverAbelhas();
     printf(YELLOW BOLD "Digite o id da abelha a remover: " RESET);
-    scanf("%d", &idDaAbelha);
+    isIdValid = scanf("%d", &idDaAbelha);
     limparBuffer();
 
     limparTela();
 
     int confirmar = 0;
+
+    if(isIdValid != 1){
+        printf(RED BOLD "* !!! ID inválido !!! *\n" RESET);
+
+        printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+        while(getchar() != '\n');
+        limparTela();
+        return;
+    }
 
     do{
         limparTela();

@@ -10,7 +10,8 @@ void showGerenciarRelatorios(){
     printf(YELLOW BOLD "|  4. Media geral de produção de mel         |\n" RESET);
     printf(YELLOW BOLD "|  5. Média de temperatura dos sensores      |\n" RESET);
     printf(YELLOW BOLD "|  6. Quantidade de abelhas por região       |\n" RESET);
-    printf(YELLOW BOLD "|  7. Voltar                                 |\n" RESET);
+    printf(YELLOW BOLD "|  7. Alertas Ambientais                     |\n" RESET);
+    printf(YELLOW BOLD "|  8. Voltar                                 |\n" RESET);
     printf(YELLOW BOLD "+--------------------------------------------+\n" RESET);
     printf(YELLOW BOLD "-> " RESET);
 }
@@ -30,5 +31,11 @@ void interfaceTemperaturaSensores(){
 void quantidadeAbelhasPorRegiao(){
     printf(YELLOW BOLD "+------------------------------------------+\n" RESET);
     printf(YELLOW BOLD "|     QUANTIDADE DE ABELHAS POR REGIÃO     |\n" RESET);
+    printf(YELLOW BOLD "+------------------------------------------+\n" RESET);
+}
+
+void interfaceAlertasAmbientais(){
+    printf(YELLOW BOLD "+------------------------------------------+\n" RESET);
+    printf(YELLOW BOLD "|             ALERTAS AMBIENTAIS           |\n" RESET);
     printf(YELLOW BOLD "+------------------------------------------+\n" RESET);
 }

@@ -3,7 +3,12 @@
 
 #include "../../structs/structs.h"
 
-float producaoMediaMel(Abelha a[]);
+void producaoMediaMel(Abelha a[]);
 
+void mediaTemperaturaSensores(Sensor s[]);
+
+void qtdAbelhasPorRegiao(Abelha a[]);
+
+void alertasAmbientais(Abelha a[], Sensor s[]);
 
 #endif
