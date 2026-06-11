@@ -37,47 +37,47 @@ ao encerrar o programa.
 ---
 ## Estrutura do trabalho:
 ```text
-/Trabalho Algoritmos
-    /functions
-        /gerenciarAbelhas
-            gerenciarAbelhas.c
-            gerenciarAbelhas.h
-            switchGerenciarAbelhas.c
-            switchGerenciarAbelhas.h
-        /gerenciarRelatorios
-            gerenciarRelatorios.c
-            gerenciarRelatorios.h
-            switchGerenciarRelatorios.c
-            switchGerenciarRelatorios.h
-        /gerenciarSensores
-            gerenciarSensores.c
-            gerenciarSensores.h
-            switchGerenciarSensores.c
-            switchGerenciarSensores.h
-        /limparBuffer
-            limparBuffer.c
-            limparBuffer.h
-        /limparTela
-            limparTela.c
-            limparTela.h
-    /interfaces
-        cores.h
-        /gerenciarAbelhas
-            gerenciarAbelhasInterface.c
-            gerenciarAbelhasInterface.h
-        /gerenciarSensores
-            gerenciarSensoresInterface.c
-            gerenciarSensoresInterface.h
-        /menuPrincipal
-            interfaceMenuPrincipal.c
-            interfaceMenuPrincipal.h
-        /relatoriosInterface
-            relatoriosInterface.c
-            relatoriosInterface.h
-    /structs
-        structs.h
-    Makefile
-    main.c
-    main (executável)
-    README.md
+Trabalho Algoritmos/
+├── functions/
+│   ├── gerenciarAbelhas/
+│   │   ├── gerenciarAbelhas.c
+│   │   ├── gerenciarAbelhas.h
+│   │   ├── switchGerenciarAbelhas.c
+│   │   └── switchGerenciarAbelhas.h
+│   ├── gerenciarRelatorios/
+│   │   ├── gerenciarRelatorios.c
+│   │   ├── gerenciarRelatorios.h
+│   │   ├── switchGerenciarRelatorios.c
+│   │   └── switchGerenciarRelatorios.h
+│   ├── gerenciarSensores/
+│   │   ├── gerenciarSensores.c
+│   │   ├── gerenciarSensores.h
+│   │   ├── switchGerenciarSensores.c
+│   │   └── switchGerenciarSensores.h
+│   ├── limparBuffer/
+│   │   ├── limparBuffer.c
+│   │   └── limparBuffer.h
+│   └── limparTela/
+│       ├── limparTela.c
+│       └── limparTela.h
+├── interfaces/
+│   ├── cores.h
+│   ├── gerenciarAbelhas/
+│   │   ├── gerenciarAbelhasInterface.c
+│   │   └── gerenciarAbelhasInterface.h
+│   ├── gerenciarSensores/
+│   │   ├── gerenciarSensoresInterface.c
+│   │   └── gerenciarSensoresInterface.h
+│   ├── menuPrincipal/
+│   │   ├── interfaceMenuPrincipal.c
+│   │   └── interfaceMenuPrincipal.h
+│   └── relatoriosInterface/
+│       ├── relatoriosInterface.c
+│       └── relatoriosInterface.h
+├── structs/
+│   └── structs.h
+├── Makefile
+├── main.c
+├── main (executável)
+└── README.md
 ```
