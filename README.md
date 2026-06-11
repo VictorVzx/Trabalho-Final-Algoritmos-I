@@ -18,14 +18,27 @@
 
 **Descrição:** Sistema de cadastro e monitoramento de abelhas sem ferrão, sensores ambientais associados e sistema de alertas ambientais.
 
+**Requisitos:**
+- GCC (compilador C)
+- Make
+
 **Compilação:** 
+### Opção 1: Usando Make (recomendado)
 ```bash
 make run
 ```
-ou
+Compila e executa o programa automaticamente.
+
+### Opção 2: Compilação manual com GCC
 ```bash
-gcc -o main main.c
+gcc -o main main.c functions/**/*.c interfaces/**/*.c
 ```
+
+### Opção 3: Limpeza (remover executável)
+```bash
+make clean
+```
+
 **Execução:**
 ```bash
 ./main
