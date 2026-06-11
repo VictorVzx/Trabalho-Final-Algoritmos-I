@@ -27,7 +27,7 @@
 /* INICIA A QUANTIDADE DE ABELHAS COMO ZERO PARA INCREMENTAR POSTERIORMENTE */
 int qtdAbelhas = 0, novasAbelhas;
 // INICIALIZA OS IDS
-int id = 1;
+int proxIdAbelha = 1;
 
 void cadastrarAbelha(Abelha a[])
 {   
@@ -156,8 +156,7 @@ void cadastrarAbelha(Abelha a[])
         printf(YELLOW "Pressione ENTER para continuar..." RESET);
         while(getchar() != '\n');
 
-        /* VERIFICA SE O VALOR DIGITADO EM OPCAO É VALIDO, SE NÃO É UMA STRING*/
-
+        
         int opcaoRegiao, isValid = 0, isOpcaoValid;
         do{
             limparTela();
@@ -172,9 +171,11 @@ void cadastrarAbelha(Abelha a[])
             printf(YELLOW BOLD "|   5 - Sul                       |\n" RESET);
             printf(YELLOW BOLD "+---------------------------------+\n" RESET);
             printf(YELLOW BOLD "-> " RESET);
+            /* VERIFICA SE O VALOR DIGITADO EM OPCAO É VALIDO, SE NÃO É UMA STRING*/
             isOpcaoValid = scanf("%d", &opcaoRegiao);
             limparBuffer();
 
+            // 
             for(int j = 1; j <= 5; j++){
                 if(opcaoRegiao == j){
                     strcpy(a[i].regiao, regioes[j - 1]);
@@ -241,8 +242,8 @@ void cadastrarAbelha(Abelha a[])
         
         // BUG!! INCREMENTAND O ID DE ACORDO COM A QUANTIDADE DE ABELHAS
         
-        a[i].id = id;
-        id++;
+        a[i].id = proxIdAbelha;
+        proxIdAbelha++;
     }
 
     // quantidade é somado com a quantidade de novas abelhas
