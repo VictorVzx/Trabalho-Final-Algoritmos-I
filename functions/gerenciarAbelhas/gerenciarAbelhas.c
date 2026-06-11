@@ -52,16 +52,7 @@ void cadastrarAbelha(Abelha a[])
     }
 
 
-    /* TODO ESSE FOR É PARA ADICIONAR OS VALORES
-        NO FINAL INCREMENTA A QUANTIDADE DE ABELHAS, PQ ADICIONOU !!! UMA !!!
-        LOGO O ID É A QUANTIDADE DE ABELHAS
-            -> ISSO ESTÁ ERRADO;
-                QUANDO TEMOS DUAS ABELHAS, UMA COM ID 1 E OUTRA COM ID 3
-                A TERCEIRA ABELHA DEVERIA TER ID 4, MAS O ID DELA PASSA A SER 3 (A QUANTIDADE DE ABELHAS)
-                - ISSO PODE ACONTECER QUANDO ADICIONAMOS TRES ABELHAS E REMOVEMOS A SEGUNDA ABELHA
-                A ABELHA DE ID 2. (VALOR QUE NUNCA MAIS VAI EXISTIR, APENAS QUANDO REINICIAR O CODIGO
-                E PERDER TODOS OS DADOS)
-    */
+    // PERCORRE A QUANTIDADE DE ABELHAS + A QUANTIDADE A ADICIONAR
     for (int i = qtdAbelhas; i < qtdAbelhas + novasAbelhas; i++)
     {
         /*LIMPA A TELA E MOSTRA O CABEÇALHO (INTERFACE DE ADICIONAR ABELHAS)*/
@@ -156,7 +147,7 @@ void cadastrarAbelha(Abelha a[])
         printf(YELLOW "Pressione ENTER para continuar..." RESET);
         while(getchar() != '\n');
 
-        
+        // LÊ A OPÇÃO E VERIFICA SE É VALIDO
         int opcaoRegiao, isValid = 0, isOpcaoValid;
         do{
             limparTela();
@@ -240,29 +231,32 @@ void cadastrarAbelha(Abelha a[])
 
         } while (mediaEmKgMes < 0 || isQtdValid != 1);
         
-        // BUG!! INCREMENTAND O ID DE ACORDO COM A QUANTIDADE DE ABELHAS
-        
+        // ATRIBUI O ID À ABELHA E INCREMENTA O ID DA PROXIMA
         a[i].id = proxIdAbelha;
         proxIdAbelha++;
     }
 
-    // quantidade é somado com a quantidade de novas abelhas
+    // QUANTIDADE DE ABELHAS INCREMENTA
     qtdAbelhas++;
 }
 
+// FUNÇÃO CONTADOR DE ABELHAS, RETORNA A QUANTIDADE DE ABELHAS, FEITA PARA USAR EM OUTROS ARQUIVOS
 int contAbelhas(){
     return qtdAbelhas;
 }
 
-// implementação da função para listar todas as abelhas
+// IMPLEMENTAÇÃO DA FUNÇÃO DE LISTAR TODAS AS ABELHAS
 void listarTodas(Abelha a[])
 {
     limparTela();
     showListarTodas();
 
+    // SE NÃO HOUVER NENHUMA ABELHA, MOSTRA QUE NÃO ENCONTROU NENHUMA ABELHA, CASO CONTRARIO 
+    // LISTA TODAS AS ABELHAS DISPONIVEIS
     if(qtdAbelhas != 0){
         for (int i = 0; i < qtdAbelhas; i++)
         {
+            limparTela();
             printf(YELLOW BOLD "----------------------------------\n" RESET);
             printf(BOLD "ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n" RESET, a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
             printf(YELLOW BOLD "----------------------------------\n" RESET);
@@ -278,10 +272,13 @@ void listarTodas(Abelha a[])
     limparTela();
 }
 
+// IMPLEMENTAÇÃO DA FUNÇÃO DE BUSCAR POR NOME POPULAR
 void buscarPorNomePopular(Abelha a[])
 {
     limparTela();
     showBuscarPorNomePopular();
+
+    // SE NÃO HOUVER NENHUMA ABELHA CADASTRADA, JOGA UM ERRO E SAI DA FUNÇÃO
     if(qtdAbelhas == 0){
         limparTela();
         printf(RED BOLD "* !!! Nenhuma abelha cadastrada !!! *\n" RESET);
@@ -291,12 +288,13 @@ void buscarPorNomePopular(Abelha a[])
         return;
     }
 
+    // VARIAVEL DE LEITURA DO NOME POPULAR
     char nomePopular[40];
 
-    // inicializo a variavel como falsa (método da negação)
+    // VARIAVEL BOOLEANA, INICIALIZO COMO FALSA (METODO DA NEGAÇÃO)
     int achou = 0;
 
-    // pede o nome da abelha para buscar e lê com fgets para reconhecer espaços
+    // PEDE O NOME DA ABELHA PARA BUSCAR, LÊ COM FGETS
     do{
         limparTela();
         showBuscarPorNomePopular();
@@ -304,17 +302,20 @@ void buscarPorNomePopular(Abelha a[])
         fgets(nomePopular, sizeof(nomePopular), stdin);
         nomePopular[strcspn(nomePopular, "\n")] = '\0';
         
+        // SE O USUARIO DEIXAR EM BRANCO, RETORNA ERRO E PEDE PARA TENTAR NOVAMENTE
         if(nomePopular[0] == '\0'){
             printf(RED BOLD "* !!! Não pode estar em branco, tente novamente !!! *\n" RESET);
             
             printf(YELLOW "\nPressione ENTER para continuar..." RESET);
             while(getchar() != '\n');
         }
+    // LOOP SÓ ACABA QUANDO O NOME POPULAR NÃO ESTIVER MAIS EM BRANCO
     }while(nomePopular[0] == '\0');
     
     for (int i = 0; i < qtdAbelhas; i++)
     {
-        // compara o nome popular digitado com o nome popular das abelhas disponiveis
+        // COMPARA A VARIAVEL DE NOME POPULAR COM OS NOMES POPULARES DISPONIVEIS
+        // SE FOR IGUAL, ACHOU E IMPRIME, SENÃO, NÃO ACHOU
         if (strcmp(nomePopular, a[i].nomePopular) == 0)
         {
             printf(YELLOW BOLD "----------------------------------\n" RESET);
@@ -341,10 +342,12 @@ void buscarPorNomePopular(Abelha a[])
     limparTela();
 }
 
+// IMPLEMENTAÇÃO DA FUNÇÃO DE EDITAR ABELHAS
 void editarAbelha(Abelha a[]){
     limparTela();
     showEditarAbelhas();
 
+    // SE NÃO HOUVER NENHUMA ABELHA, JOGA UM ERRO E SAI DA FUNÇÃO
     if(qtdAbelhas == 0){
         printf(RED BOLD "* !!! Nenhuma abelha cadastrada !!! *\n" RESET);
         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
@@ -353,10 +356,13 @@ void editarAbelha(Abelha a[]){
         return;
     }
 
+    // OPÇÕES DE REGIÃO POSSIVEIS
     char regioes[5][30] = {"Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"};
 
+    // VARIAVEIS PARA VALIDAÇÃO
     int idDaAbelha, isExistent = 0;
 
+    
     printf(YELLOW BOLD "Digite o id da abelha que deseja editar: " RESET);
     scanf("%d", &idDaAbelha);
     limparBuffer();
