@@ -14,6 +14,7 @@
 
 // variaveis globais de quantidade, são usadas em todas as funções do crud
 int qtdSensores = 0, novosSensores;
+int id = 1;
 
 // implementação da função de cadastrar sensores
 void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
@@ -38,7 +39,6 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
             return;
         }
     
-        int id = qtdSensores;
         for(int i = qtdSensores; i < qtdSensores + novosSensores; i++){
     
             int opcaoTipo, isValid = 0;
@@ -145,8 +145,8 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                 return;
             }
     
-            id++;
             s[i].id = id;   
+            id++;
         }
         qtdSensores++;
     }else{

@@ -1,31 +1,44 @@
+// =============================================
+// GERENCIAR ABELHAS, ARQUIVO DO CRUD DE ABELHAS
+// =============================================
+
+// INCLUI AS BIBLIOTECAS PADRAO
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+
+// INCLUI O CABEÇALHO DO ARQUIVO
 #include "gerenciarAbelhas.h"
 
-// incluir a funções de limpar buffer e limpar tela
+// INCLUI AS FUNÇÕES DE UTILIDADE (LIMPAR BUFFER E LIMPAR TELA)
 #include "../limparBuffer/limparBuffer.h"
 #include "../limparTela/limparTela.h"
 
-// incluir a interface de listar todas
+// INCLUI AS INTERFACES (VISUAL)
 #include "../../interfaces/gerenciarAbelhas/gerenciarAbelhasInterface.h"
 
+// INCLUI AS STRUCTS
 #include "../../structs/structs.h"
 
+// INCLUI AS CORES
 #include "../../interfaces/cores.h"
 
 /* INICIA A QUANTIDADE DE ABELHAS COMO ZERO PARA INCREMENTAR POSTERIORMENTE */
 int qtdAbelhas = 0, novasAbelhas;
+// INICIALIZA OS IDS
+int id = 1;
 
 void cadastrarAbelha(Abelha a[])
-{
+{   
     limparTela();
+    // DEFINE AS REGIÕES
     char regioes[5][30] = {"Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"};
 
-    // novas abelhas é hardcoded pois sempre vai adicionar apenas !!! UMA !!! abelha
+    // NOVAS ABELHAS, É O TANTO DE ABELHAS QUE SERÁ ADICIONADO, UMA ABELHA
     novasAbelhas = 1;
 
+    // SE A QUANTIDADE DE ABELHAS QUE VAI SE ADICIONADA + A QUANTIDADE DE ABELHAS FOR MAIOR QUE O LIMITE, JOGA UM ERRO E SAI DA FUNÇÃO
     if(qtdAbelhas + novasAbelhas > 50){
         limparTela();
         showCadastrarAbelhas();
@@ -38,8 +51,6 @@ void cadastrarAbelha(Abelha a[])
         return;
     }
 
-    // id é inicializado com a quantidade atual de abelhas (o ID da abelha 50 seria 50)
-    int id = qtdAbelhas;
 
     /* TODO ESSE FOR É PARA ADICIONAR OS VALORES
         NO FINAL INCREMENTA A QUANTIDADE DE ABELHAS, PQ ADICIONOU !!! UMA !!!
@@ -109,20 +120,20 @@ void cadastrarAbelha(Abelha a[])
         printf(YELLOW "Pressione ENTER para continuar..." RESET);
         while(getchar() != '\n');
 
-        // pedir o nome cientifico
+        // PEDIR O NOME CIENTIFICO
         limparTela();
         showCadastrarAbelhas();
 
         char nomeCientifico[50];
 
-        // verifica se o nome não foi deixado em branco, repetindo para o usuario tentar novamente
+        // VERIFICA SE NAO DEIXOU O NOME EM BRANCO, CASO TENHA DEIXADO, TENTE NOVAMENTE
         do
         {
             limparTela();
             showCadastrarAbelhas();
             printf(YELLOW BOLD "Digite o nome cientifico: " RESET);
             fgets(nomeCientifico, sizeof(nomeCientifico), stdin);
-            // remove quebras de linha da string, evitando bugs indesejados com string
+            // REMOVE QUEBRAS DE LINHA DAS STRINGS, REMOVENDO BUGS INDESEJADOS NAS STRINGS
             nomeCientifico[strcspn(nomeCientifico, "\n")] = '\0';
             if(nomeCientifico[0] == '\0'){
                 printf(RED BOLD "* !!! Não pode ficar em branco, tente novamente !!! *\n" RESET);
@@ -130,14 +141,16 @@ void cadastrarAbelha(Abelha a[])
                 printf(YELLOW "Pressione ENTER para continuar..." RESET);
                 while(getchar() != '\n');
             }else{
+                // ATRIBUI O VALOR DA VARIAVEL À STRUCT
                 strcpy(a[i].nomeCientifico, nomeCientifico);
                 break;
             }
+        // CONDIÇÃO FINAL DO LOOP, SO PARA SE A VARIAVEL LIDA NAO ESTIVER EM BRANCO
         } while (nomeCientifico[0] == '\0');
         
-
         limparTela();
         showCadastrarAbelhas();
+        // MENSAGEM DE SUCESSO, CASO O NOME CIENTIFICO TENHA SIDO ADICIONADO NORMALMENTE
         printf(GREEN BOLD "Nome cientifico adicionado com sucesso!\n" RESET);
         
         printf(YELLOW "Pressione ENTER para continuar..." RESET);
@@ -193,17 +206,20 @@ void cadastrarAbelha(Abelha a[])
         }while(isValid == 0 || isOpcaoValid != 1);
 
         float mediaEmKgMes;
+
+        // VARIAVEL PARA VERIFICAR SE NAO FOI DIGITADO UMA STRING OU CHAR
         int isQtdValid;
 
-        // pedir a produção media em kg/mes
+        // QUANTIDADE DE MEL PRODUZIDA EM KG, LÊ E ARMAZENA
         do
         {
             limparTela();
             showCadastrarAbelhas();
-            printf(YELLOW BOLD "Digite a quantidade média em kg por mês produzida: " RESET);
+            printf(YELLOW BOLD "Digite a quantidade de mel kg por mês produzida: " RESET);
             isQtdValid = scanf("%f", &mediaEmKgMes);
             limparBuffer();
 
+            // CASO A QUANTIDADE DE MEL SEJA MENOR QUE ZERO OU TENHA DIGITADO UMA STRING, RETORNA ERRO
             if(mediaEmKgMes < 0 || isQtdValid != 1){
                 limparTela();
                 showCadastrarAbelhas();
@@ -223,12 +239,12 @@ void cadastrarAbelha(Abelha a[])
 
         } while (mediaEmKgMes < 0 || isQtdValid != 1);
         
-
-        id++;
-
+        // BUG!! INCREMENTAND O ID DE ACORDO COM A QUANTIDADE DE ABELHAS
+        
         a[i].id = id;
-
+        id++;
     }
+
     // quantidade é somado com a quantidade de novas abelhas
     qtdAbelhas++;
 }

@@ -38,6 +38,7 @@ int main(void){
 
     do{
         //chamando a função de mostrar o menu
+        limparTela();
         interfaceMenuPrincipal();
         scanf("%d", &menuOption);
         limparBuffer();
