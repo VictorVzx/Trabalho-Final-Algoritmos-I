@@ -167,6 +167,11 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
 /*
     FUNÇÃO QUE RETORNA A QUANTIDADE DE SENSORES DO TIPO TEMPERATURA
 */
+
+int contSensores(){
+    return qtdSensores;
+}
+
 int qtdSensoresTemperatura(Sensor s[]){
     char tipos[3][30] = {"Temperatura", "Umidade", "Luminosidade"};
 
