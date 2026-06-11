@@ -1,7 +1,7 @@
 #ifndef LIMPARTELA_H
 #define LIMPARTELA_H
 
-// prototipo da função limparTela
+// PROTÓTIPO DA FUNÇÃO DE LIMPAR TELA
 
 void limparTela();
 

@@ -1,7 +1,7 @@
 #ifndef LIMPARBUFFER_H
 #define LIMPARBUFFER_H
 
-// prototipo da função limpar buffer
+// PROTÓTIPO DA FUNÇÃO DE LIMPAR BUFFER
 
 void limparBuffer();
 
