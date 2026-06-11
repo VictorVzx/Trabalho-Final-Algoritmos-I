@@ -9,4 +9,6 @@ void interfaceTemperaturaSensores();
 
 void quantidadeAbelhasPorRegiao();
 
+void interfaceAlertasAmbientais();
+
 #endif

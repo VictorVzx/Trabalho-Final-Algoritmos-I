@@ -32,3 +32,9 @@ void quantidadeAbelhasPorRegiao(){
     printf(YELLOW BOLD "|     QUANTIDADE DE ABELHAS POR REGIÃO     |\n" RESET);
     printf(YELLOW BOLD "+------------------------------------------+\n" RESET);
 }
+
+void interfaceAlertasAmbientais(){
+    printf(YELLOW BOLD "+------------------------------------------+\n" RESET);
+    printf(YELLOW BOLD "|             ALERTAS AMBIENTAIS           |\n" RESET);
+    printf(YELLOW BOLD "+------------------------------------------+\n" RESET);
+}

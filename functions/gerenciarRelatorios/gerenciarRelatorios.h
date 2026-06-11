@@ -9,4 +9,6 @@ void mediaTemperaturaSensores(Sensor s[]);
 
 void qtdAbelhasPorRegiao(Abelha a[]);
 
+void alertasAmbientais(Abelha a[], Sensor s[]);
+
 #endif
