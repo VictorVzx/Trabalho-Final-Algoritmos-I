@@ -29,7 +29,7 @@ void cadastrarAbelha(Abelha a[])
     if(qtdAbelhas + novasAbelhas > 50){
         limparTela();
         showCadastrarAbelhas();
-        printf(RED BOLD "* !!! Não pode ter mais do que 50 abelhas !!! *\n\n" RESET);
+        printf(RED BOLD "* !!! Não pode ter mais do que 50 abelhas !!! *\n" RESET);
 
         printf(YELLOW "\nPressione ENTER para sair..." RESET);
         while (getchar() != '\n');
@@ -118,6 +118,8 @@ void cadastrarAbelha(Abelha a[])
         // verifica se o nome não foi deixado em branco, repetindo para o usuario tentar novamente
         do
         {
+            limparTela();
+            showCadastrarAbelhas();
             printf(YELLOW BOLD "Digite o nome cientifico: " RESET);
             fgets(nomeCientifico, sizeof(nomeCientifico), stdin);
             // remove quebras de linha da string, evitando bugs indesejados com string

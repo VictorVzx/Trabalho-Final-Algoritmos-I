@@ -42,6 +42,11 @@ void switchGerenciarRelatorios(Abelha a[], Sensor s[]){
             break;
         case 7:
             limparTela();
+            alertasAmbientais(a, s);
+            limparTela();
+            break;
+        case 8:
+            limparTela();
             printf("Voltando...\n");
             sleep(1);
             limparTela();
@@ -50,6 +55,6 @@ void switchGerenciarRelatorios(Abelha a[], Sensor s[]){
             limparTela();
             break;
         }
-    }while(relatoriosOption != 7);
+    }while(relatoriosOption != 8);
     
 }

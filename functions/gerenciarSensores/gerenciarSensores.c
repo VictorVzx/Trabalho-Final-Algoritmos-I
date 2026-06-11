@@ -51,7 +51,7 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                 printf(YELLOW BOLD "|   2 - Umidade                   |\n" RESET);
                 printf(YELLOW BOLD "|   3 - Luminosidade              |\n" RESET);
                 printf(YELLOW BOLD "+---------------------------------+\n" RESET);
-                printf(YELLOW BOLD "");
+                printf(YELLOW BOLD "-> " RESET);
                 
                 scanf("%d", &opcaoTipo);
                 limparBuffer();
