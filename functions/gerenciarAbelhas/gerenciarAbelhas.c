@@ -205,14 +205,23 @@ void cadastrarAbelha(Abelha a[])
         // QUANTIDADE DE MEL PRODUZIDA EM KG, LÊ E ARMAZENA
         do
         {
-            limparTela();
-            showCadastrarAbelhas();
-            printf(YELLOW BOLD "Digite a quantidade de mel kg por mês produzida: " RESET);
-            isQtdValid = scanf("%f", &mediaEmKgMes);
-            limparBuffer();
+            do{
+                limparTela();
+                showCadastrarAbelhas();
+                printf(YELLOW BOLD "Digite a quantidade de mel kg por mês produzida: " RESET);
+                isQtdValid = scanf("%f", &mediaEmKgMes);
+                limparBuffer();
+
+                if(isQtdValid != 1){
+                    printf(RED BOLD "* !!! Inválido! Não pode conter letras, tente novamente !!! *\n" RESET);
+
+                    printf(YELLOW "\nPressione ENTER para continuar... " RESET);
+                }
+
+            }while(isQtdValid != 1);
 
             // CASO A QUANTIDADE DE MEL SEJA MENOR QUE ZERO OU TENHA DIGITADO UMA STRING, RETORNA ERRO
-            if(mediaEmKgMes < 0 || isQtdValid != 1){
+            if(mediaEmKgMes < 0){
                 limparTela();
                 showCadastrarAbelhas();
                 printf(RED BOLD "* !!! Não pode ser menor do que zero !!! *\n" RESET);
@@ -229,7 +238,7 @@ void cadastrarAbelha(Abelha a[])
                 while(getchar() != '\n');
             }
 
-        } while (mediaEmKgMes < 0 || isQtdValid != 1);
+        } while (mediaEmKgMes < 0);
         
         // ATRIBUI O ID À ABELHA E INCREMENTA O ID DA PROXIMA
         a[i].id = proxIdAbelha;
