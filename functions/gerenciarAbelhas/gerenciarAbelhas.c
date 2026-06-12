@@ -216,6 +216,7 @@ void cadastrarAbelha(Abelha a[])
                     printf(RED BOLD "* !!! Inválido! Não pode conter letras, tente novamente !!! *\n" RESET);
 
                     printf(YELLOW "\nPressione ENTER para continuar... " RESET);
+                    while(getchar() != '\n');
                 }
 
             }while(isQtdValid != 1);
