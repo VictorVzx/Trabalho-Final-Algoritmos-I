@@ -34,14 +34,22 @@ int main(void){
     Sensor sensores[MAX_SENSORES];
 
     //variaveis de opção, para checar no do while
-    int menuOption;
+    int menuOption, isOptionValid;
 
     do{
-        //chamando a função de mostrar o menu
-        limparTela();
-        interfaceMenuPrincipal();
-        scanf("%d", &menuOption);
-        limparBuffer();
+        do{
+            limparTela();
+            interfaceMenuPrincipal();
+            isOptionValid = scanf("%d", &menuOption);
+            limparBuffer();
+
+            if(isOptionValid != 1){
+                printf("Apenas números, tente novamente.\n");
+
+                printf("\nPressione ENTER para continuar...");
+                while(getchar() != '\n');
+            }
+        }while(isOptionValid != 1);
         
         limparTela();
 
@@ -69,7 +77,8 @@ int main(void){
                 break;
             default:
                 limparTela();
-                printf("Opção invalida.\n");
+                printf("Opção invalida, aguarde...\n");
+                sleep(1);
                 limparTela();
                 break;
         }
