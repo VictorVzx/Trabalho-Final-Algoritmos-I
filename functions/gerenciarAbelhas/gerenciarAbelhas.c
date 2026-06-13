@@ -267,7 +267,7 @@ void listarTodas(Abelha a[])
         for (int i = 0; i < qtdAbelhas; i++)
         {
             printf(YELLOW BOLD "----------------------------------\n" RESET);
-            printf(BOLD "ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nMedia em kg/mes produzida: %.2f\n" RESET, a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
+            printf(BOLD "ID: %d\nNome cientifico: %s\nNome popular: %s\nRegião: %s\nQuantidade de produzido/mes: %.2fkg\n" RESET, a[i].id, a[i].nomeCientifico, a[i].nomePopular, a[i].regiao, a[i].producaoMel);
             printf(YELLOW BOLD "----------------------------------\n" RESET);
         }
     }else{

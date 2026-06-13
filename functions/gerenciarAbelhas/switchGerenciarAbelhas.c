@@ -80,12 +80,14 @@ void switchGerenciarAbelhas(Abelha a[])
             limparTela();
             printf(YELLOW BOLD "\nVoltando...\n" RESET);
             sleep(1);
+            limparTela();
             break;
         // PADRÃO: OPÇÃO INVALIDA
         default:
             limparTela();
             printf(RED BOLD "\n* !!! Opção invalida, aguarde... !!! *\n" RESET);
             sleep(1);
+            limparTela();
             break;
         }
     // CONDIÇÃO FINAL: ENCERRA O LOOP SE A OPÇÃO SELECIONADA FOR 11

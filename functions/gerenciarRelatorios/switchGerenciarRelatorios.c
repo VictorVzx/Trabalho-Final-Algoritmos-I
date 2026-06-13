@@ -93,6 +93,7 @@ void switchGerenciarRelatorios(Abelha a[], Sensor s[]){
             limparTela();
             printf(RED BOLD "* !!! Opção inválida, aguarde... !!! *\n" RESET);
             sleep(1);
+            limparTela();
             break;
         }
     // CONDIÇÃO FINAL, SAI DO LOOP
