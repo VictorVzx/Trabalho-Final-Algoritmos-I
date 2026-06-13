@@ -8,6 +8,7 @@
 
 // INCLUINDO FUNÇÕES DE INTERFACE (VISUAL)
 #include "../../interfaces/gerenciarSensores/gerenciarSensoresInterface.h"
+#include "../../interfaces/cores.h"
 
 // INCLUINDO O CABEÇALHO DO ARQUIVO
 #include "gerenciarSensores.h"
@@ -27,10 +28,20 @@ void switchGerenciarSensores(Sensor s[], Abelha a[]){
     int sensoresOption;
     do
     {  
-        showGerenciarSensores();
-        // LÊ A OPÇÃO DO MENU
-        scanf("%d", &sensoresOption);
-        limparBuffer();
+        int isSensoresOptionValid;
+        do{
+            showGerenciarSensores();
+            // LÊ A OPÇÃO DO MENU
+            isSensoresOptionValid = scanf("%d", &sensoresOption);
+            limparBuffer();
+
+            if(isSensoresOptionValid != 1){
+                printf(RED BOLD "* !!! Inválido, letras não são permitidas, tente novamente. !!! *" RESET);
+
+                printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+                while(getchar() != '\n');
+            }
+        } while(isSensoresOptionValid != 1);
 
         limparTela();
         
@@ -71,13 +82,13 @@ void switchGerenciarSensores(Sensor s[], Abelha a[]){
         // 11: SAIR
         case 11:
             limparTela();
-            printf("\nVoltando...\n");
+            printf(YELLOW BOLD "\nVoltando...\n" RESET);
             sleep(1);
             limparTela();
             break;
         default:
             limparTela();
-            printf("\nOpção invalida, aguarde...\n");
+            printf(RED BOLD "\n* !!! Opção invalida, aguarde... !!! *\n" RESET);
             sleep(1);
             limparTela();
             break;

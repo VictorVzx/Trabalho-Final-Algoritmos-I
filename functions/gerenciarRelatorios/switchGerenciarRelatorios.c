@@ -19,6 +19,7 @@
 
 // INCLUI FUNÇÕES DE INTERFACE (VISUAL)
 #include "../../interfaces/relatoriosInterface/relatoriosInterface.h"
+#include "../../interfaces/cores.h"
 #include "../../structs/structs.h"
 
 // INCLUI A FUNÇÃO DE GERENCIAR RELATORIOS
@@ -36,10 +37,22 @@ void switchGerenciarRelatorios(Abelha a[], Sensor s[]){
 
     // LOOP (DO WHILE) MOSTRA PELO MENOS UMA VEZ, CASO DIGITE 8, SAI DO MENU
     do{
-        showGerenciarRelatorios();
-        scanf("%d", &relatoriosOption);
-        limparBuffer();
-        limparTela();
+        // VARIAVEL DE VALIDAÇÃO DO TIPO DIGITADO
+        int isRelatoriosOptionValid;
+        do{
+            showGerenciarRelatorios();
+            isRelatoriosOptionValid = scanf("%d", &relatoriosOption);
+            limparBuffer();
+            limparTela();
+
+            if(isRelatoriosOptionValid != 1){
+                printf(RED BOLD "* !!! Inválido, letras não são permitidas, tente novamente. !!! *" RESET);
+
+                printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+                while(getchar() != '\n');
+            }
+
+        }while(isRelatoriosOptionValid != 1);
 
         // SWITCH CASE COM AS CONSTANTES DE OPÇÃO
         switch (relatoriosOption)
@@ -71,14 +84,14 @@ void switchGerenciarRelatorios(Abelha a[], Sensor s[]){
         // CASO O USUARIO DIGITE 8, AVISA QUE ESTÁ SAINDO DO LOOP
         case 8:
             limparTela();
-            printf("Voltando...\n");
+            printf(YELLOW BOLD "Voltando...\n" RESET);
             sleep(1);
             limparTela();
             break;
-        // PADRÃO: NÃO MOSTRA NADA
+        // PADRÃO: OPÇÃO INVALIDA, AGUARDE
         default:
             limparTela();
-            printf("Opção inválida, aguarde...\n");
+            printf(RED BOLD "* !!! Opção inválida, aguarde... !!! *\n" RESET);
             sleep(1);
             break;
         }

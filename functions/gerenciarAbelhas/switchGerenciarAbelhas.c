@@ -9,6 +9,7 @@
 
 // INCLUI CABEÇALHOS DE INTERFACE (VISUAL)
 #include "../../interfaces/gerenciarAbelhas/gerenciarAbelhasInterface.h"
+#include "../../interfaces/cores.h"
 
 // INCLUI FUNÇÕES DE UTILIDADE, LIMPAR TELA E LIMPAR BUFFER
 #include "../limparTela/limparTela.h"
@@ -23,13 +24,24 @@ void switchGerenciarAbelhas(Abelha a[])
     // RECEBE VARIAVEL OPÇÃO
     int abelhasOption;  
     do
-    {   
-        limparTela();
-        showGerenciarAbelhas();
+    { 
+        int isAbelhasOptionValid;
+        do{
+            limparTela();
+            showGerenciarAbelhas();
+    
+            // LÊ A VARIAVEL OPÇÃO
+            isAbelhasOptionValid = scanf("%d", &abelhasOption);
+            limparBuffer();
 
-        // LÊ A VARIAVEL OPÇÃO
-        scanf("%d", &abelhasOption);
-        limparBuffer();
+            if(isAbelhasOptionValid != 1){
+                printf(RED BOLD "* !!! Inválido, letras não são permitidas, tente novamente. !!! *" RESET);
+
+                printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+                while(getchar() != '\n');
+            }
+
+        }while(isAbelhasOptionValid != 1);
 
         limparTela();
         
@@ -43,7 +55,7 @@ void switchGerenciarAbelhas(Abelha a[])
             break;
         // SEGUNDA OPÇÃO: 7, LISTAR TODAS
         case 7:
-            printf("\nAguarde...\n");
+            printf(YELLOW BOLD "\nAguarde...\n" RESET);
             sleep(1);
             limparTela();
             listarTodas(a);
@@ -66,12 +78,13 @@ void switchGerenciarAbelhas(Abelha a[])
         // SEXTA OPÇÃO: 11, SAIR DO MENU
         case 11:
             limparTela();
-            printf("\nVoltando...\n");
+            printf(YELLOW BOLD "\nVoltando...\n" RESET);
+            sleep(1);
             break;
         // PADRÃO: OPÇÃO INVALIDA
         default:
             limparTela();
-            printf("\nOpção invalida, aguarde...\n");
+            printf(RED BOLD "\n* !!! Opção invalida, aguarde... !!! *\n" RESET);
             sleep(1);
             break;
         }

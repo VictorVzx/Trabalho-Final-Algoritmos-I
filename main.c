@@ -11,6 +11,7 @@
 #include "interfaces/menuPrincipal/interfaceMenuPrincipal.h"
 #include "interfaces/gerenciarAbelhas/gerenciarAbelhasInterface.h"
 #include "interfaces/gerenciarSensores/gerenciarSensoresInterface.h"
+#include "interfaces/cores.h"
 
 //incluindo as funções (modulos)
 #include "functions/limparTela/limparTela.h"
@@ -18,7 +19,6 @@
 #include "functions/gerenciarAbelhas/gerenciarAbelhas.h"
 #include "functions/gerenciarAbelhas/switchGerenciarAbelhas.h"
 #include "functions/gerenciarRelatorios/switchGerenciarRelatorios.h"
-
 #include "functions/gerenciarSensores/switchGerenciarSensores.h"
 
 //prototipo das structs
@@ -44,9 +44,9 @@ int main(void){
             limparBuffer();
 
             if(isOptionValid != 1){
-                printf("Apenas números, tente novamente.\n");
+                printf(RED BOLD "* !!! Apenas números, tente novamente !!! *\n" RESET);
 
-                printf("\nPressione ENTER para continuar...");
+                printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                 while(getchar() != '\n');
             }
         }while(isOptionValid != 1);
@@ -73,11 +73,11 @@ int main(void){
                 break;
             case 4:
                 limparTela();
-                printf("Programa encerrado.\n");
+                printf(YELLOW BOLD "Programa encerrado.\n" RESET);
                 break;
             default:
                 limparTela();
-                printf("Opção invalida, aguarde...\n");
+                printf(RED BOLD "* !!! Opção invalida, aguarde... !!! *\n" RESET);
                 sleep(1);
                 limparTela();
                 break;
