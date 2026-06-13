@@ -277,7 +277,7 @@ void alertasAmbientais(Sensor s[]){
                 printf(YELLOW "\nPressione ENTER para sair..." RESET);
                 while(getchar() != '\n');
             // CRÍTICO: SE A LUMINOSIDADE FOR MAIOR DO QUE 700
-            }else{
+            }else if(s[i].valor > 0 && s[i].valor > 700){
                 limparTela();
                 interfaceAlertasAmbientais();
                 printf(RED BOLD "- LUMINOSIDADE - \nCRÍTICO: ID da abelha: %d\n* !!! %.0f LUX, ABELHAS EM RISCO REAL, ILUMINAÇÃO EXTREMA !!! *\n" RESET, s[i].idAbelha, s[i].valor);
