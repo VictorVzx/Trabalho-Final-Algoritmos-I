@@ -207,7 +207,7 @@ void alertasAmbientais(Sensor s[]){
             if(s[i].valor >= 25 && s[i].valor <= 32){
                 limparTela();
                 interfaceAlertasAmbientais();
-                printf(GREEN BOLD "NORMAL: Abelha de id [%d]\n%.1fºC: (Nenhuma Observação)\n" RESET, s[i].idAbelha, s[i].valor );
+                printf(GREEN BOLD "- TEMPERATURA - \nNORMAL: ID da abelha: %d\n%.1fºC: (Nenhuma Observação)\n" RESET, s[i].idAbelha, s[i].valor );
 
                 printf(YELLOW "\nPressione ENTER para sair..." RESET);
                 while(getchar() != '\n');
@@ -216,7 +216,7 @@ void alertasAmbientais(Sensor s[]){
             }else if(s[i].valor >= 20 && s[i].valor <= 35){
                 limparTela();
                 interfaceAlertasAmbientais();
-                printf(YELLOW BOLD " * !!! ATENÇÃO: Abelha de id [%d]\n%.1fºC: TEMPERATURA INADEQUADA, ABELHA PODE ESTAR EM RISCO !!! *\n" RESET, s[i].idAbelha, s[i].valor);
+                printf(YELLOW BOLD " - TEMPERATURA - \nATENÇÃO: ID da abelha: %d\n* !!! %.1fºC: TEMPERATURA INADEQUADA, ABELHA PODE ESTAR EM RISCO! !!! *\n" RESET, s[i].idAbelha, s[i].valor);
 
                 printf(YELLOW "\nPressione ENTER para sair..." RESET);
                 while(getchar() != '\n');
@@ -224,7 +224,7 @@ void alertasAmbientais(Sensor s[]){
             }else{
                 limparTela();
                 interfaceAlertasAmbientais();
-                printf(RED BOLD " * !!! CRÍTICO: Abelha de id [%d]\n%.1fºC: TEMPERATURA CRÍTICA, ABELHA ESTÁ CORRENDO PERIGO !!! *\n" RESET, s[i].idAbelha, s[i].valor);
+                printf(RED BOLD " - TEMPERATURA - \nCRÍTICO: ID da abelha: %d\n* !!! %.1fºC: TEMPERATURA CRÍTICA, ABELHA ESTÁ CORRENDO PERIGO !!! *\n" RESET, s[i].idAbelha, s[i].valor);
 
                 printf(YELLOW "\nPressione ENTER para sair..." RESET);
                 while(getchar() != '\n');
@@ -236,7 +236,7 @@ void alertasAmbientais(Sensor s[]){
             if(s[i].valor >= 60 && s[i].valor <= 80){
                 limparTela();
                 interfaceAlertasAmbientais();
-                printf(GREEN BOLD "NORMAL: Abelha de ID [%d]:\n%.1f%% (Nenhuma Observação)\n" RESET, s[i].idAbelha, s[i].valor);
+                printf(GREEN BOLD "- UMIDADE - \nNORMAL: ID da abelha: %d\n%.0f%% (Nenhuma Observação)\n" RESET, s[i].idAbelha, s[i].valor);
 
                 printf(YELLOW "\nPressione ENTER para sair..." RESET);
                 while(getchar() != '\n');
@@ -244,7 +244,7 @@ void alertasAmbientais(Sensor s[]){
             }else if(s[i].valor >= 50 && s[i].valor <= 90){
                 limparTela();
                 interfaceAlertasAmbientais();
-                printf(YELLOW BOLD "* !!! ATENÇÃO: Abelha de id [%d]:\n%.1f%% UMIDADE INADEQUADA, PODE ESTAR CORRENDO RISCO !!! *\n" RESET, s[i].idAbelha, s[i].valor);
+                printf(YELLOW BOLD "- UMIDADE - \nATENÇÃO: ID da abelha: %d\n* !!! %.0f%%, UMIDADE INADEQUADA, PODE ESTAR CORRENDO RISCO !!! *\n" RESET, s[i].idAbelha, s[i].valor);
 
                 printf(YELLOW "\nPressione ENTER para sair..." RESET);
                 while(getchar() != '\n');
@@ -252,7 +252,7 @@ void alertasAmbientais(Sensor s[]){
             }else{
                 limparTela();
                 interfaceAlertasAmbientais();
-                printf(RED BOLD "* !!! CRÍTICO: Abelha de id[%d]:\n%.1f%% ABELHA EM RISCO REAL, UMIDADE EXTREMA !!! *\n" RESET, s[i].idAbelha, s[i].valor);
+                printf(RED BOLD "- UMIDADE - \nCRÍTICO: ID da abelha: %d\n* !!! %.0f%%, ABELHA EM RISCO REAL, UMIDADE EXTREMA !!! *\n" RESET, s[i].idAbelha, s[i].valor);
 
                 printf(YELLOW "\nPressione ENTER para sair..." RESET);
                 while(getchar() != '\n');
@@ -264,7 +264,7 @@ void alertasAmbientais(Sensor s[]){
             if(s[i].valor >= 100 && s[i].valor <= 500){
                 limparTela();
                 interfaceAlertasAmbientais();
-                printf(GREEN BOLD "NORMAL: Abelha de id [%d]:\n%.0f LUX (Nenhuma Observação)\n" RESET, s[i].idAbelha, s[i].valor);
+                printf(GREEN BOLD "- LUMINOSIDADE - \nNORMAL: ID da abelha: %d:\n%.0f LUX (Nenhuma Observação)\n" RESET, s[i].idAbelha, s[i].valor);
 
                 printf(YELLOW "\nPressione ENTER para sair..." RESET);
                 while(getchar() != '\n');
@@ -272,7 +272,7 @@ void alertasAmbientais(Sensor s[]){
             }else if(s[i].valor > 500 && s[i].valor <= 700){
                 limparTela();
                 interfaceAlertasAmbientais();
-                printf(YELLOW BOLD "* !!! ATENÇÃO: Abelha de id [%d]:\n%.0f LUX ILUMINAÇÃO INADEQUADA, ABELHAS PODEM ESTAR CORRENDO RISCO !!! *\n" RESET, s[i].idAbelha, s[i].valor);
+                printf(YELLOW BOLD "- LUMINOSIDADE - \nATENÇÃO: ID da abelha: %d\n* !!! %.0f  LUX, ILUMINAÇÃO INADEQUADA, ABELHAS PODEM ESTAR CORRENDO RISCO !!! *\n" RESET, s[i].idAbelha, s[i].valor);
 
                 printf(YELLOW "\nPressione ENTER para sair..." RESET);
                 while(getchar() != '\n');
@@ -280,7 +280,7 @@ void alertasAmbientais(Sensor s[]){
             }else{
                 limparTela();
                 interfaceAlertasAmbientais();
-                printf(RED BOLD "* !!! CRÍTICO: Abelha de id [%d]:\n%.0f LUX ABELHAS EM RISCO REAL, ILUMINAÇÃO EXTREMA !!! *\n" RESET, s[i].idAbelha, s[i].valor);
+                printf(RED BOLD "- LUMINOSIDADE - \nCRÍTICO: ID da abelha: %d\n* !!! %.0f LUX, ABELHAS EM RISCO REAL, ILUMINAÇÃO EXTREMA !!! *\n" RESET, s[i].idAbelha, s[i].valor);
 
                 printf(YELLOW "\nPressione ENTER para sair..." RESET);
                 while(getchar() != '\n');
