@@ -655,14 +655,6 @@ void editarAbelha(Abelha a[]){
     
                             printf(YELLOW "\nPressione ENTER para continuar." RESET);
                             while(getchar() != '\n');
-                        }else{
-                            limparTela();
-                            printf(GREEN BOLD "* !!! Produção de mel editada com sucesso !!! *" RESET);
-
-                            printf(YELLOW "\nPressione ENTER para continuar." RESET);
-                            while(getchar() != '\n');
-                            limparTela();
-                            return;
                         }
                     // CONDIÇÃO FINAL, SAI DO LOOP QUANDO A NOVA QTD DE MEL FOR DIFERENTE
                     }while(novaQtdMel == a[i].producaoMel );
