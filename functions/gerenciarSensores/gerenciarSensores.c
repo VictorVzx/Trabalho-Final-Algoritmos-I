@@ -112,6 +112,8 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
 
             /* VARIÁVEIS PARA LER E VALIDAR O VALOR DO SENSOR */
             float valorDoSensor, isValueValid;
+
+            int doesLoopEnd;
             
             /* INICIA UM LOOP QUE VERIFICA E VALIDA O VALOR DO SENSOR */
             do{
@@ -127,6 +129,14 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                     
                     printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                     while (getchar() != '\n');
+                    doesLoopEnd = 0;
+                }else if(strcmp(s[i].tipo, "Umidade") == 0 && valorDoSensor > 100){
+                    limparTela();
+                    printf(RED BOLD "* !!! Valor de leitura inválido, tente novamente !!! *\n" RESET);
+                    
+                    printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+                    while (getchar() != '\n');
+                    doesLoopEnd = 0;
                 }else{
                     limparTela();
                     showCadastrarSensores();
@@ -136,8 +146,9 @@ void cadastrarSensor(Sensor s[], Abelha a[], int qtdAbelhas){
                     printf(YELLOW "\nPressione ENTER para continuar...\n" RESET);
                     while(getchar() != '\n');
                     limparTela();
+                    doesLoopEnd = 1;
                 }
-            }while((strcmp(s[i].tipo, tipos[0]) != 0 && valorDoSensor < 0) || isValueValid != 1);
+            }while(doesLoopEnd == 0);
     
             /* VARIÁVEIS PARA VALIDAR O ID DA ABELHA A ASSOCIAR COM O SENSOR */
             int isIdValid = 0, isIdALetter;
@@ -493,6 +504,8 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                 float valorNovo;
                 int isValorNovoALetter;
 
+                int doesThisLoopEnd;
+
                 do{
                     int isValueEqual = 0;
                     do{
@@ -526,6 +539,15 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                         while (getchar() != '\n');
                         limparTela();
+
+                        doesThisLoopEnd = 0;
+                    }else if(strcmp(s[i].tipo, "Umidade") == 0 && valorNovo > 100){
+                        limparTela();
+                        printf(RED BOLD "* !!! Valor de leitura inválido, tente novamente !!! *\n" RESET);
+                        
+                        printf(YELLOW "\nPressione ENTER para continuar..." RESET);
+                        while (getchar() != '\n');
+                        doesThisLoopEnd = 0;
                     }else{
                         /* ATRIBUI O NOVO VALOR AO SENSOR */
                         s[i].valor = valorNovo;
@@ -536,9 +558,9 @@ void alterarLeitura(Sensor s[], Abelha a[], int qtdAbelhas){
                         printf(YELLOW "\nPressione ENTER para continuar..." RESET);
                         while (getchar() != '\n');
                         limparTela();
-                        return;
+                        doesThisLoopEnd = 1;
                     }
-                }while((strcmp(s[i].tipo, tipos[0]) != 0 && valorNovo < 0) || isValorNovoALetter != 1);
+                }while(doesThisLoopEnd == 0);
             }else if(editarOption == 3){
                 /* OPÇÃO 3: EDITAR O ID DA ABELHA ASSOCIADA AO SENSOR */
 
