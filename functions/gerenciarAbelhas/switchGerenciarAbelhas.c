@@ -71,7 +71,7 @@ void switchGerenciarAbelhas(Abelha a[])
         // PADRÃO: OPÇÃO INVALIDA
         default:
             limparTela();
-            printf("\nOpção invalida\n");
+            printf("\nOpção invalida, aguarde...\n");
             sleep(1);
             break;
         }

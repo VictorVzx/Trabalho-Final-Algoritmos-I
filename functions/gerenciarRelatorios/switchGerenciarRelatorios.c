@@ -4,6 +4,9 @@
 // STDIO PARA FUNÇÕES BASICAS COMO IMPRIMIR E LER
 #include <stdio.h>
 
+// UNISTD PARA USAR O SLEEP
+#include <unistd.h>
+
 // UNISTD PARA UTILIAZAR A FUNÇÃO SLEEP 
 #include <unistd.h>
 
@@ -75,6 +78,8 @@ void switchGerenciarRelatorios(Abelha a[], Sensor s[]){
         // PADRÃO: NÃO MOSTRA NADA
         default:
             limparTela();
+            printf("Opção inválida, aguarde...\n");
+            sleep(1);
             break;
         }
     // CONDIÇÃO FINAL, SAI DO LOOP

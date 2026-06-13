@@ -77,7 +77,7 @@ void switchGerenciarSensores(Sensor s[], Abelha a[]){
             break;
         default:
             limparTela();
-            printf("\nOpção invalida\n");
+            printf("\nOpção invalida, aguarde...\n");
             sleep(1);
             limparTela();
             break;
