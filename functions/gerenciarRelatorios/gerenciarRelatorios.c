@@ -258,33 +258,36 @@ void alertasAmbientais(Sensor s[]){
                 while(getchar() != '\n');
             }
         // COMPARA O SENSOR DO TIPO LUMINOSIDADE COM A STRING "Luminosidade"
-        }else if(strcmp(s[i].tipo, "Luminosidade") == 0){
+        // COMPARA O SENSOR DO TIPO LUMINOSIDADE COM A STRING "Luminosidade"
+    } else if (strcmp(s[i].tipo, "Luminosidade") == 0) {
 
-            // NORMAL: SE A LUMINOSIDADE FOR MAIOR QUE 100 LUX E MENOR QUE 500 LUX
-            if(s[i].valor >= 100 && s[i].valor <= 500){
-                limparTela();
-                interfaceAlertasAmbientais();
-                printf(GREEN BOLD "- LUMINOSIDADE - \nNORMAL: ID da abelha: %d:\n%.0f LUX (Nenhuma Observação)\n" RESET, s[i].idAbelha, s[i].valor);
+        // NORMAL: De 0 até 500 LUX (Escuro total até penumbra leve é o ideal para o ninho)
+        if (s[i].valor >= 0 && s[i].valor <= 500) {
+            limparTela();
+            interfaceAlertasAmbientais();
+            printf(GREEN BOLD "- LUMINOSIDADE - \nNORMAL: ID da abelha: %d\n%.0f LUX (Ambiente Escuro/Ideal)\n" RESET, s[i].idAbelha, s[i].valor);
 
-                printf(YELLOW "\nPressione ENTER para sair..." RESET);
-                while(getchar() != '\n');
-            // CRÍTICO: SE A LUMINIDADE FOR MAIOR QUE 500 E MENOR OU IGUAL A 700
-            }else if(s[i].valor > 500 && s[i].valor <= 700){
-                limparTela();
-                interfaceAlertasAmbientais();
-                printf(YELLOW BOLD "- LUMINOSIDADE - \nATENÇÃO: ID da abelha: %d\n* !!! %.0f  LUX, ILUMINAÇÃO INADEQUADA, ABELHAS PODEM ESTAR CORRENDO RISCO !!! *\n" RESET, s[i].idAbelha, s[i].valor);
+            printf(YELLOW "\nPressione ENTER para sair..." RESET);
+            while(getchar() != '\n');
+        
+        // ATENÇÃO: Entrando muita luz no ninho (frestas ou tampa aberta)
+        } else if (s[i].valor > 500 && s[i].valor <= 700) {
+            limparTela();
+            interfaceAlertasAmbientais();
+            printf(YELLOW BOLD "- LUMINOSIDADE - \nATENÇÃO: ID da abelha: %d\n* !!! %.0f LUX, LUZ DETECTADA DENTRO DO NINHO! VERIFIQUE A CAIXA !!! *\n" RESET, s[i].idAbelha, s[i].valor);
 
-                printf(YELLOW "\nPressione ENTER para sair..." RESET);
-                while(getchar() != '\n');
-            // CRÍTICO: SE A LUMINOSIDADE FOR MAIOR DO QUE 700
-            }else if(s[i].valor > 0 && s[i].valor > 700){
-                limparTela();
-                interfaceAlertasAmbientais();
-                printf(RED BOLD "- LUMINOSIDADE - \nCRÍTICO: ID da abelha: %d\n* !!! %.0f LUX, ABELHAS EM RISCO REAL, ILUMINAÇÃO EXTREMA !!! *\n" RESET, s[i].idAbelha, s[i].valor);
+            printf(YELLOW "\nPressione ENTER para sair..." RESET);
+            while(getchar() != '\n');
+        
+        // CRÍTICO: Luz solar direta ou caixa totalmente aberta
+        } else {
+            limparTela();
+            interfaceAlertasAmbientais();
+            printf(RED BOLD "- LUMINOSIDADE - \nCRÍTICO: ID da abelha: %d\n* !!! %.0f LUX, EXPOSIÇÃO EXTREMA À LUZ, RISCO DE PERDA DA COLMEIA !!! *\n" RESET, s[i].idAbelha, s[i].valor);
 
-                printf(YELLOW "\nPressione ENTER para sair..." RESET);
-                while(getchar() != '\n');
-            }
+            printf(YELLOW "\nPressione ENTER para sair..." RESET);
+            while(getchar() != '\n');
         }
+    }
     }
 }
